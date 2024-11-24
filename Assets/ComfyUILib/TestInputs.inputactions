@@ -1,0 +1,34 @@
+{
+    "name": "TestInputs",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "61c709bd-56d1-4099-9740-451319c1bb3b",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "8fcd4b62-42ef-450b-8b04-7fbc5b2ec15a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "49c94763-c17b-4b7b-b725-63214b86d890",
+                    "path": "<Keyboard>/x",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -1,0 +1,1177 @@
+{
+  "6": {
+    "inputs": {
+      "text": "a fantastic colorful landscape",
+      "clip": [
+        "25",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "illustration, painting, text, watermark, copyright, signature, notes, ((straight lines)), (border), (grid)",
+      "clip": [
+        "25",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative)"
+    }
+  },
+  "25": {
+    "inputs": {
+      "ckpt_name": "ghostmix_v20Bakedvae.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "70": {
+    "inputs": {
+      "vae_name": "taesd"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "80": {
+    "inputs": {
+      "image": "TX1zqnDbuRupbArtVwcE.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "207": {
+    "inputs": {
+      "value": 0,
+      "width": 768,
+      "height": 768
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "209": {
+    "inputs": {
+      "x": 256,
+      "y": 256,
+      "operation": "add",
+      "destination": [
+        "207",
+        0
+      ],
+      "source": [
+        "211",
+        0
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "211": {
+    "inputs": {
+      "value": 1,
+      "width": 256,
+      "height": 256
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "212": {
+    "inputs": {
+      "seed": 663066722943567,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "25",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "214",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "214": {
+    "inputs": {
+      "grow_mask_by": 0,
+      "pixels": [
+        "372",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ],
+      "mask": [
+        "378",
+        0
+      ]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "217": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "x": 256,
+      "y": 256,
+      "samples": [
+        "212",
+        0
+      ]
+    },
+    "class_type": "LatentCrop",
+    "_meta": {
+      "title": "Crop Latent"
+    }
+  },
+  "218": {
+    "inputs": {
+      "samples": [
+        "217",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "234": {
+    "inputs": {
+      "output_path": "",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_top_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "238": {
+    "inputs": {
+      "output_path": "",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_back_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "297",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "240": {
+    "inputs": {
+      "output_path": "",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_front_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "296",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "242": {
+    "inputs": {
+      "output_path": "",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_bottom_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "218",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "288": {
+    "inputs": {
+      "left": 0,
+      "top": 256,
+      "right": 0,
+      "bottom": 256,
+      "feathering": 40,
+      "image": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "290": {
+    "inputs": {
+      "grow_mask_by": 0,
+      "pixels": [
+        "288",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ],
+      "mask": [
+        "288",
+        1
+      ]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "291": {
+    "inputs": {
+      "seed": 363263690661168,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "25",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "290",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "294": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "x": 0,
+      "y": 0,
+      "samples": [
+        "291",
+        0
+      ]
+    },
+    "class_type": "LatentCrop",
+    "_meta": {
+      "title": "Crop Latent"
+    }
+  },
+  "295": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "x": 0,
+      "y": 512,
+      "samples": [
+        "291",
+        0
+      ]
+    },
+    "class_type": "LatentCrop",
+    "_meta": {
+      "title": "Crop Latent"
+    }
+  },
+  "296": {
+    "inputs": {
+      "samples": [
+        "294",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "297": {
+    "inputs": {
+      "samples": [
+        "295",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "298": {
+    "inputs": {
+      "mode": "transpose",
+      "rotation": 270,
+      "sampler": "nearest",
+      "images": [
+        "296",
+        0
+      ]
+    },
+    "class_type": "Image Rotate",
+    "_meta": {
+      "title": "Image Rotate"
+    }
+  },
+  "300": {
+    "inputs": {
+      "mode": "transpose",
+      "rotation": 90,
+      "sampler": "nearest",
+      "images": [
+        "297",
+        0
+      ]
+    },
+    "class_type": "Image Rotate",
+    "_meta": {
+      "title": "Image Rotate"
+    }
+  },
+  "302": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "303": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "298",
+        0
+      ],
+      "image_b": [
+        "304",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "304": {
+    "inputs": {
+      "samples": [
+        "302",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "305": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "303",
+        0
+      ],
+      "image_b": [
+        "300",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "307": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "304",
+        0
+      ],
+      "image_b": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "308": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "307",
+        0
+      ],
+      "image_b": [
+        "304",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "310": {
+    "inputs": {
+      "mode": "horizontal",
+      "image_a": [
+        "308",
+        0
+      ],
+      "image_b": [
+        "305",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "312": {
+    "inputs": {
+      "value": 0,
+      "width": 512,
+      "height": 768
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "313": {
+    "inputs": {
+      "x": 256,
+      "y": 256,
+      "operation": "add",
+      "destination": [
+        "312",
+        0
+      ],
+      "source": [
+        "315",
+        0
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "315": {
+    "inputs": {
+      "value": 1,
+      "width": 256,
+      "height": 256
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "316": {
+    "inputs": {
+      "seed": 122227693199407,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "25",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "320",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "320": {
+    "inputs": {
+      "grow_mask_by": 0,
+      "pixels": [
+        "310",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ],
+      "mask": [
+        "331",
+        0
+      ]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "323": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "x": 256,
+      "y": 256,
+      "samples": [
+        "316",
+        0
+      ]
+    },
+    "class_type": "LatentCrop",
+    "_meta": {
+      "title": "Crop Latent"
+    }
+  },
+  "324": {
+    "inputs": {
+      "samples": [
+        "323",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "331": {
+    "inputs": {
+      "kernel_size": 20,
+      "sigma": 10,
+      "mask": [
+        "313",
+        0
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "332": {
+    "inputs": {
+      "mode": "transpose",
+      "rotation": 90,
+      "sampler": "nearest",
+      "images": [
+        "296",
+        0
+      ]
+    },
+    "class_type": "Image Rotate",
+    "_meta": {
+      "title": "Image Rotate"
+    }
+  },
+  "334": {
+    "inputs": {
+      "mode": "transpose",
+      "rotation": 270,
+      "sampler": "nearest",
+      "images": [
+        "297",
+        0
+      ]
+    },
+    "class_type": "Image Rotate",
+    "_meta": {
+      "title": "Image Rotate"
+    }
+  },
+  "336": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "337": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "332",
+        0
+      ],
+      "image_b": [
+        "338",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "338": {
+    "inputs": {
+      "samples": [
+        "336",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "339": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "337",
+        0
+      ],
+      "image_b": [
+        "334",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "341": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "338",
+        0
+      ],
+      "image_b": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "342": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "341",
+        0
+      ],
+      "image_b": [
+        "338",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "344": {
+    "inputs": {
+      "mode": "horizontal",
+      "image_a": [
+        "339",
+        0
+      ],
+      "image_b": [
+        "342",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "346": {
+    "inputs": {
+      "value": 0,
+      "width": 512,
+      "height": 768
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "347": {
+    "inputs": {
+      "x": 0,
+      "y": 256,
+      "operation": "add",
+      "destination": [
+        "346",
+        0
+      ],
+      "source": [
+        "349",
+        0
+      ]
+    },
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "MaskComposite"
+    }
+  },
+  "349": {
+    "inputs": {
+      "value": 1,
+      "width": 256,
+      "height": 256
+    },
+    "class_type": "SolidMask",
+    "_meta": {
+      "title": "SolidMask"
+    }
+  },
+  "350": {
+    "inputs": {
+      "seed": 49610657874969,
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "25",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "351",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "351": {
+    "inputs": {
+      "grow_mask_by": 0,
+      "pixels": [
+        "344",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ],
+      "mask": [
+        "358",
+        0
+      ]
+    },
+    "class_type": "VAEEncodeForInpaint",
+    "_meta": {
+      "title": "VAE Encode (for Inpainting)"
+    }
+  },
+  "354": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "x": 0,
+      "y": 256,
+      "samples": [
+        "350",
+        0
+      ]
+    },
+    "class_type": "LatentCrop",
+    "_meta": {
+      "title": "Crop Latent"
+    }
+  },
+  "355": {
+    "inputs": {
+      "samples": [
+        "354",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "358": {
+    "inputs": {
+      "kernel_size": 20,
+      "sigma": 10,
+      "mask": [
+        "347",
+        0
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "359": {
+    "inputs": {
+      "output_path": "",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_left_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "355",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "360": {
+    "inputs": {
+      "output_path": "",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_right_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "png",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "324",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "364": {
+    "inputs": {
+      "left": 256,
+      "top": 0,
+      "right": 256,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "296",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "366": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "371",
+        0
+      ],
+      "image_b": [
+        "364",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "367": {
+    "inputs": {
+      "width": 256,
+      "height": 256,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "368": {
+    "inputs": {
+      "samples": [
+        "367",
+        0
+      ],
+      "vae": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "370": {
+    "inputs": {
+      "mode": "horizontal",
+      "image_a": [
+        "368",
+        0
+      ],
+      "image_b": [
+        "355",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "371": {
+    "inputs": {
+      "mode": "horizontal",
+      "image_a": [
+        "324",
+        0
+      ],
+      "image_b": [
+        "370",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "372": {
+    "inputs": {
+      "mode": "vertical",
+      "image_a": [
+        "373",
+        0
+      ],
+      "image_b": [
+        "366",
+        0
+      ]
+    },
+    "class_type": "JoinImages",
+    "_meta": {
+      "title": "JoinImages"
+    }
+  },
+  "373": {
+    "inputs": {
+      "left": 256,
+      "top": 0,
+      "right": 256,
+      "bottom": 0,
+      "feathering": 0,
+      "image": [
+        "297",
+        0
+      ]
+    },
+    "class_type": "ImagePadForOutpaint",
+    "_meta": {
+      "title": "Pad Image for Outpainting"
+    }
+  },
+  "378": {
+    "inputs": {
+      "kernel_size": 20,
+      "sigma": 10,
+      "mask": [
+        "209",
+        0
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  }
+}
