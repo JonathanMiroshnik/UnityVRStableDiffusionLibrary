@@ -247,7 +247,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
         // Stops the picked up DiffusableObject from being a grabbable object,
         //  as it stops being relevant after it was chosen for image creation
-        XRGrabInteractable xRGrabInteractable = grabbedObject.GetComponent<XRGrabInteractable>();
+        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable xRGrabInteractable = grabbedObject.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         if (xRGrabInteractable != null) xRGrabInteractable.enabled = false;
         grabbedObject = null;
 

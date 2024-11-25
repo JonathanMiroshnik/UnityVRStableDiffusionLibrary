@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(XRGrabInteractable))]
+
+[RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable))]
 public class GrabManipulatableInteractable : MonoBehaviour
 {
     bool multiSelect = false;
     float multiSelectStartDistance = 0f;
-    List<IXRSelectInteractor> interactorsSelecting;
+    List<UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor> interactorsSelecting;
     Vector3 currentGrabbedGOoriginalScale;
 
-    XRGrabInteractable interactable;
+    UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable;
 
     private void Start()
     {
-        interactable = GetComponent<XRGrabInteractable>();
+        interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         interactorsSelecting = interactable.interactorsSelecting;
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 //Allows us to use the Input System to get values for the thumbstick
 using UnityEngine.InputSystem;
 //Allows us to use the Interaction Toolkit to enable and disable our rays
-using UnityEngine.XR.Interaction.Toolkit;
 
-[RequireComponent(typeof(XRRayInteractor))]
+
+[RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor))]
 public class TeleportationController: MonoBehaviour
 {
     //Used to determine current active state of the Teleportation System
@@ -26,10 +26,10 @@ public class TeleportationController: MonoBehaviour
     public InputActionAsset inputAction;
 
     //References the rayInteractor to be enabled/disabled later
-    private XRRayInteractor _rayInteractor;
+    private UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor _rayInteractor;
 
     //References the Teleportation Provider so we can use it to teleport the Player in the event of a succesful teleport call
-    private TeleportationProvider _teleportationProvider;
+    private UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider _teleportationProvider;
 
 
     //Will reference the Thumbstick Input Action when the scene starts up
@@ -44,7 +44,7 @@ public class TeleportationController: MonoBehaviour
     void Start()
     {
         //We don't want the rayInteractor to on unless we're using the forward press on the thumbstick so we deactivate it here
-        _rayInteractor = GetComponent<XRRayInteractor>();
+        _rayInteractor = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor>();
         _rayInteractor.enabled = false;
 
         //This will find the Action Map of our target controller for Teleport Mode Activate.
@@ -65,7 +65,7 @@ public class TeleportationController: MonoBehaviour
         _thumbstickInputAction = inputAction.FindActionMap("XRI " + targetController.ToString() + " Locomotion").FindAction("Move");
         _thumbstickInputAction.Enable();
 
-        _teleportationProvider = FindObjectOfType<TeleportationProvider>();
+        _teleportationProvider = FindObjectOfType<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider>();
     }
 
     private void OnDestroy()
@@ -110,7 +110,7 @@ public class TeleportationController: MonoBehaviour
             return;
         }
 
-        TeleportRequest teleportRequest = new TeleportRequest()
+        UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest teleportRequest = new UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportRequest()
         {
             destinationPosition = raycastHit.point,
         };

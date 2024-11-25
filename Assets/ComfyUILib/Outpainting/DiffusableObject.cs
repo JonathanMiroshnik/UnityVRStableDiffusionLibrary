@@ -33,7 +33,7 @@ public class DiffusableObject : MonoBehaviour
     private void Start()
     {
         // todo should grabbable raise a bigger alert? do I even need grabbable?
-        if (grabbable && GetComponent<XRGrabInteractable>() == null)
+        if (grabbable && GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>() == null)
         {
             Debug.LogError("Add a GrabInteractable on");
         }

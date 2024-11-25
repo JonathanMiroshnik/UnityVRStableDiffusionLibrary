@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
+
 
 [ExecuteInEditMode]
 public class TempCreateTileScript : MonoBehaviour
@@ -18,7 +18,7 @@ public class TempCreateTileScript : MonoBehaviour
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.SetParent(NewParent);
             ApplyTo(cube.transform, t);
-            cube.AddComponent<XRSimpleInteractable>();
+            cube.AddComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
 
         }        
     }
