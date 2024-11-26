@@ -1,7 +1,7 @@
 # UnityVRStableDiffusionLibrary
 A library and code base filled with all kinds of scripts that work with the ComfyUI API
 
-As of 26.11.2024, this project is being actively worked on(it is based on a previous project which is already complete and includes much of this code, but here it is refactored and made much more useable for the general Unity developer), and this README section will be expanded and will include as many details as I can fit, if you have any questions, feel free to send me an e-mail.
+As of ==26.11.2024==, this project is being actively worked on(it is based on a previous project which is already complete and includes much of this code, but here it is refactored and made much more useable for the general Unity developer), and this README section will be expanded and will include as many details as I can fit, if you have any questions, feel free to send me an e-mail.
 
 ---
 
