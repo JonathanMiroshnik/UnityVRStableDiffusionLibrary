@@ -18,7 +18,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
 
     private void Awake()
     {
-        mechanismText = "Flat Object Generator";
+        mechanismText = "Flat\nObject\nGenerator";
     }    
 
     private bool validInteractableObject(BaseInteractionEventArgs args)

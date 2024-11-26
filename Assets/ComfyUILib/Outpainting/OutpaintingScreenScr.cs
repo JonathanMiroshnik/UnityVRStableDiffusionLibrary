@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Events;
 
 /// <summary>
@@ -60,6 +58,7 @@ public class OutpaintingScreenScr : MonoBehaviour
     /// </summary>
     public void CreateScreen()
     {
+        // Creating the tiles
         if (tileObject != null)
         {
             OutpaintingTile tile_scr_check = tileObject.GetComponent<OutpaintingTile>();
@@ -77,7 +76,7 @@ public class OutpaintingScreenScr : MonoBehaviour
                         (((tileMatrixSize.y - 1) / 2) - j) * tileSize.y, 0), tileObject.transform.rotation);
                     clone.name = "ScreenTile" + i.ToString() + j.ToString();
 
-                    clone.layer = 6; // 6 is Diffusables layer
+                    clone.layer = 6; // 6 is the Diffusables layer
 
                     OutpaintingTile cur_tile_scr = clone.GetComponent<OutpaintingTile>();
                     cur_tile_scr.tilePosition = new Vector2Int(i, j);
@@ -88,7 +87,7 @@ public class OutpaintingScreenScr : MonoBehaviour
                 }
             }
 
-            // Dealing with the first tile of the screen, in the bottom-middle by default
+            // Dealing with the first tile of the screen, in the bottom-middle by default, setting its texture
             if (firstTileTexture != null)
             {
                 UpdateTiles(firstPaintedTile);

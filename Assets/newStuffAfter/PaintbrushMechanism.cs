@@ -8,6 +8,11 @@ public class PaintbrushMechanism : GadgetMechanism
 {
     public List<DiffusionTextureChanger> mechanismTextureChangers = new List<DiffusionTextureChanger>();
 
+    private void Awake()
+    {
+        mechanismText = "Painting";
+    }
+
     protected override DiffusionRequest CreateDiffusionRequest(List<DiffusionTextureChanger> diffusionTextureChangers)
     {
         if (GameManager.getInstance() == null) return null;

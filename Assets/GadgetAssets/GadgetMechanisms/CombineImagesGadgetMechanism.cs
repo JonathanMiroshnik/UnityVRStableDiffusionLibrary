@@ -22,7 +22,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
     private void Awake()
     {
-        mechanismText = "Combine Images";
+        mechanismText = "Combine\nImages";
     }
 
     /// <summary>

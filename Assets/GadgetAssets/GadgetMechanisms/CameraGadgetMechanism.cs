@@ -28,7 +28,7 @@ public class CameraGadgetMechanism : GadgetMechanism
 
     private void Awake()
     {
-        mechanismText = "Base Camera";
+        mechanismText = "Base\nCamera";
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //

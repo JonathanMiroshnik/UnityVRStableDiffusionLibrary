@@ -13,7 +13,7 @@ public class SculptingMechanism : GadgetMechanism
 
     private void Start()
     {
-        mechanismText = MECHANISM_PRETEXT + " Sculpting";
+        mechanismText = MECHANISM_PRETEXT + "\n" + "Sculpting";
     }
 
     public override void GripProperty(GameObject GO, Transform curTransform)

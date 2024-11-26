@@ -3,6 +3,11 @@ using UnityEngine;
 // TIMELY NOTES(as of 23.11.24):
 // CombineMechanism does not send textures to uiDiffsionTexture and doesn't allow placing textures.
 // ^ Also not working for Base Camera Mechanism, the issue is the texture queue in the gadget.
+// Object to Image Diffusion needs proper containers for 3D objects with DiffusableObject component,
+//  also need images to take style and places to place images
+// Add object grid for Throwing mechanism to see effects
+// Camera Diffusion needs need images to take style and places to place images
+// Sides Cube Mechanism add outline for prompt DiffusableObject, also make work
 
 
 // GENERAL NOTES:

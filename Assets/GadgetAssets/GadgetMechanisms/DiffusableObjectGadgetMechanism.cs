@@ -18,7 +18,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
     private void Awake()
     {
-        mechanismText = "Object to Image";
+        mechanismText = "Object\nto\nImage";
     }    
 
     private bool validInteractableObject(BaseInteractionEventArgs args)
