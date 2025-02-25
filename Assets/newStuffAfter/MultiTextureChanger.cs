@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO check if the SidesCube works with this script, and why does only this mechanism even work like this?
+// TODO: check if the SidesCube works with this script, and why does only this mechanism even work like this?
 
 /// <summary>
 /// DiffusionTextureChanger used for the SidesCubeGadgetMechanism to add the correct textures to the SidesCube
@@ -13,7 +13,9 @@ public class MultiTextureChanger : DiffusionTextureChanger
     public int TextureThreshold = 1;    
 
     [NonSerialized]
-    public bool filledThreshold = false; // TODO do I need this parameter?
+    public bool filledThreshold = false; // TODO: do I need this parameter?
+
+    // TODO: lots of repeating code here, can be refactored
 
     /// <summary>
     /// Adds the textures that are in the DiffusionRequest to the diff_Textures list
@@ -25,23 +27,23 @@ public class MultiTextureChanger : DiffusionTextureChanger
 
         if (!diffusionRequest.addToTextureTotal)
         {
-            curTextureIndex = 0;
-            diff_Textures = new List<Texture2D>();
-            diff_Textures.Clear();
+            _curTextureIndex = 0;
+            _diffTextures = new List<Texture2D>();
+            _diffTextures.Clear();
 
             filledThreshold = false;
         }
 
-        int currentTextureNum = diff_Textures.Count;
+        int currentTextureNum = _diffTextures.Count;
         foreach (Texture2D texture in diffusionRequest.textures)
         {
             if (currentTextureNum >= TextureThreshold) break;
             currentTextureNum++;
 
-            diff_Textures.Add(texture);
+            _diffTextures.Add(texture);
         }
 
-        if (currentTextureNum >= diff_Textures.Count)
+        if (currentTextureNum >= _diffTextures.Count)
         {
             AddedTextureUnityEvent?.Invoke();
             filledThreshold = true;
@@ -62,23 +64,23 @@ public class MultiTextureChanger : DiffusionTextureChanger
 
         if (!addToTextureTotal)
         {
-            curTextureIndex = 0;
-            diff_Textures = new List<Texture2D>();
-            diff_Textures.Clear();
+            _curTextureIndex = 0;
+            _diffTextures = new List<Texture2D>();
+            _diffTextures.Clear();
 
             filledThreshold = false;
         }
 
-        int currentTextureNum = diff_Textures.Count;
+        int currentTextureNum = _diffTextures.Count;
         foreach (Texture2D texture in newDiffTextures)
         {
             if (currentTextureNum >= TextureThreshold) break;
             currentTextureNum++;
 
-            diff_Textures.Add(texture);
+            _diffTextures.Add(texture);
         }
 
-        if (currentTextureNum >= diff_Textures.Count)
+        if (currentTextureNum >= _diffTextures.Count)
         {
             AddedTextureUnityEvent?.Invoke();
             filledThreshold = true;
@@ -94,12 +96,12 @@ public class MultiTextureChanger : DiffusionTextureChanger
         if (filledThreshold)
         {
             ret_textures = new List<Texture2D>();
-            for (int i = 0; i < diff_Textures.Count; i++)
+            for (int i = 0; i < _diffTextures.Count; i++)
             {
-                ret_textures.Add(diff_Textures[i]);
+                ret_textures.Add(_diffTextures[i]);
             }
 
-            diff_Textures = new List<Texture2D> ();
+            _diffTextures = new List<Texture2D> ();
             filledThreshold = false;            
         }
 

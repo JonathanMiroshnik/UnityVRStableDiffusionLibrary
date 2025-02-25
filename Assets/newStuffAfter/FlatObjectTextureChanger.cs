@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 /// <summary>
-/// TODO
+/// TODO:
 /// </summary>
 public class FlatObjectTextureChanger : DiffusionTextureChanger
 {
@@ -19,7 +19,7 @@ public class FlatObjectTextureChanger : DiffusionTextureChanger
         }
     }
 
-    /// <summary> TODO
+    /// <summary> TODO:
     /// </summary>
     /// <returns></returns>
     public override bool AddTexture(DiffusionRequest diffusionRequest)
@@ -28,12 +28,12 @@ public class FlatObjectTextureChanger : DiffusionTextureChanger
 
         foreach (Texture2D texture in diffusionRequest.textures)
         {
-            diff_Textures.Add(texture);
+            _diffTextures.Add(texture);
         }
 
-        if (diff_Textures.Count == 1)
+        if (_diffTextures.Count == 1)
         {
-            image.texture = diff_Textures[0]; // TODO what's the point of having multiple Textures EVER then?
+            image.texture = _diffTextures[0]; // TODO: what's the point of having multiple Textures EVER then?
         }
         else
         {
@@ -51,12 +51,12 @@ public class FlatObjectTextureChanger : DiffusionTextureChanger
 
         foreach (Texture2D texture in newDiffTextures)
         {
-            diff_Textures.Add(texture);
+            _diffTextures.Add(texture);
         }
 
-        if (diff_Textures.Count == 1)
+        if (_diffTextures.Count == 1)
         {
-            image.texture = diff_Textures[0]; // TODO what's the point of having multiple Textures EVER then?
+            image.texture = _diffTextures[0]; // TODO: what's the point of having multiple Textures EVER then?
         }
         else
         {
@@ -73,6 +73,7 @@ public class FlatObjectTextureChanger : DiffusionTextureChanger
         return AddTexture(newDiffTextures);
     }    
 
+    // TODO: what is this?
     /*/// <summary>
     /// Changes the texture of a GameObject to the given texture
     /// </summary>

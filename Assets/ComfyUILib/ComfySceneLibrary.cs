@@ -7,7 +7,6 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using static System.Net.WebRequestMethods;
 
 [System.Serializable]
 public class ResponseData
@@ -22,20 +21,20 @@ public class FileExistsChecker
 
 public enum diffusionWorkflows
 {
-    txt2img,
-    txt2imgLCM,
-    img2img,
-    img2imgLCM,
-    combineImages,
+    Txt2Img,
+    Txt2ImgLCM,
+    Img2Img,
+    Img2ImgLCM,
+    CombineImages,
 
     // Assuming these workflows will not use low powered models and thus no need for LCM
-    baseCamera,
-    depthCamera,
-    openpose,
+    BaseCamera,
+    DepthCamera,
+    OpenPose,
 
     // A special two-type mechanism
-    outpainting,
-    grid4Outpainting,
+    Outpainting,
+    Grid4Outpainting,
 
     // Gadget AI representation
     AIAssistant,
@@ -47,59 +46,54 @@ public enum diffusionWorkflows
     CubeObject,
 
     // Workflow used to load model into memory for as little cost as possible
-    empty
+    Empty
 }
 
 public enum diffusionModels
 {
-    nano,
-    mini,
-    turbo,
-    turblxl,
-    ghostmix,
-    thinkdiffusiontest,
-    juggernautXLInpaint,
-    juggernautReborn
+    Nano,
+    Mini,
+    Turbo,
+    Turblxl,
+    Ghostmix,
+    ThinkdiffusionTest,
+    JuggernautXLInpaint,
+    JuggernautReborn
 }
 
 
-// TODO remove LogErrors with something that doesn't force out the user in the game.
+// TODO:: remove LogErrors with something that doesn't force out the user in the game.
 
 public class ComfySceneLibrary : MonoBehaviour
 {
-    private static string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
-
     public string serverAddress = "";
+    public ComfyOrganizer comfyOrg { get; set; }
 
     [NonSerialized]
     public static bool loadedAddress = false;
 
-    public ComfyOrganizer comfyOrg;
+    public const string ImageFolderName = "Assets/"; // TODO: if the other consts exist, this one can be const aswell
 
-    private const string JSONFolderPath = "JSONMain";
-    public const string ImageFolderName = "Assets/";
+    private ClientWebSocket _ws;
+    private bool _startedGenerations = false;
+    private Dictionary<diffusionWorkflows, string> _diffusionJsons;
+    private bool _readyForDiffusion = false;
 
-    private ClientWebSocket ws;
-    private bool started_generations = false;
-    private Dictionary<diffusionWorkflows, string> diffusionJsons;
+    private static string HTTPPrefix = "https://";  // https://  ------ When using online API service | http:// ------ When using offline server
+    // TODO:: in ComfyOrganizer I added List of outgioing image names
+    private static HashSet<string> _incomingImageNames;
 
-    private bool readyForDiffusion = false;
-
-    private const int MAX_NETWORKING_RETRIES = 1000;
-
-    // TODO delete this PREFIX before full release
-    private const string THINKDIFFUSION_PREFIX = "jonathanmiroshnik-";
-    private const string THINKDIFFUSION_POSTFIX = ".thinkdiffusion.xyz";
-
-    // TODO in ComfyOrganizer I added List of outgioing image names
-    private static HashSet<string> incomingImageNames;
+    private const int MaxNetworkingRetries = 1000;
+    private const string JsonFolderPath = "JSONMain";
+    private const string ThinkDiffusionPrefix = "jonathanmiroshnik-";
+    private const string ThinkDiffusionPostfix = ".thinkdiffusion.xyz";
 
     private void Awake()
     {
-        ws = new ClientWebSocket();
-        diffusionJsons = new Dictionary<diffusionWorkflows, string>();
+        _ws = new ClientWebSocket();
+        _diffusionJsons = new Dictionary<diffusionWorkflows, string>();
 
-        if (incomingImageNames == null) incomingImageNames = new HashSet<string>();
+        if (_incomingImageNames == null) _incomingImageNames = new HashSet<string>();
 }
 
 
@@ -124,7 +118,7 @@ public class ComfySceneLibrary : MonoBehaviour
         }
         else
         {
-            GameManager.getInstance().IP = THINKDIFFUSION_PREFIX + initialIP + THINKDIFFUSION_POSTFIX;
+            GameManager.getInstance().IP = ThinkDiffusionPrefix + initialIP + ThinkDiffusionPostfix;
             HTTPPrefix = "https://";
 
             Debug.Log("Set the final server IP as: " + GameManager.getInstance().IP.ToString());
@@ -133,11 +127,11 @@ public class ComfySceneLibrary : MonoBehaviour
         loadedAddress = true;
     }
 
-    // TODO notice that this START must always come BEFORE(put the library before the organizer in the node properties)
-    // TODO cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
+    // TODO: notice that this START must always come BEFORE(put the library before the organizer in the node properties)
+    // TODO: cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void StartComfySceneLibrary(DiffusionRequest beginningDiffusionRequest)
     {
-        /*// TODO bad if statement because alread exists inside the function, remove serveraddress as it is
+        /*// TODO: bad if statement because alread exists inside the function, remove serveraddress as it is
         if (serverAddress != "" && serverAddress != "127.0.0.1:8188")
         {
             LoadSpecialServerAddress(serverAddress);
@@ -145,7 +139,7 @@ public class ComfySceneLibrary : MonoBehaviour
         LoadSpecialServerAddress(serverAddress);
 
         // Get all enum adjacent JSON workflows
-        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JSONFolderPath);
+        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JsonFolderPath);
 
         foreach (var file in jsonFiles)
         {
@@ -156,15 +150,15 @@ public class ComfySceneLibrary : MonoBehaviour
             {
                 diffusionWorkflows enumVal;
                 Enum.TryParse<diffusionWorkflows>(fileName, out enumVal);
-                diffusionJsons.Add(enumVal, fileContent);
+                _diffusionJsons.Add(enumVal, fileContent);
             }
             else
             {
-                Debug.LogError("Please add JSON workflow " + fileName.ToString() + " to the diffusionJsons enum");
+                Debug.LogError($"Please add JSON workflow {fileName.ToString()} to the diffusionJsons enum");
             }
         }
 
-        readyForDiffusion = true;
+        _readyForDiffusion = true;
 
         StartCoroutine(DownloadCycle());
 
@@ -181,6 +175,7 @@ public class ComfySceneLibrary : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             List<DiffusionRequest> allDiffReqs = comfyOrg.GetUndownloadedRequestPrompts();
+            if (allDiffReqs == null || allDiffReqs.Count == 0) continue;
             foreach (DiffusionRequest diffReq in allDiffReqs)
             {
                 if (!diffReq.sentDownloadRequest)
@@ -198,9 +193,9 @@ public class ComfySceneLibrary : MonoBehaviour
     private string getWorkflowJSON(diffusionWorkflows enumValName)
     {
         string ret_str = "";
-        if (diffusionJsons.ContainsKey(enumValName))
+        if (_diffusionJsons.ContainsKey(enumValName))
         {
-            ret_str = diffusionJsons[enumValName];
+            ret_str = _diffusionJsons[enumValName];
         }
 
         return ret_str;
@@ -216,36 +211,36 @@ public class ComfySceneLibrary : MonoBehaviour
         Vector2Int curImageSize = Vector2Int.zero;
         switch (diffReq.diffusionModel)
         {
-            case diffusionModels.nano:
+            case diffusionModels.Nano:
                 curDiffModel = "stable-diffusion-nano-2-1.ckpt";
                 curImageSize = new Vector2Int(128, 128);
                 break;
-            case diffusionModels.mini:
+            case diffusionModels.Mini:
                 curDiffModel = "miniSD.ckpt";
                 curImageSize = new Vector2Int(256, 256);
                 break;
-            case diffusionModels.turbo:
+            case diffusionModels.Turbo:
                 curDiffModel = "sdTurbo_v10.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
-            case diffusionModels.turblxl:
-                // TODO add this model
+            case diffusionModels.Turblxl:
+                // TODO: add this model
                 curDiffModel = "??";
                 curImageSize = new Vector2Int(1024, 1024);
                 break;
-            case diffusionModels.ghostmix:
+            case diffusionModels.Ghostmix:
                 curDiffModel = "ghostmix_v20Bakedvae.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
-            case diffusionModels.thinkdiffusiontest:
+            case diffusionModels.ThinkdiffusionTest:
                 curDiffModel = "01_ThinkDiffusionXL.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
-            case diffusionModels.juggernautXLInpaint:
+            case diffusionModels.JuggernautXLInpaint:
                 curDiffModel = "juggernautXL_versionXInpaint.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;
-            case diffusionModels.juggernautReborn:
+            case diffusionModels.JuggernautReborn:
                 curDiffModel = "juggernaut_reborn.safetensors";
                 curImageSize = new Vector2Int(512, 512);
                 break;                
@@ -271,17 +266,17 @@ public class ComfySceneLibrary : MonoBehaviour
         JObject json = JObject.Parse(promptText); // promptText
 
         string randomSeed = UnityEngine.Random.Range(1, 10000).ToString();
-        //TODO add all cases according to diffusionWorkflows ENUM
+        //TODO: add all cases according to diffusionWorkflows ENUM
         switch (diffReq.diffusionJsonType)
         {
-            case diffusionWorkflows.empty:
+            case diffusionWorkflows.Empty:
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 diffReq.uploadFileChecker.fileExists = true;
                 diffReq.finishedRequest = true;
                 diffReq.sentDownloadRequest = true;
                 break;
 
-            case diffusionWorkflows.txt2imgLCM:
+            case diffusionWorkflows.Txt2ImgLCM:
                 json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["7"]["inputs"]["text"] += diffReq.negativePrompt;
@@ -295,7 +290,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 diffReq.uploadFileChecker.fileExists = true;                
                 break;
 
-            case diffusionWorkflows.img2img:
+            case diffusionWorkflows.Img2Img:
                 StartCoroutine(UploadImage(diffReq, curImageSize));
 
                 json["prompt"]["10"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
@@ -311,7 +306,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["4"]["inputs"]["ckpt_name"] = curDiffModel;
                 break;
 
-            case diffusionWorkflows.img2imgLCM:
+            case diffusionWorkflows.Img2ImgLCM:
                 if (diffReq.uploadTextures == null)
                 {
                     Debug.LogError("Upload some existing textures");
@@ -336,8 +331,8 @@ public class ComfySceneLibrary : MonoBehaviour
                 json["prompt"]["11"]["inputs"]["image"] = diffReq.uploadTextures[0].name;
                 break;
 
-            case diffusionWorkflows.txt2img:
-                // TODO create this one
+            case diffusionWorkflows.Txt2Img:
+                // TODO: create this one
                 /*json["prompt"]["3"]["inputs"]["seed"] = randomSeed;
                 json["prompt"]["6"]["inputs"]["text"] = diffReq.positivePrompt;
                 json["prompt"]["7"]["inputs"]["text"] = diffReq.negativePrompt;
@@ -351,7 +346,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 diffReq.uploadFileChecker.fileExists = true;
                 break;
 
-            case diffusionWorkflows.combineImages:
+            case diffusionWorkflows.CombineImages:
                 if (diffReq.uploadTextures == null)
                 {
                     Debug.LogError("Upload some existing textures");
@@ -421,8 +416,8 @@ public class ComfySceneLibrary : MonoBehaviour
 
                 diffReq.uploadFileChecker.fileExists = true;
                 break;
-            case diffusionWorkflows.grid4Outpainting:
-            case diffusionWorkflows.outpainting:       
+            case diffusionWorkflows.Grid4Outpainting:
+            case diffusionWorkflows.Outpainting:       
                 switch (diffReq.SpecialInput)
                 {
                     // Regular cases.
@@ -523,7 +518,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         promptText = $@"
                             {{
                                 ""id"": ""{guid}"",
-                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
+                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.Grid4Outpainting)}
                             }}";
 
                         StartCoroutine(UploadImage(diffReq, curImageSize));                        
@@ -569,7 +564,7 @@ public class ComfySceneLibrary : MonoBehaviour
                         promptText = $@"
                             {{
                                 ""id"": ""{guid}"",
-                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.grid4Outpainting)}
+                                ""prompt"": {getWorkflowJSON(diffusionWorkflows.Grid4Outpainting)}
                             }}";
 
                         StartCoroutine(UploadImage(diffReq, curImageSize));
@@ -625,7 +620,7 @@ public class ComfySceneLibrary : MonoBehaviour
 
         // Waits for the Library to be started
         int INNER_DIFFUSION_TRIALS = 10;
-        if (!readyForDiffusion)
+        if (!_readyForDiffusion)
         {
             if (INNER_DIFFUSION_TRIALS <= 0) yield break;
             INNER_DIFFUSION_TRIALS--;
@@ -639,7 +634,7 @@ public class ComfySceneLibrary : MonoBehaviour
         if (promptText == null || promptText.Length <= 0) yield break;
 
         // Waits for all the relevant images for the workflow to upload to the server
-        int MAX_RETRIES = MAX_NETWORKING_RETRIES;
+        int MAX_RETRIES = MaxNetworkingRetries;
         while (!diffReq.uploadFileChecker.fileExists && MAX_RETRIES > 0)
         {
             yield return new WaitForSeconds(0.2f);
@@ -677,15 +672,14 @@ public class ComfySceneLibrary : MonoBehaviour
             diffReq.prompt_id = data.prompt_id;
             yield return 1;
         }                
-        
     }
 
 
     void OnDestroy()
     {
-        if (ws != null && ws.State == WebSocketState.Open)
+        if (_ws != null && _ws.State == WebSocketState.Open)
         {
-            ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
+            _ws.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
         }
     }
 
@@ -734,26 +728,17 @@ public class ComfySceneLibrary : MonoBehaviour
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.Log(": Error: " + webRequest.error);
-                    //Debug.LogError(": Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.ProtocolError:
-                    if (started_generations)
+                    if (_startedGenerations)
                     {
                         Debug.LogError(": HTTP Error: " + webRequest.error);
                     }
                     break;
                 case UnityWebRequest.Result.Success:
-                    //Debug.Log(":\nReceived: " + webRequest.downloadHandler.text);
-
                     // Jonathan - added the for loop to coincide with the changes to the ExtractFilename function becoming a batch-size dependant downloader
                     // Jonathan - another change, download all the images FIRST, then display, to test display speed
                     string[] filenames = ExtractFilename(webRequest.downloadHandler.text);
-
-                    /*Debug.Log("All File Names:");
-                    foreach (string item in filenames)
-                    {
-                        Debug.Log(item);
-                    }*/
 
                     // If there are no filenames, the prompt has not yet finished generating
                     if (filenames.Length <= 0)
@@ -764,9 +749,9 @@ public class ComfySceneLibrary : MonoBehaviour
                     // Downloading each image of the prompt
                     for (int i = 0; i < filenames.Length; i++)
                     {
-                        if (!incomingImageNames.Contains(filenames[i])) StartCoroutine(DownloadImage(filenames[i], diffReq));
+                        if (!_incomingImageNames.Contains(filenames[i])) StartCoroutine(DownloadImage(filenames[i], diffReq));
                     }
-                    //Debug.Log("finished downloading images for request number " + diffReq.requestNum.ToString());
+
                     diffReq.sentDownloadRequest = true;
                     break;
             }
@@ -821,7 +806,7 @@ public class ComfySceneLibrary : MonoBehaviour
     private IEnumerator DownloadImage(string filename, DiffusionRequest diffReq)
     {
         if (GameManager.getInstance() == null) yield break;
-        int MAX_RETRIES = MAX_NETWORKING_RETRIES;
+        int MAX_RETRIES = MaxNetworkingRetries;
 
         FileExistsChecker fileCheck = new FileExistsChecker();
         while (!fileCheck.fileExists && MAX_RETRIES > 0)
@@ -835,12 +820,12 @@ public class ComfySceneLibrary : MonoBehaviour
             yield break;
         }
 
-        int MAX_RETRIES_DOWNLOAD = MAX_NETWORKING_RETRIES;
+        int MAX_RETRIES_DOWNLOAD = MaxNetworkingRetries;
 
         while(MAX_RETRIES_DOWNLOAD > 0)
         {
             // Checks if image already downloaded
-            if (incomingImageNames.Contains(filename)) yield break;
+            if (_incomingImageNames.Contains(filename)) yield break;
 
             string imageURL = HTTPPrefix + GameManager.getInstance().IP + "/view?filename=" + filename;
 
@@ -854,9 +839,9 @@ public class ComfySceneLibrary : MonoBehaviour
                     Texture2D texture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
 
                     // Checks if image already downloaded
-                    if (incomingImageNames.Contains(filename)) yield break;
+                    if (_incomingImageNames.Contains(filename)) yield break;
                     // Adds Image to downloaded Images HashSet
-                    incomingImageNames.Add(filename);
+                    _incomingImageNames.Add(filename);
 
                     // Adding the texture to the texture queue
                     texture.name = filename;
@@ -913,7 +898,7 @@ public class ComfySceneLibrary : MonoBehaviour
                 }
                 else
                 {
-                    int MAX_RETRIES = MAX_NETWORKING_RETRIES;
+                    int MAX_RETRIES = MaxNetworkingRetries;
 
                     FileExistsChecker fileCheck = new FileExistsChecker();
 

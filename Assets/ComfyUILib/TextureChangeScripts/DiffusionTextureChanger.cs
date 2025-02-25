@@ -8,14 +8,14 @@ using UnityEngine.Events;
 /// </summary>
 public class DiffusionTextureChanger : MonoBehaviour
 {
-    protected List<Texture2D> diff_Textures;
-    protected int curTextureIndex = 0;
-
     public UnityEvent AddedTextureUnityEvent;
+
+    protected List<Texture2D> _diffTextures;
+    protected int _curTextureIndex = 0;
 
     protected virtual void Awake()
     {
-        diff_Textures = new List<Texture2D>();
+        _diffTextures = new List<Texture2D>();
     }
 
     /// <summary>
@@ -28,14 +28,14 @@ public class DiffusionTextureChanger : MonoBehaviour
 
         if (!diffusionRequest.addToTextureTotal)
         {
-            curTextureIndex = 0;
-            diff_Textures = new List<Texture2D>();
-            diff_Textures.Clear();
+            _curTextureIndex = 0;
+            _diffTextures = new List<Texture2D>();
+            _diffTextures.Clear();
         }
 
         foreach (Texture2D texture in diffusionRequest.textures)
         {
-            diff_Textures.Add(texture);
+            _diffTextures.Add(texture);
         }
 
         AddedTextureUnityEvent?.Invoke();
@@ -43,7 +43,7 @@ public class DiffusionTextureChanger : MonoBehaviour
         return true;
     }
 
-    // TODO older script of doing this, decided to make the diffusionrequest go all the way through to the end
+    // TODO: older script of doing this, decided to make the diffusionrequest go all the way through to the end
 
     /// <summary>
     /// Adds the textures that are in the DiffusionRequest to the diff_Textures list
@@ -57,14 +57,14 @@ public class DiffusionTextureChanger : MonoBehaviour
 
         if (!addToTextureTotal)
         {
-            curTextureIndex = 0;
-            diff_Textures = new List<Texture2D>();
-            diff_Textures.Clear();
+            _curTextureIndex = 0;
+            _diffTextures = new List<Texture2D>();
+            _diffTextures.Clear();
         }
 
         foreach (Texture2D texture in newDiffTextures)
         {
-            diff_Textures.Add(texture);
+            _diffTextures.Add(texture);
         }
 
         AddedTextureUnityEvent?.Invoke();
@@ -89,19 +89,19 @@ public class DiffusionTextureChanger : MonoBehaviour
     /// <returns>Current held textures</returns>
     public List<Texture2D> GetTextures()
     {
-        return diff_Textures;
+        return _diffTextures;
     }
 
     public int GetTextureIndex()
     {
-        return curTextureIndex;
+        return _curTextureIndex;
     }
 
     public void SetTextureIndex(int newIndex)
     {
         if (newIndex >= 0)
         {
-            curTextureIndex = newIndex;
+            _curTextureIndex = newIndex;
         }        
     }
 }

@@ -13,15 +13,15 @@ public class ExitSceneChangeTrigger : MonoBehaviour
 
     public Toggle toggle;
 
-    // TODO do I need this collision detection thing even?
+    // TODO: do I need this collision detection thing even?
     private void OnTriggerEnter(Collider other)
     {
         ChangeScene();
     }
 
-    // TODO create a global IENUMERATOR function that check whether gamemanager is already loaded, and goes into a loop until it is loaded, maybe an error message after 5 seconds of trying?
-    // TODO this is for many types of scripts throughout the project that NEED the GameManager up and running with everything, so maybe a check like that will help
-    // TODO Or maybe some indicator bool that indicated it is "fully loaded"??
+    // TODO: create a global IENUMERATOR function that check whether gamemanager is already loaded, and goes into a loop until it is loaded, maybe an error message after 5 seconds of trying?
+    // TODO: this is for many types of scripts throughout the project that NEED the GameManager up and running with everything, so maybe a check like that will help
+    // TODO: Or maybe some indicator bool that indicated it is "fully loaded"??
 
 
     public void InputToIP(TMP_InputField txt)

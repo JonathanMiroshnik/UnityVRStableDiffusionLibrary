@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// TODO end of transition is too rapid, need smoothness when exchanging 2 textures
+// TODO: end of transition is too rapid, need smoothness when exchanging 2 textures
 
 
 /// <summary>
@@ -39,54 +39,54 @@ public class TextureTransition : DiffusionTextureChanger
 
     // Counter for the textures that are being cycled through
     // We use the default curTextureIndex for the other texture
-    private int nextTextureIndex = 1;
+    private int _nextTextureIndex = 1;
 
-    private Material transitionMaterial = null;    
-    private Renderer curRenderer = null;
+    private Material _transitionMaterial = null;    
+    private Renderer _curRenderer = null;
 
     private void Start()
     {
-        curRenderer = GetComponent<Renderer>();
-        if (curRenderer == null) return;
-        if (curRenderer.material == null) return;
+        _curRenderer = GetComponent<Renderer>();
+        if (_curRenderer == null) return;
+        if (_curRenderer.material == null) return;
 
         // Checks if the current shader is appropriate as per its properties
-        if (!curRenderer.material.HasProperty(InitialTextureName) ||
-            !curRenderer.material.HasProperty(AdditionalTextureName)    ||
-            !curRenderer.material.HasProperty(TransitionValueName))
+        if (!_curRenderer.material.HasProperty(InitialTextureName) ||
+            !_curRenderer.material.HasProperty(AdditionalTextureName)    ||
+            !_curRenderer.material.HasProperty(TransitionValueName))
         {
             Debug.Log("Add correct shader to Game Object " + name);
             return;
         }
 
-        transitionMaterial = curRenderer.material;
+        _transitionMaterial = _curRenderer.material;
     }
 
     void Update()
     {
-        if (textures == null || transitionMaterial == null || curRenderer == null) return;
+        if (textures == null || _transitionMaterial == null || _curRenderer == null) return;
         if (textures.Count <= 0) return;
 
         if (m_noiseIntensity != noiseIntensity)
         {
-            if (!curRenderer.material.HasProperty("_NoiseIntensity")) return;
+            if (!_curRenderer.material.HasProperty("_NoiseIntensity")) return;
 
             m_noiseIntensity = noiseIntensity;
-            transitionMaterial.SetFloat("_NoiseIntensity", noiseIntensity);
+            _transitionMaterial.SetFloat("_NoiseIntensity", noiseIntensity);
         }
         if (m_smoothness != smoothness)
         {
-            if (!curRenderer.material.HasProperty("_Smoothness")) return;
+            if (!_curRenderer.material.HasProperty("_Smoothness")) return;
 
             m_smoothness = smoothness;
-            transitionMaterial.SetFloat("_Smoothness", smoothness);
+            _transitionMaterial.SetFloat("_Smoothness", smoothness);
         }
 
         if (textures.Count == 1)
         {
             if (singleTexture) return;
-            transitionMaterial.SetTexture(AdditionalTextureName, textures[0]);
-            transitionMaterial.SetFloat(TransitionValueName, 1f);
+            _transitionMaterial.SetTexture(AdditionalTextureName, textures[0]);
+            _transitionMaterial.SetFloat(TransitionValueName, 1f);
             singleTexture = true;
             return;
         }        
@@ -104,7 +104,7 @@ public class TextureTransition : DiffusionTextureChanger
         }
 
         // Sends the needed parameters to the shader to look appropriate in accordance with the transition
-        transitionMaterial.SetFloat(TransitionValueName, transition);       
+        _transitionMaterial.SetFloat(TransitionValueName, transition);       
     }
 
     /// <summary>
@@ -112,36 +112,38 @@ public class TextureTransition : DiffusionTextureChanger
     /// </summary>
     public void TriggerNextTexture()
     {
-        if (textures == null || transitionMaterial == null) return;
+        if (textures == null || _transitionMaterial == null) return;
         if (textures.Count <= 1) return;
 
-        // TODO should I keep this? smoother audioReaction?
+        // TODO: should I keep this? smoother audioReaction?
         if (!constantTransition)
         {
             if (transition < 1.0f) return;
         }
 
         transition = 0f;
-        curTextureIndex = nextTextureIndex;
-        nextTextureIndex = (nextTextureIndex + 1) % textures.Count;
 
-        if (curTextureIndex >= textures.Count || nextTextureIndex >= textures.Count) return;
+        // TODO: why is there two indexes and is this modulo correct?
+        _curTextureIndex = _nextTextureIndex;
+        _nextTextureIndex = (_curTextureIndex + 1) % textures.Count;
+
+        if (_curTextureIndex >= textures.Count || _nextTextureIndex >= textures.Count) return;
         // Update the textures in the shader
-        transitionMaterial.SetTexture(InitialTextureName, textures[curTextureIndex]);
-        transitionMaterial.SetTexture(AdditionalTextureName, textures[nextTextureIndex]);
+        _transitionMaterial.SetTexture(InitialTextureName, textures[_curTextureIndex]);
+        _transitionMaterial.SetTexture(AdditionalTextureName, textures[_nextTextureIndex]);
     }
 
     public void ResetTransition()
     {
-        if (transitionMaterial == null) return;
+        if (_transitionMaterial == null) return;
 
         textures = new List<Texture>();
         transition = 0;
-        curTextureIndex = 0;
-        nextTextureIndex = 1;
+        _curTextureIndex = 0;
+        _nextTextureIndex = 1;
 
-        transitionMaterial.SetTexture(InitialTextureName, null);
-        transitionMaterial.SetTexture(AdditionalTextureName, null);
+        _transitionMaterial.SetTexture(InitialTextureName, null);
+        _transitionMaterial.SetTexture(AdditionalTextureName, null);
     }
 
     /// <summary>
@@ -177,7 +179,7 @@ public class TextureTransition : DiffusionTextureChanger
     {
         if (base.AddTexture(diffusionRequest))
         {
-            textures = new List<Texture>(diff_Textures);
+            textures = new List<Texture>(_diffTextures);
             return true;
         }
 
@@ -188,7 +190,7 @@ public class TextureTransition : DiffusionTextureChanger
     {
         if (base.AddTexture(newDiffTextures, addToTextureTotal))
         {
-            textures = new List<Texture>(diff_Textures);
+            textures = new List<Texture>(_diffTextures);
             return true;
         }
 

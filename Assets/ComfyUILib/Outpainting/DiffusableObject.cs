@@ -19,27 +19,27 @@ public class DiffusableObject : MonoBehaviour
     [NonSerialized]
     public bool grabbed;
 
-    // todo maybe the grabbed and ungrabbed should be here as well? maybe another script of theirs instead of gadgetmechanismS?
+    // TODO: maybe the grabbed and ungrabbed should be here as well? maybe another script of theirs instead of gadgetmechanismS?
     
     // If true, then the DiffusableObject is a complex 3D model and not a simple shape/image container
     public bool Model3D = false;
 
-    // Latest/Current object that is interacting with the DiffusableObject
-    private Gadget currentGadget;
-
     // Responsible for playing the sounds related to the DiffusableObject
     public PlaySounds playSounds;
 
+    // Latest/Current object that is interacting with the DiffusableObject
+    private Gadget _currentGadget;
+
     private void Start()
     {
-        // todo should grabbable raise a bigger alert? do I even need grabbable?
+        // TODO: should grabbable raise a bigger alert? do I even need grabbable?
         if (grabbable && GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>() == null)
         {
             Debug.LogError("Add a GrabInteractable on");
         }
     }
 
-    // TODO what about when not using throwing mechanism? only thing that is stopping this from activating is just grabbed and radiusDiffusionTexture?
+    // TODO: what about when not using throwing mechanism? only thing that is stopping this from activating is just grabbed and radiusDiffusionTexture?
     private void OnCollisionEnter(Collision collision)
     {
         if (grabbed) return;
@@ -47,8 +47,8 @@ public class DiffusableObject : MonoBehaviour
 
         playSounds.PlaySound("FallSound");
 
-        if (currentGadget == null) return;
-        currentGadget.radiusDiffusionTexture.DiffusableObjectCollided(collision);
+        if (_currentGadget == null) return;
+        _currentGadget.radiusDiffusionTexture.DiffusableObjectCollided(collision);
     }
 
     public void OnSelectEntered(SelectEnterEventArgs args)
@@ -62,7 +62,7 @@ public class DiffusableObject : MonoBehaviour
         Gadget gadget = controllerGadgetConnector.gadget;
         if (gadget == null) Debug.LogError("Gadget in Gadget connector not found in " + args.interactorObject.transform.gameObject.name);
 
-        currentGadget = gadget;
+        _currentGadget = gadget;
 
         gadget.DiffusableGrabbed(args);
     }

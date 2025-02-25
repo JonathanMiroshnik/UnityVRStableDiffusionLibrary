@@ -1,19 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Diagnostics;
 using Debug = UnityEngine.Debug;
-using UnityEngine.Windows;
-using static UnityEngine.GraphicsBuffer;
-using System.Net;
-using UnityEngine.Rendering;
 using UnityEngine.Events;
 
 
-// TODO maybe remove requestNum from this class?
+// TODO: maybe remove requestNum from this class?
 
 /// <summary>
 /// Describes a single Diffusion Image generation Request which goes throughout the system, picking up the relevant
@@ -103,28 +95,28 @@ public class ComfyOrganizer : MonoBehaviour
 
     public ComfySceneLibrary comfyLib;
 
-    // Counter for the DiffusionRequests
-    private static int currentRequestNum = 0;
-
-    // TODO in ComfySceneLibrary I added HashSet of incoming image names,
-    // TODO but this is used for outgoing/input image names, should be connected into one DB?
-    // TODO it doesn't even seem that I'm really using this List for anything
-    private List<string> allTextureNames;
-
     // An updating list of all textures that have been generated throughout the Game
     public List<Texture2D> allTextures;
-
-    // Counter for Images to differentiate them
-    private static int currentTextureNameNumber = 0;
 
     // When comes to 0, invokes a UnityEvent
     public int EndSceneTextureNum = 0;
     public UnityEvent EndSceneUnityEvent;
 
+    // Counter for the DiffusionRequests
+    private static int currentRequestNum = 0;
+
+    // TODO: in ComfySceneLibrary I added HashSet of incoming image names,
+    // TODO: but this is used for outgoing/input image names, should be connected into one DB?
+    // TODO: it doesn't even seem that I'm really using this List for anything
+    private List<string> _allTextureNames;
+
+    // Counter for Images to differentiate them
+    private static int _currentTextureNameNumber = 0;
+    
     private void Awake()
     {
         DiffuseDictionary = new Dictionary<int, DiffusionRequest>();
-        allTextureNames = new List<string>();
+        _allTextureNames = new List<string>();
     }
 
     /// <summary>
@@ -132,10 +124,10 @@ public class ComfyOrganizer : MonoBehaviour
     /// </summary>
     public string UniqueImageName()
     {
-        string newTextureName = "DiffImage_" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + '_' + currentTextureNameNumber.ToString();
-        allTextureNames.Add(newTextureName);
+        string newTextureName = "DiffImage_" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + '_' + _currentTextureNameNumber.ToString();
+        _allTextureNames.Add(newTextureName);
 
-        currentTextureNameNumber++;
+        _currentTextureNameNumber++;
 
         return newTextureName;
     }
@@ -216,25 +208,25 @@ public class ComfyOrganizer : MonoBehaviour
 
         switch (enumVal)
         {
-            case diffusionWorkflows.combineImages:
+            case diffusionWorkflows.CombineImages:
                 if (emptyTextures.Length == 0) Debug.LogError("Add an empty default texture");
                 newDiffusionRequest.uploadTextures.Add(defEmptyTexture);
                 newDiffusionRequest.uploadTextures.Add(defEmptyTexture);
 
                 //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
-                newDiffusionRequest.diffusionModel = diffusionModels.juggernautReborn;
+                newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
                 newDiffusionRequest.numOfVariations = 1;
                 break;
-            case diffusionWorkflows.outpainting:
+            case diffusionWorkflows.Outpainting:
                 if (emptyTextures.Length == 0) Debug.LogError("Add an empty default texture");
                 newDiffusionRequest.uploadTextures.Add(defEmptyTexture);
 
-                newDiffusionRequest.diffusionModel = diffusionModels.juggernautXLInpaint;
+                newDiffusionRequest.diffusionModel = diffusionModels.JuggernautXLInpaint;
                 newDiffusionRequest.SpecialInput = "right";
                 newDiffusionRequest.numOfVariations = 1;
                 break;
-            case diffusionWorkflows.txt2imgLCM:
-                newDiffusionRequest.diffusionModel = diffusionModels.nano;
+            case diffusionWorkflows.Txt2ImgLCM:
+                newDiffusionRequest.diffusionModel = diffusionModels.Nano;
                 newDiffusionRequest.numOfVariations = 1;
                 break;
         }              
@@ -244,7 +236,7 @@ public class ComfyOrganizer : MonoBehaviour
     }
 
 
-    // TODO problem with empty, sometimes not everything is loaded, maybe better to not have special workflow, but just have an empty version of each workflow? see above
+    // TODO: problem with empty, sometimes not everything is loaded, maybe better to not have special workflow, but just have an empty version of each workflow? see above
 
     /// <summary>
     /// Used to send an empty DiffusionRequest to the server to load a model preemptively to the RAM.
@@ -253,7 +245,7 @@ public class ComfyOrganizer : MonoBehaviour
     public void SendEmptyDiffusionRequest(diffusionModels diffusionModel)
     {
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.empty;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Empty;
         newDiffusionRequest.diffusionModel = diffusionModel;
         
         SendDiffusionRequest(newDiffusionRequest);
@@ -315,7 +307,7 @@ public class ComfyOrganizer : MonoBehaviour
                 sentKeys.Add(diffReqID.Value);
             }
         }
-        // TODO should I even remove previous ones?
+        // TODO: should I even remove previous ones?
         /*foreach (var key in sentKeys)
         {
             DiffuseDictionary.Remove(key.requestNum);

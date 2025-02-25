@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         fullyLoaded = true;
     }
 
-    // TODO Use a courotine so u dont freeze the ui
+    // TODO: Use a courotine so u dont freeze the ui
     public IEnumerator LoadScene(string thisScene, string nextScene)
     {
         // Only when the scene is loaded we can unload the orginally active screen

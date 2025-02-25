@@ -5,9 +5,9 @@ using UnityEngine;
 public class FollowGameObject : MonoBehaviour
 {
     public Transform transformToFollow;
-    private Transform startTransform;
+    private Transform _startTransform;
 
-    // TODO what if transformToFollow BECOMES null? do I save a new startTransform until a new one appears? or do I simply keep the original startTransform?
+    // TODO: what if transformToFollow BECOMES null? do I save a new startTransform until a new one appears? or do I simply keep the original startTransform?
 
     private void Update()
     {

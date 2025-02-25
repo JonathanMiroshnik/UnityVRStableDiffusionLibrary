@@ -15,7 +15,7 @@ public class CubeGadgetMechanism : GadgetMechanism
     public List<DiffusionTextureChanger> mechanismTextureChangers = new List<DiffusionTextureChanger>();
 
     // There are 6 sides to a cube
-    const int NUM_SIDES = 6;
+    private const int NumSides = 6;
 
     private void Awake()
     {
@@ -78,42 +78,42 @@ public class CubeGadgetMechanism : GadgetMechanism
     private List<Texture2D> ReorderTextures(List<Texture2D> list)
     {
         if (list == null) return null;
-        if (list.Count != NUM_SIDES) return null;
+        if (list.Count != NumSides) return null;
 
-        const string TOP_TEXTURE_NAME = "top";
-        const string BOTTOM_TEXTURE_NAME = "bottom";
-        const string RIGHT_TEXTURE_NAME = "right";
-        const string LEFT_TEXTURE_NAME = "left";
-        const string FRONT_TEXTURE_NAME = "front";
-        const string BACK_TEXTURE_NAME = "back";
+        const string TopTextureName = "top";
+        const string BottomTextureName = "bottom";
+        const string RightTextureName = "right";
+        const string LeftTextureName = "left";
+        const string FrontTextureName = "front";
+        const string BackTextureName = "back";
 
         Dictionary<string, Texture2D> trans_dict = new Dictionary<string, Texture2D>();        
 
         foreach (Texture2D tex in list)
         {
-            if (tex.name.Contains(TOP_TEXTURE_NAME))
+            if (tex.name.Contains(TopTextureName))
             {
-                trans_dict[TOP_TEXTURE_NAME] = tex;
+                trans_dict[TopTextureName] = tex;
             }
-            else if (tex.name.Contains(BOTTOM_TEXTURE_NAME))
+            else if (tex.name.Contains(BottomTextureName))
             {
-                trans_dict[BOTTOM_TEXTURE_NAME] = tex;
+                trans_dict[BottomTextureName] = tex;
             }
-            else if (tex.name.Contains(RIGHT_TEXTURE_NAME))
+            else if (tex.name.Contains(RightTextureName))
             {
-                trans_dict[RIGHT_TEXTURE_NAME] = tex;
+                trans_dict[RightTextureName] = tex;
             }
-            else if (tex.name.Contains(LEFT_TEXTURE_NAME))
+            else if (tex.name.Contains(LeftTextureName))
             {
-                trans_dict[LEFT_TEXTURE_NAME] = tex;
+                trans_dict[LeftTextureName] = tex;
             }
-            else if (tex.name.Contains(FRONT_TEXTURE_NAME))
+            else if (tex.name.Contains(FrontTextureName))
             {
-                trans_dict[FRONT_TEXTURE_NAME] = tex;
+                trans_dict[FrontTextureName] = tex;
             }
-            else if (tex.name.Contains(BACK_TEXTURE_NAME))
+            else if (tex.name.Contains(BackTextureName))
             {
-                trans_dict[BACK_TEXTURE_NAME] = tex;
+                trans_dict[BackTextureName] = tex;
             }
             else
             {
@@ -122,15 +122,15 @@ public class CubeGadgetMechanism : GadgetMechanism
             }
         }
 
-        if (trans_dict.Count != NUM_SIDES) return null;
+        if (trans_dict.Count != NumSides) return null;
 
         List<Texture2D> ret_textures = new List<Texture2D>();
-        ret_textures.Add(trans_dict[TOP_TEXTURE_NAME]);
-        ret_textures.Add(trans_dict[BOTTOM_TEXTURE_NAME]);
-        ret_textures.Add(trans_dict[RIGHT_TEXTURE_NAME]);
-        ret_textures.Add(trans_dict[LEFT_TEXTURE_NAME]);
-        ret_textures.Add(trans_dict[FRONT_TEXTURE_NAME]);
-        ret_textures.Add(trans_dict[BACK_TEXTURE_NAME]);
+        ret_textures.Add(trans_dict[TopTextureName]);
+        ret_textures.Add(trans_dict[BottomTextureName]);
+        ret_textures.Add(trans_dict[RightTextureName]);
+        ret_textures.Add(trans_dict[LeftTextureName]);
+        ret_textures.Add(trans_dict[FrontTextureName]);
+        ret_textures.Add(trans_dict[BackTextureName]);
 
         return ret_textures;
     }
@@ -155,17 +155,17 @@ public class CubeGadgetMechanism : GadgetMechanism
             targetLocation = ray.GetPoint(maxRayDistance);
         }        
 
-        if (mechanismTextureChangers.Count <= 0) return; // TODO dont like this code what if first is not the correct texturechanger?
+        if (mechanismTextureChangers.Count <= 0) return; // TODO: dont like this code what if first is not the correct texturechanger?
 
         if (mechanismTextureChangers[0] is not MultiTextureChanger) return;
-        MultiTextureChanger MTC = (MultiTextureChanger)mechanismTextureChangers[0]; // TODO hate downcasting see above
+        MultiTextureChanger MTC = (MultiTextureChanger)mechanismTextureChangers[0]; // TODO: hate downcasting see above
 
         var textures = MTC.GetTexturesAndReset(); 
         if (textures == null) return;
 
         // Instantiate the prefab at the target location
         GameObject prefabGO = Instantiate(sidesCubePrefab, targetLocation, Quaternion.identity);
-        SidesCubeProperties SCP = prefabGO.GetComponent<SidesCubeProperties>(); // TODO dont like how specific this is see above
+        SidesCubeProperties SCP = prefabGO.GetComponent<SidesCubeProperties>(); // TODO: dont like how specific this is see above
 
         var sent_textures = ReorderTextures(textures);
         if (sent_textures == null) return;
@@ -182,20 +182,20 @@ public class CubeGadgetMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return null;
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
-        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.diffusionModel = diffusionModels.Ghostmix;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {
             newDiffusionRequest.targets.Add(DTC);
         }
 
-        foreach (DiffusionTextureChanger DTC in mechanismTextureChangers) // TODO added this need explanation?
+        foreach (DiffusionTextureChanger DTC in mechanismTextureChangers) // TODO: added this need explanation?
         {
             newDiffusionRequest.targets.Add(DTC);
         }
 
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.CubeObject;
-        newDiffusionRequest.numOfVariations = NUM_SIDES;
+        newDiffusionRequest.numOfVariations = NumSides;
 
         return newDiffusionRequest;
     }

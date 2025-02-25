@@ -17,11 +17,11 @@ public class AudioReact : MonoBehaviour
     public AudioSource audioSource;
 
     // Number of audio channels that are extracted from the audio source
-    private const int NUM_CHANNELS = 512;
+    private const int NumChannels = 512;
 
     // Audio channels gotten from the audio source
     [NonSerialized]
-    public float[] samples = new float[NUM_CHANNELS];
+    public float[] samples = new float[NumChannels];
 
     // Keeps track whether the audio went above the given threshold at a certain moment
     [NonSerialized]
@@ -30,17 +30,17 @@ public class AudioReact : MonoBehaviour
     // Audio reaction threshold
     public float threshold = 1.2f;
 
-    // TODO continue documentation
-    private float avg = 0f;
-    private float rollingAvg = 0f;
-
-    [Range(0, NUM_CHANNELS - 1)]
+    [Range(0, NumChannels - 1)]
     public int MaximalChannel;
-    [Range(0, NUM_CHANNELS-1)]
+    [Range(0, NumChannels-1)]
     public int MinimalChannel;    
 
     [Range(0f, 1f)]
     public float rollingAvgAlpha = 0.5f;
+
+    // TODO: continue documentation
+    private float _avg = 0f;
+    private float _rollingAvg = 0f;
 
     private void OnValidate()
     {
@@ -58,11 +58,11 @@ public class AudioReact : MonoBehaviour
 
         GetSpectrumAudioSource ();
         var avgSamples = samples.Skip(MinimalChannel).Take(MaximalChannel - MinimalChannel).ToArray();
-        avg = avgSamples.Average();
+        _avg = avgSamples.Average();
 
-        rollingAvg = rollingAvgAlpha * rollingAvg + (1 - rollingAvgAlpha) * avg;
+        _rollingAvg = rollingAvgAlpha * _rollingAvg + (1 - rollingAvgAlpha) * _avg;
 
-        if (rollingAvg > threshold * avg)
+        if (_rollingAvg > threshold * _avg)
         {
             wentOverThreshold = true;
         }

@@ -104,8 +104,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
-        newDiffusionRequest.diffusionModel = diffusionModels.juggernautXLInpaint;
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.outpainting;
+        newDiffusionRequest.diffusionModel = diffusionModels.JuggernautXLInpaint;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Outpainting;
         newDiffusionRequest.addToTextureTotal = false;
 
         return newDiffusionRequest;
@@ -228,12 +228,12 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         if (topTileOutpaint && leftTileOutpaint)
         {
             if (!CheckAdjacentTile(new Vector2Int(-1, 1), newDiffusionRequest, OPT, uniqueName, "bottomRight")) return;
-            newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
+            newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Grid4Outpainting;
         }
         else if (topTileOutpaint && rightTileOutpaint)
         {
             if (!CheckAdjacentTile(new Vector2Int(1, 1), newDiffusionRequest, OPT, uniqueName, "bottomLeft")) return;
-            newDiffusionRequest.diffusionJsonType = diffusionWorkflows.grid4Outpainting;
+            newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Grid4Outpainting;
         }
 
         CreateInProgressDiffusionTileEffect(TT);

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-// TODO do I need this script? DISCUSS with both of them, NADAV especially
+// TODO: do I need this script? DISCUSS with both of them, NADAV especially
 public class StartSceneUIScript : MonoBehaviour
 {
     // Text field to get URL part from
@@ -33,10 +33,10 @@ public class StartSceneUIScript : MonoBehaviour
 
         StartGameButton.enabled = true;
 
-        // TODO need to add the given URL to the general script or the GameManager if we make it
+        // TODO: need to add the given URL to the general script or the GameManager if we make it
     }
 
-    // TODO fill the Start Game Button function
+    // TODO: fill the Start Game Button function
     public void StartGame()
     {
         return;

@@ -147,7 +147,7 @@ public static class GeneralGameLibraries : System.Object
             return copyTexture;
         }
 
-        // TODO allow height = 768?
+        // TODO: allow height = 768?
         // Default image size for Diffusion
         public const int DEFAULT_HEIGHT = 512;
         public const int DEFAULT_WIDTH = 512;
@@ -162,7 +162,7 @@ public static class GeneralGameLibraries : System.Object
             return Resize(texture, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         }
 
-        // TODO delete this function?
+        // TODO: delete this function?
         /// <summary>
         /// Resizes a Texture2D to a given size
         /// </summary>

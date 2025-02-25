@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GeneralGameLibraries;
 
-// TODO documentation
+/// <summary>
+/// DiffusionTextureChanger that is used to create an AI representation of a character
+/// </summary>
 public class AIGadgetAssistant : DiffusionTextureChanger
 {
     public static List<Texture2D> AITextures;
-
     public string AIAudioClipFolder = "Sounds/Voiceover";
-    private AudioClipsLibrary AudioClipsLibrary;
-    
     public AudioSource audioSource;
-
     public UIDiffusionTexture uiDiffusionTexture;
+
+    private AudioClipsLibrary AudioClipsLibrary;
 
     // Default prompts for the AI character image creation
     private static string DEFAULT_POSITIVE_PROMPT = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress" +
@@ -64,17 +64,17 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         if (GameManager.getInstance() == null) return;
 
         DiffusionRequest diffusionRequest = new DiffusionRequest();
-        diffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        diffusionRequest.diffusionModel = diffusionModels.Ghostmix;
 
-        // TODO need to ADD keywords to an existing prompt?
-        diffusionRequest.positivePrompt = DEFAULT_POSITIVE_PROMPT + ", " + keywords;
+        // TODO: need to ADD keywords to an existing prompt?
+        diffusionRequest.positivePrompt = $"{DEFAULT_POSITIVE_PROMPT}, {keywords}";
         diffusionRequest.negativePrompt += DEFAULT_NEGATIVE_PROMPT;
 
         diffusionRequest.targets.Add(this);
         diffusionRequest.addToTextureTotal = true;
         diffusionRequest.diffusionJsonType = diffusionWorkflows.AIAssistant;
 
-        // TODO do I need so many at every time?
+        // TODO: do I need so many at every time?
         diffusionRequest.numOfVariations = 5;
 
         GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
@@ -95,15 +95,18 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
         if (AITextures.Count == 0) return;
 
-        Texture2D currentTexture = AITextures[curTextureIndex];
+        Texture2D currentTexture = AITextures[_curTextureIndex];
 
-        if (AITextures.Count-1 > curTextureIndex) {
-            curTextureIndex++;
-        }   
-        else
-        {
-            curTextureIndex = 0;
-        }
+        // TODO: use modulo here? delete?
+        // if (AITextures.Count-1 > _curTextureIndex) {
+        //     _curTextureIndex++;
+        // }   
+        // else
+        // {
+        //     _curTextureIndex = 0;
+        // }
+        _curTextureIndex++;
+        _curTextureIndex %= AITextures.Count;
 
         if (uiDiffusionTexture != null) uiDiffusionTexture.CreateAIPopup(new List<Texture2D>() { currentTexture });       
     }

@@ -144,7 +144,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
-        newDiffusionRequest.diffusionModel = diffusionModels.juggernautReborn;
+        newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {
@@ -152,7 +152,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         }
 
         //newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.CombineImages;
 
         return newDiffusionRequest;
     }

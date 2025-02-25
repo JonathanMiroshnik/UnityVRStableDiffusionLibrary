@@ -19,7 +19,7 @@ public class PaintbrushMechanism : GadgetMechanism
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        newDiffusionRequest.diffusionModel = diffusionModels.Ghostmix;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {
@@ -27,8 +27,8 @@ public class PaintbrushMechanism : GadgetMechanism
         }
 
         //newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.img2img;
-        newDiffusionRequest.positivePrompt = "smile"; // TODO add some sort of prompt from outside, not predefined
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Img2Img;
+        newDiffusionRequest.positivePrompt = "smile"; // TODO: add some sort of prompt from outside, not predefined
         newDiffusionRequest.numOfVariations = 1;
 
         newDiffusionRequest.denoise = 0.6f;

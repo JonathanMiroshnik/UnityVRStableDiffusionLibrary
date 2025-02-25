@@ -23,14 +23,14 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return null;
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
-        newDiffusionRequest.diffusionModel = diffusionModels.nano;
+        newDiffusionRequest.diffusionModel = diffusionModels.Nano;
 
         foreach(DiffusionTextureChanger DTC in diffusionTextureChangers)
         {
             newDiffusionRequest.targets.Add(DTC);
         }
 
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.txt2imgLCM;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Txt2ImgLCM;
         newDiffusionRequest.numOfVariations = 5;
 
         return newDiffusionRequest;

@@ -120,7 +120,7 @@ public class ExplosionMain : MonoBehaviour
             if (Random.value > diffusedPercentage) continue;
             if (GO.TryGetComponent<TextureTransition>(out TextureTransition TT))
             {
-                // TODO how many textures are sent to each block at each tick?? cur = 5
+                // TODO: how many textures are sent to each block at each tick?? cur = 5
                 TT.textures = new List<Texture> ();
                 foreach (Texture2D texture in GeneralGameLibraries.GetRandomElements(diffusionTextures, 5))
                 {

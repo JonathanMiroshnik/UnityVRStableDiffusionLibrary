@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO comments
+// TODO: comments
 
 /// <summary>
 /// Image Gadget Mechanism for sculpting a polygonal model

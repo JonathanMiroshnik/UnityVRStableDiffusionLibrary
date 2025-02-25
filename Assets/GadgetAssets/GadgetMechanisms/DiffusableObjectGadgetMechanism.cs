@@ -148,7 +148,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
         //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
-        newDiffusionRequest.diffusionModel = diffusionModels.juggernautReborn;
+        newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {
@@ -156,7 +156,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         }
 
         //newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.img2imgLCM;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Img2ImgLCM;
 
         return newDiffusionRequest;
     }

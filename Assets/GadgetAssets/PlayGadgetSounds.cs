@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO remove all "using" that aren't being used in a script
+// TODO: remove all "using" that aren't being used in a script
 
-// TODO maybe instead of a special gadgetsounds library, we need a unified library for ALL sounds in the game?
+// TODO: maybe instead of a special gadgetsounds library, we need a unified library for ALL sounds in the game?
 
 public class PlayGadgetSounds : MonoBehaviour
 {

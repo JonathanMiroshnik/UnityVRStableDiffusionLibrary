@@ -4,7 +4,7 @@ using UnityEditor.Searcher;
 using UnityEngine;
 
 /// <summary>
-/// TODO
+/// TODO:
 /// </summary>
 
 public class SidesCubeProperties : MonoBehaviour

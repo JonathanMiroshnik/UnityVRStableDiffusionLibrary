@@ -1,13 +1,14 @@
 using UnityEngine;
 
-// TODO documentation
+// TODO: documentation
 public class ComfyUILibraryConnector : MonoBehaviour
 {
-    const string ComfyUILibraryName = "ComfyUILib";
 
     public ComfyXROriginConnector comfyXROriginConnector;
     public ComfySceneParameters curParameters;    
 
+    const string ComfyUILibraryName = "ComfyUILib";
+    
     // Start is called before the first frame update
     void Start()
     {

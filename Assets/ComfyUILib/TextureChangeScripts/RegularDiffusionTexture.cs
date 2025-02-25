@@ -14,21 +14,21 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
     // Update is called once per frame
     protected void Update()
     {
-        if (diff_Textures.Count > 0)
+        if (_diffTextures.Count > 0)
         {
-            if (diff_Textures.Count == 1)
+            if (_diffTextures.Count == 1)
             {
                 if (changeTextureToChildren)
                 {
                     for (int i = 0; i < transform.childCount; i++)
                     {
                         GameObject child = transform.GetChild(i).gameObject;
-                        base.changeTextureOn(child, diff_Textures[0]);
+                        base.changeTextureOn(child, _diffTextures[0]);
                     }
                 }
                 else
                 {
-                    base.changeTextureOn(gameObject, diff_Textures[0]);
+                    base.changeTextureOn(gameObject, _diffTextures[0]);
                 }
 
                 return;
@@ -42,16 +42,16 @@ public class RegularDiffusionTexture : DiffusionTextureChanger
                     for (int i = 0; i < transform.childCount; i++)
                     {
                         GameObject child = transform.GetChild(i).gameObject;
-                        base.changeTextureOn(child, diff_Textures[curTextureIndex]);
+                        base.changeTextureOn(child, _diffTextures[_curTextureIndex]);
                     }
                 }
                 else
                 {
-                    base.changeTextureOn(gameObject, diff_Textures[curTextureIndex]);
+                    base.changeTextureOn(gameObject, _diffTextures[_curTextureIndex]);
                 }
 
-                curTextureIndex++;
-                curTextureIndex %= diff_Textures.Count;
+                _curTextureIndex++;
+                _curTextureIndex %= _diffTextures.Count;
 
                 textureChangeDelta = 0;
             }

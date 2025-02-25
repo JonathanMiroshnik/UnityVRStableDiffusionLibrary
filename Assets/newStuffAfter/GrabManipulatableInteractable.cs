@@ -6,38 +6,38 @@ using UnityEngine;
 [RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable))]
 public class GrabManipulatableInteractable : MonoBehaviour
 {
-    bool multiSelect = false;
-    float multiSelectStartDistance = 0f;
-    List<UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor> interactorsSelecting;
-    Vector3 currentGrabbedGOoriginalScale;
+    private bool _multiSelect = false;
+    private float _multiSelectStartDistance = 0f;
+    private List<UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor> _interactorsSelecting;
+    private Vector3 _currentGrabbedGOoriginalScale;
 
     UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable;
 
     private void Start()
     {
         interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-        interactorsSelecting = interactable.interactorsSelecting;
+        _interactorsSelecting = interactable.interactorsSelecting;
     }
 
     private void Update()
     {
-        if (interactorsSelecting.Count >= 2)
+        if (_interactorsSelecting.Count >= 2)
         {
-            if (!multiSelect)
+            if (!_multiSelect)
             {
-                multiSelect = true;
-                multiSelectStartDistance = Vector3.Distance(interactorsSelecting[0].transform.position, interactorsSelecting[1].transform.position);
-                currentGrabbedGOoriginalScale = transform.localScale;
+                _multiSelect = true;
+                _multiSelectStartDistance = Vector3.Distance(_interactorsSelecting[0].transform.position, _interactorsSelecting[1].transform.position);
+                _currentGrabbedGOoriginalScale = transform.localScale;
             }
 
-            var curDistance = Vector3.Distance(interactorsSelecting[0].transform.position, interactorsSelecting[1].transform.position);
-            transform.localScale = currentGrabbedGOoriginalScale * (curDistance / multiSelectStartDistance); // TODO need to power of 2 this? distance vs scale
+            var curDistance = Vector3.Distance(_interactorsSelecting[0].transform.position, _interactorsSelecting[1].transform.position);
+            transform.localScale = _currentGrabbedGOoriginalScale * (curDistance / _multiSelectStartDistance); // TODO: need to power of 2 this? distance vs scale
 
-            Debug.Log("DISTANCE " + curDistance.ToString()); // TODO delete
+            Debug.Log("DISTANCE " + curDistance.ToString()); // TODO: delete
         }
         else
         {
-            multiSelect = false;
+            _multiSelect = false;
         }
 
     }

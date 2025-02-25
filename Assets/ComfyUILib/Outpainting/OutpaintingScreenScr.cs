@@ -181,7 +181,7 @@ public class OutpaintingScreenScr : MonoBehaviour
         // True if the tile is on the right of the middle column, False otherwise
         bool tileColumnSide = tilePos.x > midColumnX;
 
-        // TODO REDO THIS HORRIBLE CODE - still pretty bad ngl
+        // TODO: REDO THIS HORRIBLE CODE - still pretty bad ngl
 
         // Makes the above tile paintable
         if (0 < tilePos.y && tilePos.y < tileMatrixSize.y + 1)

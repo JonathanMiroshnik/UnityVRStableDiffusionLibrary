@@ -11,11 +11,11 @@ using UnityEngine;
 
 
 // GENERAL NOTES:
-// TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
-//TODO maybe this is a wrong choice to make ANOTHER diffusion request because this one isn't really a diffusion request at all, just a transfer from one
-// TODO notice that these PlaceTextureInput methods are exactly the same for several mechanisms, make it one somewhere?
-// TODO do I even NEED the baseCamera workflow? diffusionWorkflows.baseCamera
-// TODO make a unique ID for everything, downloaded images, uploaded images, request IDs etc
+// TODO: make a unique ID for everything, downloaded images, uploaded images, request IDs etc
+// TODO: maybe this is a wrong choice to make ANOTHER diffusion request because this one isn't really a diffusion request at all, just a transfer from one
+// TODO: notice that these PlaceTextureInput methods are exactly the same for several mechanisms, make it one somewhere?
+// TODO: do I even NEED the baseCamera workflow? diffusionWorkflows.baseCamera
+// TODO: make a unique ID for everything, downloaded images, uploaded images, request IDs etc
 
 
 

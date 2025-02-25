@@ -14,7 +14,7 @@ public enum GadgetSelection
     selected
 }
 
-// TODO change name of class to GadgetScript or something
+// TODO: change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
     // Texture display for the images the Gadget is holding onto
@@ -33,7 +33,7 @@ public class Gadget : MonoBehaviour
     // Manages the AI Gadget Assistant.
     public AIGadgetAssistant aiGadgetAssistant;
 
-    // TODO documentation
+    // TODO: documentation
     public UIDiffusionTexture uiDiffusionTexture;
     public RadiusDiffusionTexture radiusDiffusionTexture;
 
@@ -45,22 +45,23 @@ public class Gadget : MonoBehaviour
     [NonSerialized]
     public List<GadgetMechanism> GadgetMechanisms;
 
-    // TODO make this Queue<List<Texture2D>>, talk to NADAV on gadget representation of special textures
+    // TODO: make this Queue<List<Texture2D>>, talk to NADAV on gadget representation of special textures
     [NonSerialized]
     public Queue<Texture2D> textureQueue;
 
     // Controllers, for symmetric input
     public GameObject LeftHandController;
     public GameObject RightHandController;
-    private string LeftHandBuildControllerInputName = "OculusTouchControllerLeft";
-    private string RightHandBuildControllerInputName = "OculusTouchControllerRight";
-    private string LeftHandLinkControllerInputName = "OculusTouchControllerOpenXR";
-    private string RightHandLinkControllerInputName = "OculusTouchControllerOpenXR1";
-    private string LeftHandSimulatedControllerInputName = "XRSimulatedController";
-    private string RightHandSimulatedControllerInputName = "XRSimulatedController1";
+
+    private const string LeftHandBuildControllerInputName = "OculusTouchControllerLeft";
+    private const string RightHandBuildControllerInputName = "OculusTouchControllerRight";
+    private const string LeftHandLinkControllerInputName = "OculusTouchControllerOpenXR";
+    private const string RightHandLinkControllerInputName = "OculusTouchControllerOpenXR1";
+    private const string LeftHandSimulatedControllerInputName = "XRSimulatedController";
+    private const string RightHandSimulatedControllerInputName = "XRSimulatedController1";
 
     // Represents the current used Gadget Mechanism.
-    private int gadgetMechanismIndex = 0;
+    private int _gadgetMechanismIndex = 0;
 
     private void Awake()
     {
@@ -90,69 +91,69 @@ public class Gadget : MonoBehaviour
         if (GadgetMechanisms.Count <= 0) return;
 
         playSounds.PlaySound("HoverOverElements");
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverEntered(args);
+        GadgetMechanisms[_gadgetMechanismIndex].OnGameObjectHoverEntered(args);
     }
     public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
 
-        GadgetMechanisms[gadgetMechanismIndex].OnGameObjectHoverExited(args);
+        GadgetMechanisms[_gadgetMechanismIndex].OnGameObjectHoverExited(args);
     }
 
     public void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;        
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectEntered(args);
+        GadgetMechanisms[_gadgetMechanismIndex].onGameObjectSelectEntered(args);
     }
     public void onGameObjectSelectExited(SelectExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
 
-        GadgetMechanisms[gadgetMechanismIndex].onGameObjectSelectExited(args);
+        GadgetMechanisms[_gadgetMechanismIndex].onGameObjectSelectExited(args);
     }
 
-    // TODO THESE 2 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
+    // TODO: THESE 2 move this out of gadget, bad design need it in camera mechanism with correct input system of game.
     public void DiffusableGrabbed(SelectEnterEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
-        GadgetMechanisms[gadgetMechanismIndex].DiffusableGrabbed(args);
+        GadgetMechanisms[_gadgetMechanismIndex].DiffusableGrabbed(args);
     }
     public void DiffusableUnGrabbed(SelectExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
-        GadgetMechanisms[gadgetMechanismIndex].DiffusableUnGrabbed(args);
+        GadgetMechanisms[_gadgetMechanismIndex].DiffusableUnGrabbed(args);
     }
 
     // For managing the current Diffusion Mechanism
     public void ChangeToNextMechanic()
     {
         if (GadgetMechanisms.Count <= 0) return;
-        if (gadgetMechanismIndex >= GadgetMechanisms.Count) gadgetMechanismIndex %= GadgetMechanisms.Count;
+        if (_gadgetMechanismIndex >= GadgetMechanisms.Count) _gadgetMechanismIndex %= GadgetMechanisms.Count;
 
-        GadgetMechanisms[gadgetMechanismIndex].ResetMechanism();
+        GadgetMechanisms[_gadgetMechanismIndex].ResetMechanism();
 
-        gadgetMechanismIndex++;
-        gadgetMechanismIndex %= GadgetMechanisms.Count;
-        ChangeToMechanic(gadgetMechanismIndex);
+        _gadgetMechanismIndex++;
+        _gadgetMechanismIndex %= GadgetMechanisms.Count;
+        ChangeToMechanic(_gadgetMechanismIndex);
     }
 
-    // TODO do I need this one?
+    // TODO: do I need this one?
     public void ChangeToPreviousMechanic()
     {
         if (GadgetMechanisms.Count <= 0) return;
-        if (gadgetMechanismIndex >= GadgetMechanisms.Count) gadgetMechanismIndex %= GadgetMechanisms.Count;
+        if (_gadgetMechanismIndex >= GadgetMechanisms.Count) _gadgetMechanismIndex %= GadgetMechanisms.Count;
 
-        GadgetMechanisms[gadgetMechanismIndex].ResetMechanism();
+        GadgetMechanisms[_gadgetMechanismIndex].ResetMechanism();
 
-        gadgetMechanismIndex--;
-        gadgetMechanismIndex %= GadgetMechanisms.Count;
-        ChangeToMechanic(gadgetMechanismIndex);
+        _gadgetMechanismIndex--;
+        _gadgetMechanismIndex %= GadgetMechanisms.Count;
+        ChangeToMechanic(_gadgetMechanismIndex);
     }
     public void ChangeToMechanic(int index)
     {
         if (GadgetMechanisms.Count <= 0) return;
         
-        gadgetMechanismIndex = index;
+        _gadgetMechanismIndex = index;
         MechanismText.text = GadgetMechanisms[index].mechanismText;
     }
 
@@ -219,7 +220,7 @@ public class Gadget : MonoBehaviour
     }
 
 
-    // TODO should all these input functions below not send context onward? is context necessary for the specific mechanisms? should they deal with it, or Gadget?
+    // TODO: should all these input functions below not send context onward? is context necessary for the specific mechanisms? should they deal with it, or Gadget?
 
     public void ChangeMechanicInput(InputAction.CallbackContext context)
     {
@@ -236,13 +237,13 @@ public class Gadget : MonoBehaviour
         {
             GameObject curController = GetActionController(context);
  
-            GadgetMechanisms[gadgetMechanismIndex].PlaceTextureInput(curController);   
-            // TODO move these debugsLogs inside the specific mechanisms
+            GadgetMechanisms[_gadgetMechanismIndex].PlaceTextureInput(curController);   
+            // TODO: move these debugsLogs inside the specific mechanisms
             Debug.Log("Placing Texture");
         }
     }
 
-    // TODO PlaySounds is in these functions, but they are only relevant for CERTAIN mechanisms, maybe play the sounds inside the mechanisms instead of here(this script?)
+    // TODO: PlaySounds is in these functions, but they are only relevant for CERTAIN mechanisms, maybe play the sounds inside the mechanisms instead of here(this script?)
     public void ActivateGeneration(InputAction.CallbackContext context)
     {        
         if (GadgetMechanisms.Count <= 0) return;
@@ -250,31 +251,31 @@ public class Gadget : MonoBehaviour
         if (context.performed)
         {
             List<DiffusionTextureChanger> cur_list = new List<DiffusionTextureChanger>();
-            cur_list.Add(uiDiffusionTexture); // TODO don't like these lines + why uiDiffusionTexture for all different mechanisms?
+            cur_list.Add(uiDiffusionTexture); // TODO: don't like these lines + why uiDiffusionTexture for all different mechanisms?
 
-            GadgetMechanisms[gadgetMechanismIndex].ActivateGeneration(null, cur_list);
+            GadgetMechanisms[_gadgetMechanismIndex].ActivateGeneration(null, cur_list);
             Debug.Log("Generating Texture");
         }
     }
 
-    // TODO change name of this function look at GadgetMechanism TODO note
+    // TODO: change name of this function look at GadgetMechanism TODO: note
     public void TakeScreenshot(Texture2D screenshot, Camera camera)
     {
         if (GadgetMechanisms.Count <= 0) return;
 
-        GadgetMechanisms[gadgetMechanismIndex].TakeScreenshot(screenshot, camera);
+        GadgetMechanisms[_gadgetMechanismIndex].TakeScreenshot(screenshot, camera);
         Debug.Log("Taking Screenshot");
     }
     public void GeneralActivation(DiffusionTextureChanger dtc)
     {
         if (GadgetMechanisms.Count <= 0) return;
 
-        GadgetMechanisms[gadgetMechanismIndex].GeneralActivation(dtc);
+        GadgetMechanisms[_gadgetMechanismIndex].GeneralActivation(dtc);
         Debug.Log("Activating General Generation");
         return;
     }
 
-    // TODO very different form other mechanisms because it isnt a diffusion mechanism, just a gadget one
+    // TODO: very different form other mechanisms because it isnt a diffusion mechanism, just a gadget one
     private bool isTracking = false;
     private Dictionary<GameObject, Transform> beginningGripDict = new Dictionary<GameObject, Transform>();
     public void GripProperty(InputAction.CallbackContext context)
@@ -304,7 +305,7 @@ public class Gadget : MonoBehaviour
             isTracking = false;
         }
     }
-    // TODO using this update exclusively for the above grip mechanism, not good,
+    // TODO: using this update exclusively for the above grip mechanism, not good,
     // need to figure out continuous button pressing operations that are constantly called on
     private void Update()
     {
@@ -312,7 +313,7 @@ public class Gadget : MonoBehaviour
         {
             foreach (var key in beginningGripDict.Keys)
             {
-                GadgetMechanisms[gadgetMechanismIndex].GripProperty(key, beginningGripDict[key]);
+                GadgetMechanisms[_gadgetMechanismIndex].GripProperty(key, beginningGripDict[key]);
             }
         }
     }

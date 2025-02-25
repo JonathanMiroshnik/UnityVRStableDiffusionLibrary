@@ -77,7 +77,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     }
 
 
-    // TODO bad designed function
+    // TODO: bad designed function
     /// <summary>
     /// Helper function used entirely to change the CurrentMaxRadius in accordance 
     /// to the number of generations in this texture changer for the final explosion scene 
@@ -108,7 +108,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
             // Start of the explosion
             ManyThrowsEvent?.Invoke();
-            /*GameManager.getInstance().gadget.GadgetMechanisms[0].enabled = false; // TODO non general gadget
+            /*GameManager.getInstance().gadget.GadgetMechanisms[0].enabled = false; // TODO: non general gadget
             GameManager.getInstance().gadget.MechanismText.text = "?????????????????";*/
             stopAnymoreGenerations = true;
         }
@@ -118,11 +118,11 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
     {
         if (GameManager.getInstance() == null) return false;
         if (stopAnymoreGenerations) return false;
-        // TODO think if this line is even useful in this script
+        // TODO: think if this line is even useful in this script
         //base.AddTexture(diffusionRequest);
 
-        // TODO do I want this to only work if it is grabbed AND the textures get there?
-        // TODO if you keep this line, notice at the line below, can be removed there
+        // TODO: do I want this to only work if it is grabbed AND the textures get there?
+        // TODO: if you keep this line, notice at the line below, can be removed there
         if (!diffusionRequest.diffusableObject.grabbed) return false;
 
         // For the Throwing mechanism, after the textures for a certain grabbing have finished generating and downloading,
@@ -137,7 +137,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
 
         AddedTextureUnityEvent?.Invoke();
 
-        // TODO these two lines, bad design
+        // TODO: these two lines, bad design
         totalGenerationCounter++;
         CurMaxRad();
 
@@ -221,7 +221,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         if (dr.gameObjects.Count > 0) return;        
 
         dr.centerPosition = collision.transform.position;
-        // todo delete, and delete collision in diffusionrequest??
+        // TODO: delete, and delete collision in diffusionrequest??
         addRadiusGameObjects(dr);
 
         dr.changeTextures = true;

@@ -17,7 +17,7 @@ public class GadgetMechanism : MonoBehaviour
     [NonSerialized]
     public string mechanismText;
 
-    // TODO documentation
+    // TODO: documentation
     public Gadget gadget;
 
     public GadgetMechanism()
@@ -49,7 +49,7 @@ public class GadgetMechanism : MonoBehaviour
         return null;
     }
 
-    // TODO implement in the mechanisms - NOTE: should this be implemented in the throwing mechanism? ALSO what happens with uiDiffusionTexture?
+    // TODO: implement in the mechanisms - NOTE: should this be implemented in the throwing mechanism? ALSO what happens with uiDiffusionTexture?
     /// <summary>
     /// Resets the Mechanism, removing everything it has selected.
     /// </summary>
@@ -92,7 +92,7 @@ public class GadgetMechanism : MonoBehaviour
         return;
     }
 
-    // TODO do I even need these two?
+    // TODO: do I even need these two?
     public virtual void OnActivate(ActivateEventArgs args)
     {
         return;
@@ -131,7 +131,7 @@ public class GadgetMechanism : MonoBehaviour
         return;
     }
 
-    // TODO change the name of this one from TakeScreenshot to something like "TriggerButtonAction" to be more general and not for one specific mechanism
+    // TODO: change the name of this one from TakeScreenshot to something like "TriggerButtonAction" to be more general and not for one specific mechanism
     /// <summary>
     /// Uses a camera to shoot an image.
     /// </summary>
@@ -153,7 +153,7 @@ public class GadgetMechanism : MonoBehaviour
         return;
     }
 
-    // TODO this is a hyper specific function for a hyper specific mechanism
+    // TODO: this is a hyper specific function for a hyper specific mechanism
     public virtual void GripProperty(GameObject GO, Transform curTransform)
     {
         return;

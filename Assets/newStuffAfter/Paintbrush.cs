@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// TODO
+/// TODO:
 /// </summary>
 public class Paintbrush : MonoBehaviour
 {
     public Color brushColor = Color.black;  // Color of the paintbrush
     public int brushSize = 5;  // Size of the paintbrush stroke
     public Transform brushTourchPos;
-    private PaintableCanvas canvas;
+    private PaintableCanvas _canvas;
 
     void OnTriggerStay(Collider other)
     {
-        canvas = other.GetComponent<PaintableCanvas>();
-        if (canvas != null )
+        _canvas = other.GetComponent<PaintableCanvas>();
+        if (_canvas != null )
         {
             Paint(other);
         }
@@ -58,11 +58,11 @@ public class Paintbrush : MonoBehaviour
                 uv = hit.textureCoord;
 
                 // Convert UV to pixel coordinates on the texture
-                int x = (int)(uv.x * canvas.canvasTexture.width);
-                int y = (int)(uv.y * canvas.canvasTexture.height);
+                int x = (int)(uv.x * _canvas.canvasTexture.width);
+                int y = (int)(uv.y * _canvas.canvasTexture.height);
 
                 // Paint on the texture
-                PaintOnTexture(x, y, canvas);
+                PaintOnTexture(x, y, _canvas);
             }
         }
     }

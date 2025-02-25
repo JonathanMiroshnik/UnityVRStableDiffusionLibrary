@@ -11,7 +11,7 @@ public class RangeTVManager : MonoBehaviour
 
     public float radius = 1;
 
-    private bool TVPlaying = false;
+    private bool _tvPlaying = false;
     private void Start()
     {
         if (XROrigin == null) Debug.LogError("Add XROrigin to RangeTV " + name);
@@ -21,30 +21,30 @@ public class RangeTVManager : MonoBehaviour
     {
         if (Vector3.Distance(XROrigin.transform.position, transform.position) < radius)
         {
-            if (TVPlaying) return;
+            if (_tvPlaying) return;
             player.Play();
-            TVPlaying = true;
+            _tvPlaying = true;
         }
         else
         {
             player.Stop();
-            TVPlaying = false;
+            _tvPlaying = false;
         }
     }
 
 
-    // TODO remove?
+    // TODO: remove?
     /*private void OnTriggerEnter(Collider other)
     {
         if (GameManager.getInstance() == null || player == null) return;
-        // TODO check only for player enterance/exit
+        // TODO: check only for player enterance/exit
         player.Play();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (GameManager.getInstance() == null || player == null) return;
-        // TODO check only for player enterance/exit
+        // TODO: check only for player enterance/exit
         player.Stop();
     }*/
 }

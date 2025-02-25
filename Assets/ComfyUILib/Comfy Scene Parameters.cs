@@ -13,13 +13,6 @@ public class ComfySceneParameters : MonoBehaviour
     public ComfyOrganizer comfyOrganizer;
     public ComfySceneLibrary comfySceneLibrary;
 
-    // Scene inwhich the GameManager will live
-    private string GameManagerScene = "Empty Scene";
-
-    // Used to keep track of the loading of the GameManager scene
-    private static bool loadedGameManagerScene = false;
-
-
     // If false, won't load scene parameters onto the GameManager
     public bool LoadComfyParametrs = true;
 
@@ -28,6 +21,12 @@ public class ComfySceneParameters : MonoBehaviour
 
     [NonSerialized]
     public bool LoadedConnectorParameters = false;
+
+    // Scene inwhich the GameManager will live
+    private string GameManagerScene = "Empty Scene";
+
+    // Used to keep track of the loading of the GameManager scene
+    private static bool _loadedGameManagerScene = false;
 
     private void Start()
     {
@@ -42,7 +41,7 @@ public class ComfySceneParameters : MonoBehaviour
         }
 
         // Loading the GameManager scene
-        if (SceneManager.sceneCount < 3 && !loadedGameManagerScene)
+        if (SceneManager.sceneCount < 3 && !_loadedGameManagerScene) // TODO: magic numbers
         {
             var asyncLoad = SceneManager.LoadSceneAsync(GameManagerScene, LoadSceneMode.Additive);            
             // Wait until the asynchronous scene fully loads
@@ -57,10 +56,10 @@ public class ComfySceneParameters : MonoBehaviour
         Debug.Log("Loaded GameManager!");
 
         // Finished loading GameManager scene
-        loadedGameManagerScene = true;
+        _loadedGameManagerScene = true;
 
         // Loading parameters onto the GameManager
-        if (!loadedGameManagerScene || LoadComfyParametrs)
+        if (!_loadedGameManagerScene || LoadComfyParametrs)
         {
             if (comfyOrganizer == null)
             {

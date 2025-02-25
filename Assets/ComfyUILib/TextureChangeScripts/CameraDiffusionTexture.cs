@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
+// TODO: what is this?
 public class CameraDiffusionTexture : DiffusionTextureChanger
 {
     new private Queue<List<Texture2D>> diff_Textures = new Queue<List<Texture2D>>();

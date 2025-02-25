@@ -8,8 +8,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 /// </summary>
 public class PhysicalCamera : MonoBehaviour
 {
-    bool timerActivated = false;
-
     public RenderTexture screenRenderTexture;
     public GameObject screenPlane;
 
@@ -21,6 +19,8 @@ public class PhysicalCamera : MonoBehaviour
 
     [NonSerialized]
     public Gadget curGadget;
+
+    bool timerActivated = false;
 
     private void Start()
     {
@@ -57,12 +57,12 @@ public class PhysicalCamera : MonoBehaviour
     private IEnumerator FreezeShotTimer(Texture2D screenShot)
     {
         // Time until next screenshot is possible
-        const float timeToWait = 2.0f;
+        const float TimeToWait = 2.0f;
 
         // Freezing screen
         timerActivated = true;                   
 
-        yield return new WaitForSeconds(timeToWait);
+        yield return new WaitForSeconds(TimeToWait);
 
         // creates off-screen render texture that can rendered into
         screenRenderTexture = new RenderTexture(screenRenderTexture.width, screenRenderTexture.height, 24);

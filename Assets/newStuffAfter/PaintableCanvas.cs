@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO documentation
+// TODO: documentation
 public class PaintableCanvas : MonoBehaviour
 {
     public Texture2D canvasTexture;  // The texture to paint on
     public PaintbrushMechanism paintbrushMechanism;
     public DiffusionTextureChanger changer;
 
-    // TODO delete this
+    // TODO: delete this
     public GameObject displayDebug;
 
     void Start()
@@ -64,7 +64,7 @@ public class PaintableCanvas : MonoBehaviour
         paintbrushMechanism.ActivateGeneration(canvasTexture);
     }
 
-    // TODO delete this func
+    // TODO: delete this func
     public void ChangeTextureDebug()
     {
         displayDebug.GetComponent<Renderer>().material.mainTexture = canvasTexture;

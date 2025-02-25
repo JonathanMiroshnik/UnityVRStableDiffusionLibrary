@@ -104,7 +104,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
         //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
         //newDiffusionRequest.diffusionModel = diffusionModels.mini; // produces bad results
-        newDiffusionRequest.diffusionModel = diffusionModels.juggernautReborn;
+        newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {
@@ -112,7 +112,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         }
 
         newDiffusionRequest.targets.Add(gadget.uiDiffusionTexture);
-        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.combineImages;
+        newDiffusionRequest.diffusionJsonType = diffusionWorkflows.CombineImages;
         newDiffusionRequest.numOfVariations = 1;
 
         return newDiffusionRequest;

@@ -111,7 +111,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
             if (texture != null)
             {
                 List<Texture2D> cur_list = new List<Texture2D>();
-                cur_list.Add(texture); // TODO bad code IMO
+                cur_list.Add(texture); // TODO: bad code IMO
 
                 FOTC.AddTexture(cur_list);
             }
@@ -127,7 +127,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return null;
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
-        newDiffusionRequest.diffusionModel = diffusionModels.nano;
+        newDiffusionRequest.diffusionModel = diffusionModels.Nano;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {

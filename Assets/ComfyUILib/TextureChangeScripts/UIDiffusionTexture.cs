@@ -15,16 +15,15 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     // Gadget UI display, or "inventory" of images to which images are added to
     public GameObject imagesDisplayPrefab;    
 
-    // TODO docs below
+    // TODO: docs below
     [SerializeField] public GameObject AIDisplayPrefab;    
-    
-    private GameObject curDisplayPrefab;
-    private bool displayTextures = false;
-    [Min(0.01f)]
-    private float changeRate = 3.0f;
-    private float curChangeDelta = 0f;
-
     public UnityEvent unityEvent;
+
+    private GameObject _curDisplayPrefab;
+    private bool _displayTextures = false;
+    [Min(0.01f)]
+    private float _changeRate = 3.0f;
+    private float _curChangeDelta = 0f;
 
     //private static float IMAGES_REDUCE_SIZE_FACTOR = 512;
 
@@ -45,8 +44,8 @@ public class UIDiffusionTexture : DiffusionTextureChanger
     }
 
     // Adding the Image in the Gadget panel as well
-    // TODO should this part be in a separate place? should these textures have a global variable for global access? shouldn't the gadget deal with it? is UI and gadget sepearate?
-    // TODO change with this and make a PopupDiffusionTexture instead?
+    // TODO: should this part be in a separate place? should these textures have a global variable for global access? shouldn't the gadget deal with it? is UI and gadget sepearate?
+    // TODO: change with this and make a PopupDiffusionTexture instead?
     public void CreateImagesInside(List<Texture2D> textures, GameObject toBeParent, bool destroyPreviousChildren)
     {
         if (toBeParent == null) return;
@@ -102,23 +101,23 @@ public class UIDiffusionTexture : DiffusionTextureChanger
             return;
         }
         
-        curChangeDelta = 0f;
+        _curChangeDelta = 0f;
 
-        if (curDisplayPrefab != null)
+        if (_curDisplayPrefab != null)
         {
-            Destroy(curDisplayPrefab);
-            curDisplayPrefab = null;
+            Destroy(_curDisplayPrefab);
+            _curDisplayPrefab = null;
         }
         
         
-        curDisplayPrefab = Instantiate(givenDispayPrefab, PopupDisplay.transform, false);
+        _curDisplayPrefab = Instantiate(givenDispayPrefab, PopupDisplay.transform, false);
         Debug.Log("Instantiated popup!");
 
-        CreateImagesInside(textures, curDisplayPrefab, true);
+        CreateImagesInside(textures, _curDisplayPrefab, true);
         
         Debug.Log("Created images inside popup!");
 
-        displayTextures = true;
+        _displayTextures = true;
         playSounds.PlaySound("ShowUIElement");
     }
 
@@ -141,9 +140,9 @@ public class UIDiffusionTexture : DiffusionTextureChanger
         }
         if (base.AddTexture(diffusionRequest))
         {
-            CreatePopup(diff_Textures);
+            CreatePopup(_diffTextures);
             
-            // TODO fix, disassociate uiDiffusionTexture and the gadget TextureQuueue, delete the textureQueue in the Gadget in general, it should not have this responsibility
+            // TODO: fix, disassociate uiDiffusionTexture and the gadget TextureQuueue, delete the textureQueue in the Gadget in general, it should not have this responsibility
             //GameManager.getInstance().gadget.AddTexturesToQueue(diff_Textures);
 
             // Sending broadcast to Game timeline script
@@ -157,37 +156,37 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
     private void Update()
     {
-        if (displayTextures && curDisplayPrefab != null)
+        if (_displayTextures && _curDisplayPrefab != null)
         {
-            curChangeDelta += Time.deltaTime;
+            _curChangeDelta += Time.deltaTime;
 
             // Notice changeRate > 0
-            float curChange = 2 * curChangeDelta / changeRate;
+            float curChange = 2 * _curChangeDelta / _changeRate;
             float curTotalChangeDelta = Mathf.Min(curChange, 2 - curChange);
 
             // Assume all children of UIDisplay are Images
-            foreach (Transform child in curDisplayPrefab.transform)
+            foreach (Transform child in _curDisplayPrefab.transform)
             {
                 Image curImage = child.GetComponent<Image>();
                 // 1 - (curChangeDelta / changeRate)
                 curImage.color = new Color(curImage.color.r, curImage.color.g, curImage.color.b, curTotalChangeDelta);
             }
 
-            Image displayImage = curDisplayPrefab.GetComponent<Image>();
+            Image displayImage = _curDisplayPrefab.GetComponent<Image>();
             // 1 - (curChangeDelta / changeRate)
             displayImage.color = new Color(displayImage.color.r, displayImage.color.g, displayImage.color.b, curTotalChangeDelta);
 
-            if (curChangeDelta > changeRate)
+            if (_curChangeDelta > _changeRate)
             {
-                displayTextures = false;
+                _displayTextures = false;
 
-                DestroyImmediate(curDisplayPrefab);
-                curDisplayPrefab = null;
+                DestroyImmediate(_curDisplayPrefab);
+                _curDisplayPrefab = null;
             }
         }
         else
         {
-            curChangeDelta = 0f;
+            _curChangeDelta = 0f;
         }        
     }
 

@@ -9,11 +9,11 @@ using UnityEngine;
 
 public class ObjectFlightToTile : MonoBehaviour
 {       
-    private Vector3 initialPos = Vector3.zero;
-    private Vector3 finalPos = Vector3.zero;
-    private float moveSpeed = 5f;
-    private float percentage = 0;
-    private bool begin = false;     
+    private Vector3 _initialPos = Vector3.zero;
+    private Vector3 _finalPos = Vector3.zero;
+    private float _moveSpeed = 5f;
+    private float _percentage = 0;
+    private bool _begin = false;     
 
     /// <summary>
     /// Starting the flight of the gameObject towards the final position
@@ -23,21 +23,21 @@ public class ObjectFlightToTile : MonoBehaviour
     public void StartMovement(Vector3 iPos, Vector3 fPos)
     {
         if (iPos == null || fPos == null) return;
-        initialPos = iPos;
-        finalPos = fPos;
+        _initialPos = iPos;
+        _finalPos = fPos;
 
-        begin = true;
+        _begin = true;
     }
 
     private void Update()
     {
         // Trigger stopping the updates before beginning
-        if (!begin) return;
+        if (!_begin) return;
 
-        transform.position = Vector3.Lerp(initialPos, finalPos, percentage);
-        percentage += Time.deltaTime * (moveSpeed/100);
+        transform.position = Vector3.Lerp(_initialPos, _finalPos, _percentage);
+        _percentage += Time.deltaTime * (_moveSpeed/100);
         
-        if (percentage >= 1)
+        if (_percentage >= 1)
         {
             DestroyImmediate(gameObject);
         }

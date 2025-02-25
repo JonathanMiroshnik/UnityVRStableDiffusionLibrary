@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-// TODO documentation
+// TODO: documentation
 
 public class OpenDoorScript : MonoBehaviour
 {
@@ -9,14 +9,14 @@ public class OpenDoorScript : MonoBehaviour
     
     public AudioSource audioSource;
 
-    private bool doorOpened = false;
+    private bool _doorOpened = false;
     
     
     
     
     public void OpenDoor()
     {
-        if (doorOpened)
+        if (_doorOpened)
         {
             return;
         }
@@ -38,7 +38,7 @@ public class OpenDoorScript : MonoBehaviour
         doorOpenAnimation.Play("Door Open Clip 3");
         audioSource.Play();
 
-        doorOpened = true;
+        _doorOpened = true;
     }
     
 }
