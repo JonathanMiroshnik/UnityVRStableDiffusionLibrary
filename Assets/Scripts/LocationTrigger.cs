@@ -15,11 +15,11 @@ public class LocationTrigger : MonoBehaviour
     public UnityEvent UnderRadiusUnityEvent;
 
     // To keep congestion of calling functions low, no need to do it every update
-    private float repeatEvery = 1f;
+    private float _repeatEvery = 1f;
 
     private void Start()
     {
-        InvokeRepeating("UnderRadiusTrigger", repeatEvery, repeatEvery);
+        InvokeRepeating("UnderRadiusTrigger", _repeatEvery, _repeatEvery);
     }
 
     private void UnderRadiusTrigger()

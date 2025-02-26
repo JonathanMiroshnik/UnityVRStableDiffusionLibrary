@@ -23,7 +23,7 @@ public class ComfySceneParameters : MonoBehaviour
     public bool LoadedConnectorParameters = false;
 
     // Scene inwhich the GameManager will live
-    private string GameManagerScene = "Empty Scene";
+    private string _gameManagerScene = "Empty Scene";
 
     // Used to keep track of the loading of the GameManager scene
     private static bool _loadedGameManagerScene = false;
@@ -43,7 +43,7 @@ public class ComfySceneParameters : MonoBehaviour
         // Loading the GameManager scene
         if (SceneManager.sceneCount < 3 && !_loadedGameManagerScene) // TODO: magic numbers
         {
-            var asyncLoad = SceneManager.LoadSceneAsync(GameManagerScene, LoadSceneMode.Additive);            
+            var asyncLoad = SceneManager.LoadSceneAsync(_gameManagerScene, LoadSceneMode.Additive);            
             // Wait until the asynchronous scene fully loads
             while (!asyncLoad.isDone)
             {

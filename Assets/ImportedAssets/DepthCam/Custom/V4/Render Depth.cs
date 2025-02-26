@@ -30,7 +30,7 @@ public class RenderDepth : MonoBehaviour
         }
     }
 
-    [Obsolete] // Jonathan Added this tag
+    [Obsolete] // Tag Added to avoid errors
     private void Start ()
     {
         if (!SystemInfo.supportsImageEffects)

@@ -34,20 +34,20 @@ public class AutomaticComfySceneScript : MonoBehaviour
     public List<GameAction> gameActions;
 
     // Used to hold onto GameActions that should occur but are on hold because previous ones have not finished
-    private Queue<GameAction> gameActionsQueue;
+    private Queue<GameAction> _gameActionsQueue;
 
     // Only one GameAction is activated at a time, the rest of the Queue waits
-    private GameAction activatedGameAction;
+    private GameAction _activatedGameAction;
 
 
     public int IndexToStart = -1;
     private void Start()
     {
         // Turns the List of GameActions into a Queue in accordance to its initial ordering
-        gameActionsQueue = new Queue<GameAction>();
+        _gameActionsQueue = new Queue<GameAction>();
         foreach (GameAction action in gameActions)
         {
-            gameActionsQueue.Enqueue(action);
+            _gameActionsQueue.Enqueue(action);
         }
 
         StartCoroutine(StartGameAction());
@@ -59,24 +59,24 @@ public class AutomaticComfySceneScript : MonoBehaviour
     // to be started. To fix this, just create a big enough delay between these two.
     private void Update()
     {
-        if (activatedGameAction != null)
+        if (_activatedGameAction != null)
         {
             // Run the time of the currently active Game Action
-            activatedGameAction.TimeToFinishGameAction -= Time.deltaTime;
-            if (activatedGameAction.TimeToFinishGameAction < 0)
+            _activatedGameAction.TimeToFinishGameAction -= Time.deltaTime;
+            if (_activatedGameAction.TimeToFinishGameAction < 0)
             {                
-                activatedGameAction = null;
+                _activatedGameAction = null;
             }
         }
         else
         {            
-            if (gameActionsQueue.Count <= 0) return;
+            if (_gameActionsQueue.Count <= 0) return;
             // If there is no currently active GameAction, check if the next one in the Queue is ready to be activate
-            if (!gameActionsQueue.Peek().value) return;
+            if (!_gameActionsQueue.Peek().value) return;
 
             // Start the next GameAction
-            activatedGameAction = gameActionsQueue.Dequeue();
-            activatedGameAction.eventToCall?.Invoke();
+            _activatedGameAction = _gameActionsQueue.Dequeue();
+            _activatedGameAction.eventToCall?.Invoke();
         }         
     }
 
@@ -106,9 +106,9 @@ public class AutomaticComfySceneScript : MonoBehaviour
     {
         if (curInd >= gameActions.Count) return;
         if (gameActions[curInd].value) return;
-        if (activatedGameAction != null)
+        if (_activatedGameAction != null)
         {
-            if (activatedGameAction.index == curInd) return;
+            if (_activatedGameAction.index == curInd) return;
         }
 
         // Changing this infomation in the List, will also change in the Queue

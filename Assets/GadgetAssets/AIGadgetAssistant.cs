@@ -12,13 +12,13 @@ public class AIGadgetAssistant : DiffusionTextureChanger
     public AudioSource audioSource;
     public UIDiffusionTexture uiDiffusionTexture;
 
-    private AudioClipsLibrary AudioClipsLibrary;
+    private AudioClipsLibrary _audioClipsLibrary;
 
     // Default prompts for the AI character image creation
-    private static string DEFAULT_POSITIVE_PROMPT = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress" +
+    private static string DefaultPositivePrompt = "masterpiece,high quality,highres,solo,pslain,x hair ornament,brown eyes,dress" +
                                                     ",hoop,black dress,strings,floating circles,blue orbs,turning around,detached sleeves," +
                                                     "black background, short hair,luminous hair,blonde hair,smile";
-    private static string DEFAULT_NEGATIVE_PROMPT = "EasyNegativeV2,negative_hand-neg,(low quality, worst quality:1.2)";
+    private static string DefaultNegativePrompt = "EasyNegativeV2,negative_hand-neg,(low quality, worst quality:1.2)";
 
     protected override void Awake()
     {
@@ -31,7 +31,7 @@ public class AIGadgetAssistant : DiffusionTextureChanger
             AITextures = new List<Texture2D>();
         }
 
-        AudioClipsLibrary = new AudioClipsLibrary(AIAudioClipFolder);       
+        _audioClipsLibrary = new AudioClipsLibrary(AIAudioClipFolder);       
     }
 
 
@@ -67,8 +67,8 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         diffusionRequest.diffusionModel = diffusionModels.Ghostmix;
 
         // TODO: need to ADD keywords to an existing prompt?
-        diffusionRequest.positivePrompt = $"{DEFAULT_POSITIVE_PROMPT}, {keywords}";
-        diffusionRequest.negativePrompt += DEFAULT_NEGATIVE_PROMPT;
+        diffusionRequest.positivePrompt = $"{DefaultPositivePrompt}, {keywords}";
+        diffusionRequest.negativePrompt += DefaultNegativePrompt;
 
         diffusionRequest.targets.Add(this);
         diffusionRequest.addToTextureTotal = true;
@@ -92,7 +92,7 @@ public class AIGadgetAssistant : DiffusionTextureChanger
             return;
         }
 
-        audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[audioClipName]);
+        audioSource.PlayOneShot(_audioClipsLibrary.AudioClips[audioClipName]);
         if (AITextures.Count == 0) return;
 
         Texture2D currentTexture = AITextures[_curTextureIndex];

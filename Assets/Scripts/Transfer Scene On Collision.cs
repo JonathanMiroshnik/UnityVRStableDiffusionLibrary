@@ -4,24 +4,13 @@ using UnityEngine;
 
 public class TransferSceneOnCollision : MonoBehaviour
 {
-    [SerializeField] private string thisScene, nextScene;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private string _thisScene, _nextScene;
     
     private void OnTriggerEnter(Collider other)
     {
         if (GameManager.getInstance() == null) return;
 
         Debug.Log("Exited Scene!");
-        GameManager.getInstance().LoadNextScene(thisScene, nextScene);
+        GameManager.getInstance().LoadNextScene(_thisScene, _nextScene);
     }
 }

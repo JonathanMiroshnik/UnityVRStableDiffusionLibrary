@@ -18,12 +18,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     // Number of images to combine together(as of 23.11.24, it is only possible to do 2)
     [NonSerialized]
     public int MAX_QUEUED_OBJECTS = 2;
-    public UnityEvent unityEvent;
-
-    private void Awake()
-    {
-        mechanismText = "Combine\nImages";
-    }
+    
+    public override string mechanismText => "Combine\nImages";
 
     /// <summary>
     /// Helper function for the Combine Mechanism script that checks whether a interactable object should be interacted with further.
@@ -188,7 +184,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
 
                 // Sending broadcast to Game timeline script
-                unityEvent?.Invoke();
+                MechanismExtraEvent?.Invoke();
             }
         }
     }

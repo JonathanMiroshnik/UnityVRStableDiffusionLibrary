@@ -4,39 +4,30 @@ using UnityEngine;
 
 public class IsLookingAtGadget : MonoBehaviour
 {
-    [SerializeField] private GameObject head;
+    [SerializeField] private GameObject _head;
     // Start is called before the first frame update
-    [SerializeField] private float viewingFieldDistance = 100;
-    [SerializeField] private float viewingFieldAngle = 30;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    [SerializeField] private float _viewingFieldDistance = 100;
+    [SerializeField] private float _viewingFieldAngle = 30;
 
     public bool LookingAtGadget()
     {
         //1. Distance
         float distance = Vector3.Distance(
             transform.position,
-            head.transform.position);
-        if (distance > viewingFieldDistance)
+            _head.transform.position);
+        if (distance > _viewingFieldDistance)
         {
             return false;
         }
 
         //2. Angle
         Vector3 distanceVector = 
-            head.transform.position - transform.position;
+            _head.transform.position - transform.position;
         distanceVector.y = 0;
         float angle = Vector3.Angle(
             transform.forward,
             distanceVector);
-        if (angle > viewingFieldAngle / 2)
+        if (angle > _viewingFieldAngle / 2)
         {
             return false;
         }

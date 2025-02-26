@@ -10,6 +10,8 @@ public enum ExplosionMode
     audioReactive
 }
 
+// TODO: stop with the m_ variables?
+
 /// <summary>
 /// Class responsible for everything to do with the final explosion
 /// </summary>

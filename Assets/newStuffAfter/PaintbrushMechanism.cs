@@ -7,11 +7,7 @@ using UnityEngine;
 public class PaintbrushMechanism : GadgetMechanism
 {
     public List<DiffusionTextureChanger> mechanismTextureChangers = new List<DiffusionTextureChanger>();
-
-    private void Awake()
-    {
-        mechanismText = "Painting";
-    }
+    public override string mechanismText => "Painting";
 
     protected override DiffusionRequest CreateDiffusionRequest(List<DiffusionTextureChanger> diffusionTextureChangers)
     {

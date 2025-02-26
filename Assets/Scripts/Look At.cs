@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour
 {
-    [SerializeField] private GameObject mainCamera;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject _mainCamera;
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(mainCamera.transform.position);
+        transform.LookAt(_mainCamera.transform.position);
     }
 }

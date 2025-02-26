@@ -16,11 +16,7 @@ public class CubeGadgetMechanism : GadgetMechanism
 
     // There are 6 sides to a cube
     private const int NumSides = 6;
-
-    private void Awake()
-    {
-        mechanismText = "Cube Generator";
-    }
+    public override string mechanismText => "Cube Generator";
 
     private bool validInteractableObject(BaseInteractionEventArgs args)
     {

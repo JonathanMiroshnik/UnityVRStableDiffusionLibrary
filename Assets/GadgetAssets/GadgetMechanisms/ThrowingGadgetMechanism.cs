@@ -9,10 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 /// </summary>
 public class ThrowingGadgetMechanism : GadgetMechanism
 {
-    private void Awake()
-    {
-        mechanismText = "Throwing";
-    }
+    public override string mechanismText => "Throwing";
 
     /// <summary>
     /// Helper function to make the appropriate DiffusionRequest for the Throwing Mechanism

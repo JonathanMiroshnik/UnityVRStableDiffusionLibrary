@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class StartSceneManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text display;
-    [SerializeField] private TMP_InputField input;
-    [SerializeField] private string thisScene, nextScene;
+    [SerializeField] private TMP_Text _display;
+    [SerializeField] private TMP_InputField _input;
+    [SerializeField] private string _thisScene, _nextScene;
 
     public GameObject XROrigin;
 
@@ -16,15 +16,15 @@ public class StartSceneManager : MonoBehaviour
         if (GameManager.getInstance() == null) return;
 
         Debug.Log("Called TryTransferScene!");
-        if (input.text == "")
+        if (_input.text == "")
         {
-            display.text = "IP cannot be empty!";
+            _display.text = "IP cannot be empty!";
             return;
         }
 
         XROrigin.SetActive(false);
-        GameManager.getInstance().IP = input.text;
-        GameManager.getInstance().LoadNextScene(thisScene, nextScene);
+        GameManager.getInstance().IP = _input.text;
+        GameManager.getInstance().LoadNextScene(_thisScene, _nextScene);
         
     }
 }

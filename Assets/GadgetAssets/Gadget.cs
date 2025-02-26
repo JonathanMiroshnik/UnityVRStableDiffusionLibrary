@@ -14,6 +14,8 @@ public enum GadgetSelection
     selected
 }
 
+// TODO: add tooltip and header and other unity things
+
 // TODO: change name of class to GadgetScript or something
 public class Gadget : MonoBehaviour
 {
@@ -53,6 +55,7 @@ public class Gadget : MonoBehaviour
     public GameObject LeftHandController;
     public GameObject RightHandController;
 
+    // Controller Input Names depending on the platform
     private const string LeftHandBuildControllerInputName = "OculusTouchControllerLeft";
     private const string RightHandBuildControllerInputName = "OculusTouchControllerRight";
     private const string LeftHandLinkControllerInputName = "OculusTouchControllerOpenXR";
@@ -65,12 +68,11 @@ public class Gadget : MonoBehaviour
 
     private void Awake()
     {
-        textureQueue = new Queue<Texture2D>();
+        textureQueue = new Queue<Texture2D>(); // TODO: do I need this?
     }
 
     private void Start()
     {
-        //gadgetCamera == null || 
         if (xrCamera == null || playSounds == null || gadgetImagePanel == null || aiGadgetAssistant == null ||
             uiDiffusionTexture == null || LeftHandController == null || RightHandController == null)
         {
@@ -81,7 +83,7 @@ public class Gadget : MonoBehaviour
         if (GadgetMechanisms == null) GadgetMechanisms = new List<GadgetMechanism>();
         if (GadgetMechanisms.Count > 0 )
         {
-            MechanismText.text = GadgetMechanisms[0].mechanismText;
+            ChangeToMechanic(0);
         }
     }
 
@@ -96,7 +98,6 @@ public class Gadget : MonoBehaviour
     public void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
-
         GadgetMechanisms[_gadgetMechanismIndex].OnGameObjectHoverExited(args);
     }
 
@@ -108,7 +109,6 @@ public class Gadget : MonoBehaviour
     public void onGameObjectSelectExited(SelectExitEventArgs args)
     {
         if (GadgetMechanisms.Count <= 0) return;
-
         GadgetMechanisms[_gadgetMechanismIndex].onGameObjectSelectExited(args);
     }
 
@@ -128,7 +128,6 @@ public class Gadget : MonoBehaviour
     public void ChangeToNextMechanic()
     {
         if (GadgetMechanisms.Count <= 0) return;
-        if (_gadgetMechanismIndex >= GadgetMechanisms.Count) _gadgetMechanismIndex %= GadgetMechanisms.Count;
 
         GadgetMechanisms[_gadgetMechanismIndex].ResetMechanism();
 
@@ -137,20 +136,14 @@ public class Gadget : MonoBehaviour
         ChangeToMechanic(_gadgetMechanismIndex);
     }
 
-    // TODO: do I need this one?
-    public void ChangeToPreviousMechanic()
-    {
-        if (GadgetMechanisms.Count <= 0) return;
-        if (_gadgetMechanismIndex >= GadgetMechanisms.Count) _gadgetMechanismIndex %= GadgetMechanisms.Count;
-
-        GadgetMechanisms[_gadgetMechanismIndex].ResetMechanism();
-
-        _gadgetMechanismIndex--;
-        _gadgetMechanismIndex %= GadgetMechanisms.Count;
-        ChangeToMechanic(_gadgetMechanismIndex);
-    }
     public void ChangeToMechanic(int index)
     {
+        // TODO: need to make "ExecuteIfMechanismExists" with => lambda thing
+        // EXAMPLE: ExecuteIfMechanismsExist(() => {
+            //     playSounds.PlaySound("HoverOverElements");
+            //     GadgetMechanisms[_gadgetMechanismIndex].OnGameObjectHoverEntered(args);
+            // });
+        // TODO: do the same in mechanisms too, there are a lot of these types of codes.
         if (GadgetMechanisms.Count <= 0) return;
         
         _gadgetMechanismIndex = index;
@@ -176,7 +169,6 @@ public class Gadget : MonoBehaviour
     public bool AddTexturesToQueue(List<Texture2D> textures)
     {
         if (GameManager.getInstance() == null) return false;
-
         if (textures == null) return false;
 
         foreach (Texture2D texture in textures)

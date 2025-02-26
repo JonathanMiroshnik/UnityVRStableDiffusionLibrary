@@ -11,7 +11,6 @@ public class AnimationInput
 }
 
 
-
 public class AnimateOnInput : MonoBehaviour
 {
     public List<AnimationInput> animationInputs;

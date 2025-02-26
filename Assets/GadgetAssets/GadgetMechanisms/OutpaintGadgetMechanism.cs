@@ -14,16 +14,18 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     // Outpainting screen that is filled
     public OutpaintingScreenScr outpaintingScreen;
 
+    public override string mechanismText => "Outpainting";
+
     // Diffusable Object that is being held up
-    private GameObject grabbedObject;
+    private GameObject _grabbedObject;
 
     // These are used to represent the tiles that are under progress
-    private Texture2D[] NOISE_TEXTURES;
+    private Texture2D[] NoiseTextures;
 
     private void Awake()
     {
-        mechanismText = "Outpainting";
-        NOISE_TEXTURES = Resources.LoadAll<Texture2D>("Textures/Noise");
+        // TODO: check if this is needed
+        NoiseTextures = Resources.LoadAll<Texture2D>("Textures/Noise");
     }
 
     /// <summary>
@@ -54,7 +56,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (grabbedObject == null) return;
+        if (_grabbedObject == null) return;
         if (!ValidInteractableObject(args, false)) return;
 
         if (args.interactableObject.transform.gameObject.TryGetComponent<OutpaintingTile>(out OutpaintingTile OPT))
@@ -82,7 +84,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         {
             if (DO.Model3D)
             {
-                grabbedObject = args.interactableObject.transform.gameObject;
+                _grabbedObject = args.interactableObject.transform.gameObject;
             }
         }        
     }
@@ -90,8 +92,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     public override void DiffusableUnGrabbed(SelectExitEventArgs args)
     { 
         if (!ValidInteractableObject(args, true)) return;
-        if (args.interactableObject.transform.gameObject != grabbedObject) return;
-        grabbedObject = null;
+        if (args.interactableObject.transform.gameObject != _grabbedObject) return;
+        _grabbedObject = null;
     }
 
 
@@ -165,7 +167,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     /// </summary>
     private void CreateInProgressDiffusionTileEffect(TextureTransition TT)
     {
-        List<Texture2D> listTextures = new List<Texture2D>(NOISE_TEXTURES);
+        List<Texture2D> listTextures = new List<Texture2D>(NoiseTextures);
         listTextures = GeneralGameLibraries.GetRandomElements(listTextures, 2);
         if (listTextures.Count <= 1)
         {
@@ -176,11 +178,11 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
-        if (grabbedObject == null) return;
+        if (_grabbedObject == null) return;
         if (!ValidInteractableObject(args, false)) return;
 
         string curPositivePrompt = "";
-        if (grabbedObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
+        if (_grabbedObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
         {
             if (!DO.Model3D) return;
             curPositivePrompt = DO.keyword;
@@ -240,16 +242,16 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         newDiffusionRequest.targets.Add(TT);        
 
         // Makes the picked up DiffusableObject to fly towards the tile that will change to the newly created extension image
-        ObjectFlightToTile curFlight = grabbedObject.AddComponent<ObjectFlightToTile>();
-        curFlight.StartMovement(grabbedObject.transform.position, args.interactableObject.transform.position);
+        ObjectFlightToTile curFlight = _grabbedObject.AddComponent<ObjectFlightToTile>();
+        curFlight.StartMovement(_grabbedObject.transform.position, args.interactableObject.transform.position);
 
         GameObjectManipulationLibrary.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.unSelected);
 
         // Stops the picked up DiffusableObject from being a grabbable object,
         //  as it stops being relevant after it was chosen for image creation
-        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable xRGrabInteractable = grabbedObject.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+        UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable xRGrabInteractable = _grabbedObject.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
         if (xRGrabInteractable != null) xRGrabInteractable.enabled = false;
-        grabbedObject = null;
+        _grabbedObject = null;
 
         if (gadget != null)
         {

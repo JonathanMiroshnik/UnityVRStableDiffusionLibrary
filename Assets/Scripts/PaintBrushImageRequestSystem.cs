@@ -6,6 +6,8 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+// TEST SCRIPT
+
 public class PaintBrushImageRequestSystem : MonoBehaviour
 {
 
@@ -19,29 +21,13 @@ public class PaintBrushImageRequestSystem : MonoBehaviour
     [SerializeField] private PaintBrushPrompts _paintBrushPrompts;
     
     /*
-            [mona lisa, starry night]
-            [mona lisa, rubber duck]
-            [brick wall, mona lisa]
-            [rubber duck, starry night]
-            [brick wall, starry night]
-            [brick wall, rubber duck]
-         */
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void foo()
-    {
-        
-    }
+        [mona lisa, starry night]
+        [mona lisa, rubber duck]
+        [brick wall, mona lisa]
+        [rubber duck, starry night]
+        [brick wall, starry night]
+        [brick wall, rubber duck]
+    */
     
     public Texture2D RequestImage()
     {

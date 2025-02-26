@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
         RenderPipelineManager.endCameraRendering += PostRender;
     }
 
-    [Obsolete] // Jonathan Added this tag
+    [Obsolete] // Tag Added to avoid errors
     private void PreRender(ScriptableRenderContext _context, Camera _camera)
     {
         if (_camera.TryGetComponent<CameraRenderControl>(out CameraRenderControl _cameraRenderControl))

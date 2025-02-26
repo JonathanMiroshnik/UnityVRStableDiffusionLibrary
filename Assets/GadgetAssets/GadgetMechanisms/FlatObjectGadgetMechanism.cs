@@ -16,10 +16,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
     [NonSerialized]
     public GameObject selectedTextObject = null;
 
-    private void Awake()
-    {
-        mechanismText = "Flat\nObject\nGenerator";
-    }    
+    public override string mechanismText => "Flat\nObject\nGenerator"; 
 
     private bool validInteractableObject(BaseInteractionEventArgs args)
     {

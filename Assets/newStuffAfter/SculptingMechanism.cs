@@ -11,10 +11,7 @@ public class SculptingMechanism : GadgetMechanism
     public List<MeshDeformer> meshDeformerList;
     public int radius = 5;
 
-    private void Start()
-    {
-        mechanismText = MECHANISM_PRETEXT + "\n" + "Sculpting";
-    }
+    public override string mechanismText => "Sculpting";
 
     public override void GripProperty(GameObject GO, Transform curTransform)
     {

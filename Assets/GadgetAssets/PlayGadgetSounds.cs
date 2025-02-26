@@ -9,13 +9,13 @@ using UnityEngine;
 public class PlayGadgetSounds : MonoBehaviour
 {
     public string GadgetAudioClipFolder = "Sounds/SFX/GadgetSounds";
-    private GeneralGameLibraries.AudioClipsLibrary AudioClipsLibrary;
+    private GeneralGameLibraries.AudioClipsLibrary _audioClipsLibrary;
 
     public AudioSource audioSource;
 
     private void Awake()
     {
-        AudioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(GadgetAudioClipFolder);
+        _audioClipsLibrary = new GeneralGameLibraries.AudioClipsLibrary(GadgetAudioClipFolder);
     }
 
     public void PlaySound(string sound)
@@ -26,8 +26,8 @@ public class PlayGadgetSounds : MonoBehaviour
             return;
         }
 
-        if (AudioClipsLibrary.AudioClips.ContainsKey(sound)) {
-            audioSource.PlayOneShot(AudioClipsLibrary.AudioClips[sound]);
+        if (_audioClipsLibrary.AudioClips.ContainsKey(sound)) {
+            audioSource.PlayOneShot(_audioClipsLibrary.AudioClips[sound]);
         }        
     }
 }

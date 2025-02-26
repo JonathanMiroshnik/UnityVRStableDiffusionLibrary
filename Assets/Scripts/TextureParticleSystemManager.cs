@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TextureParticleSystemManage : MonoBehaviour
 {
-    List<GameObject> particleSystems = new List<GameObject>();
     public GameObject particleSystemBase;
+    private List<GameObject> _particleSystems = new List<GameObject>();
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class TextureParticleSystemManage : MonoBehaviour
         newPSRenderer.material.mainTexture = texture;
         newPS.gameObject.SetActive(true);
 
-        particleSystems.Add(newPS);
+        _particleSystems.Add(newPS);
     }
 
     public void AddRandomParticles(int NumOfTextures)

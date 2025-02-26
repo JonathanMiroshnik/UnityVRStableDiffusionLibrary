@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class CustomDepthCamera : MonoBehaviour
 {
-    [SerializeField] private Renderer camRenderer;
-
-    private Camera depthDamera;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    [SerializeField] private Renderer _camRenderer;
 
     // Update is called once per frame
     void Update()
@@ -22,7 +15,7 @@ public class CustomDepthCamera : MonoBehaviour
         Texture camDepthTexture = Shader.GetGlobalTexture("_CameraDepthTexture");
         Debug.Log(camDepthTexture.ToString());
 
-        camRenderer.material.SetTexture("_BaseMap", camDepthTexture);
+        _camRenderer.material.SetTexture("_BaseMap", camDepthTexture);
         //renderer.material.mainTexture = camDepthTexture;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 // TODO: end of transition is too rapid, need smoothness when exchanging 2 textures
-
+// TODO: stop with the m_ variables?
 
 /// <summary>
 /// Used on GameObject in the world for which we want to transition between textures in a smooth way.
@@ -16,7 +16,7 @@ public class TextureTransition : DiffusionTextureChanger
     public List<Texture> textures;
 
     // Simple optimization to stop retexturing a single texture
-    private bool singleTexture = false;
+    private bool _singleTexture = false;
 
     // True when Textures are endlessly and automatically transitioned from one to another.
     // False when one single transition, from texture to texture, will occur, and then stop instead of continuing onto the next transition.
@@ -84,14 +84,14 @@ public class TextureTransition : DiffusionTextureChanger
 
         if (textures.Count == 1)
         {
-            if (singleTexture) return;
+            if (_singleTexture) return;
             _transitionMaterial.SetTexture(AdditionalTextureName, textures[0]);
             _transitionMaterial.SetFloat(TransitionValueName, 1f);
-            singleTexture = true;
+            _singleTexture = true;
             return;
         }        
 
-        singleTexture = false;        
+        _singleTexture = false;        
 
         // Animate the transition value
         transition += Time.deltaTime * transitionSpeed;

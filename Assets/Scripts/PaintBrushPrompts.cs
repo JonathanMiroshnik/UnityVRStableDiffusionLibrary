@@ -7,16 +7,6 @@ public class PaintBrushPrompts : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private List<string> promptsList = new List<string>();
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void addPrompt(string prompt)
     {

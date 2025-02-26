@@ -11,9 +11,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Non scene-local objects
-    private static GameManager instance = null;
+    private static GameManager instance = null; // TODO: private static variable name?
     
-    public string IP = ""; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
+    public string IP { get; set; } = ""; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 
     [NonSerialized]
     public List<GameObject> diffusionList;
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public ComfySceneLibrary comfySceneLibrary;
 
-    public static bool fullyLoaded = false;
+    public static bool fullyLoaded { get; set; } = false;
 
     private void Awake()
     {

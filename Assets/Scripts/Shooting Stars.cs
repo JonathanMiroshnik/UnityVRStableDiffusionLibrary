@@ -11,13 +11,6 @@ public class ShootingStars : MonoBehaviour
     [SerializeField] private float spawnHeight = 25f;
 
     private float nextSpawnTime = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
     
     void Update()
     {

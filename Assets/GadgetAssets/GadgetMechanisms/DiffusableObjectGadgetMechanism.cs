@@ -16,10 +16,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     [NonSerialized]
     public GameObject selectedTextObject = null;
 
-    private void Awake()
-    {
-        mechanismText = "Object\nto\nImage";
-    }    
+    public override string mechanismText => "Object\nto\nImage";
 
     private bool validInteractableObject(BaseInteractionEventArgs args)
     {

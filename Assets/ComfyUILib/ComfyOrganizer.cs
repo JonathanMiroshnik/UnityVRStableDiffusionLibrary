@@ -103,7 +103,7 @@ public class ComfyOrganizer : MonoBehaviour
     public UnityEvent EndSceneUnityEvent;
 
     // Counter for the DiffusionRequests
-    private static int currentRequestNum = 0;
+    private static int _currentRequestNum = 0;
 
     // TODO: in ComfySceneLibrary I added HashSet of incoming image names,
     // TODO: but this is used for outgoing/input image names, should be connected into one DB?
@@ -278,10 +278,10 @@ public class ComfyOrganizer : MonoBehaviour
     public void SendDiffusionRequest(DiffusionRequest diffusionRequest)
     {
         DiffusionRequest newDiffusionRequest = copyDiffusionRequest(diffusionRequest);
-        newDiffusionRequest.requestNum = currentRequestNum;
+        newDiffusionRequest.requestNum = _currentRequestNum;
         newDiffusionRequest.diffImgName = "Generated_" + newDiffusionRequest.requestNum;
-        DiffuseDictionary.Add(currentRequestNum, newDiffusionRequest);
-        currentRequestNum++;
+        DiffuseDictionary.Add(_currentRequestNum, newDiffusionRequest);
+        _currentRequestNum++;
 
 
         int PROMPT_TRIAL_NUM = 5;

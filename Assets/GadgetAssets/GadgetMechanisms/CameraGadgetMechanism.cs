@@ -10,26 +10,22 @@ using UnityEngine.Events;
 /// </summary>
 public class CameraGadgetMechanism : GadgetMechanism
 { 
-    // Texture chosen to be used as the style component in the combination with the content texture
-    private Texture2D styleTexture;
-
-    // Screenshot that was taken with the Camera
-    private Texture2D contentTexture;
-
     // Limits when a picture can be taken    
     public bool takePicture = false;
 
     public UnityEvent TakeScreenshotUnityEvent;
     public UnityEvent ActivateGenerationUnityEvent;
 
+    public override string mechanismText => "Base\nCamera";
+
+    // Texture chosen to be used as the style component in the combination with the content texture
+    private Texture2D _styleTexture;
+
+    // Screenshot that was taken with the Camera
+    private Texture2D _contentTexture;
+
     // Object that was selected for the texture to be used as the style base for the Camera's image.
-    private GameObject selectedStyleObject = null;
-
-
-    private void Awake()
-    {
-        mechanismText = "Base\nCamera";
-    }
+    private GameObject _selectedStyleObject = null;
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //
 
@@ -81,7 +77,7 @@ public class CameraGadgetMechanism : GadgetMechanism
 
         Transform curTrans = args.interactableObject.transform;
         if (!GameManager.getInstance().diffusionList.Contains(curTrans.gameObject)) return false;
-        if (curTrans.gameObject == selectedStyleObject) return false;
+        if (curTrans.gameObject == _selectedStyleObject) return false;
         if (!curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO)) return false;
         if (curTrans.gameObject.TryGetComponent<Renderer>(out Renderer REN))
         {
@@ -113,21 +109,21 @@ public class CameraGadgetMechanism : GadgetMechanism
         if (!ValidInteractableObject(args)) return;
 
         // Removing previously selected object
-        if (selectedStyleObject != null)
+        if (_selectedStyleObject != null)
         {
-            GameObjectManipulationLibrary.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
-            selectedStyleObject = null;
+            GameObjectManipulationLibrary.ChangeOutline(_selectedStyleObject, GadgetSelection.unSelected);
+            _selectedStyleObject = null;
         }
 
         // Creates selection outline
         GameObjectManipulationLibrary.ChangeOutline(args.interactableObject.transform.gameObject, GadgetSelection.selected);
-        selectedStyleObject = args.interactableObject.transform.gameObject;
+        _selectedStyleObject = args.interactableObject.transform.gameObject;
         Texture2D curTexture = TextureManipulationLibrary.toTexture2D(args.interactableObject.transform.gameObject.GetComponent<Renderer>().material.mainTexture);
 
         string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
         curTexture.name = uniqueName + "_2.png";
 
-        styleTexture = curTexture;
+        _styleTexture = curTexture;
 
         if (gadget != null) {
             gadget.playSounds.PlaySound("SelectElement");
@@ -166,23 +162,23 @@ public class CameraGadgetMechanism : GadgetMechanism
     {
         if (GameManager.getInstance() == null) return;
 
-        if (contentTexture == null || styleTexture == null)
+        if (_contentTexture == null || _styleTexture == null)
         {
             Debug.LogError("Need to pick style and content textures for Camera mechanism");
             return;
         }
 
-        if (selectedStyleObject != null)
+        if (_selectedStyleObject != null)
         {
-            GameObjectManipulationLibrary.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
-            selectedStyleObject = null;
+            GameObjectManipulationLibrary.ChangeOutline(_selectedStyleObject, GadgetSelection.unSelected);
+            _selectedStyleObject = null;
         }
 
 
         // Content texture is the first one in the uploadTextures List, Style texture is the second.
         DiffusionRequest newDiffusionRequest = CreateDiffusionRequest(diffusionTextureChangers);
-        newDiffusionRequest.uploadTextures.Add(contentTexture);
-        newDiffusionRequest.uploadTextures.Add(styleTexture);
+        newDiffusionRequest.uploadTextures.Add(_contentTexture);
+        newDiffusionRequest.uploadTextures.Add(_styleTexture);
 
         // Invoking voiceline
         ActivateGenerationUnityEvent?.Invoke();
@@ -209,15 +205,15 @@ public class CameraGadgetMechanism : GadgetMechanism
             gadget.xrCamera.enabled = true;
         }
 
-        contentTexture = screenShot;
+        _contentTexture = screenShot;
 
         // Invoking voiceline
         TakeScreenshotUnityEvent?.Invoke();
 
-        if (selectedStyleObject != null)
+        if (_selectedStyleObject != null)
         {
-            GameObjectManipulationLibrary.ChangeOutline(selectedStyleObject, GadgetSelection.unSelected);
-            selectedStyleObject = null;
+            GameObjectManipulationLibrary.ChangeOutline(_selectedStyleObject, GadgetSelection.unSelected);
+            _selectedStyleObject = null;
         }
     }
 
