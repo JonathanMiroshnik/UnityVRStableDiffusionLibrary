@@ -11,25 +11,25 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Non scene-local objects
-    private static GameManager instance = null; // TODO: private static variable name?
+    private static GameManager Instance = null; // TODO: private static variable name?
     
     public string IP { get; set; } = ""; // jonathanmiroshnik-networks-24172136.thinkdiffusion.xyz
 
     [NonSerialized]
-    public List<GameObject> diffusionList;
+    public List<GameObject> DiffusionList;
 
     // Scene-local objects
     [NonSerialized]
-    public ComfyOrganizer comfyOrganizer;
+    public ComfyOrganizer ComfyOrganizer;
     [NonSerialized]
-    public ComfySceneLibrary comfySceneLibrary;
+    public ComfySceneLibrary ComfySceneLibrary;
 
     public static bool fullyLoaded { get; set; } = false;
 
     private void Awake()
     {
-        if (instance != null) return;
-        instance = this;
+        if (Instance != null) return;
+        Instance = this;
     }
 
     /// <summary>
@@ -37,9 +37,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager getInstance()
     {
-        if (instance == null) Debug.Log("Awake the GameManager");
-
-        return instance;
+        if (Instance == null) Debug.Log("Awake the GameManager");
+        return Instance;
     }
         
     public void LoadNextScene(string thisScene, string nextScene)
@@ -55,14 +54,14 @@ public class GameManager : MonoBehaviour
     /// <param name="_comfySceneLibrary"></param>
     public void InitiateSceneParameters(ComfyOrganizer _comfyOrganizer, ComfySceneLibrary _comfySceneLibrary)
     {
-        comfyOrganizer = _comfyOrganizer;
-        comfySceneLibrary = _comfySceneLibrary;
+        ComfyOrganizer = _comfyOrganizer;
+        ComfySceneLibrary = _comfySceneLibrary;
 
-        if (comfyOrganizer == null)
+        if (ComfyOrganizer == null)
         {
             Debug.LogError("Please add a Comfy Organizer to the GameManager");
         }
-        if (comfySceneLibrary == null)
+        if (ComfySceneLibrary == null)
         {
             Debug.LogError("Please add a Comfy Scene Library to the GameManager");
         }
@@ -88,7 +87,6 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
-
 
         // Load a scene in additive mode, meaning it wont unload the currently loaded scene if there is one
         var loadScene = SceneManager.LoadSceneAsync(
@@ -120,29 +118,30 @@ public class GameManager : MonoBehaviour
         Debug.Log("New Scene: " + SceneManager.GetActiveScene().name);
     }
 
-    public static IEnumerator CallWhenGameManagerLoaded(Action action)
-    {
-        while(!fullyLoaded)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
+    // TODO: remove?
+    // public static IEnumerator CallWhenGameManagerLoaded(Action action)
+    // {
+    //     while(!fullyLoaded)
+    //     {
+    //         yield return new WaitForSeconds(0.1f);
+    //     }
 
-        action.Invoke();
-    }
+    //     action.Invoke();
+    // }
 
     /// <summary>
     /// Should be used at the beginning of each scene to fill the relevant Diffusables into the list and use the various mechanisms
     /// </summary>
     private void FillDiffusablesList()
     {
-        diffusionList = new List<GameObject>();
+        DiffusionList = new List<GameObject>();
 
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
         foreach (GameObject go in allObjects)
         {
             if (go.activeInHierarchy)
             {
-                diffusionList.Add(go);
+                DiffusionList.Add(go);
             }
         }
     }

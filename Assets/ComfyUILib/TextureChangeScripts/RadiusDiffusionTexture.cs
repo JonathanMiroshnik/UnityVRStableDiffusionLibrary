@@ -196,7 +196,7 @@ public class RadiusDiffusionTexture : DiffusionTextureChanger
         if (GameManager.getInstance() == null) return null;
 
         List<GameObject> radiusGameObjects = new List<GameObject>();
-        foreach (GameObject go in GameManager.getInstance().diffusionList)
+        foreach (GameObject go in GameManager.getInstance().DiffusionList)
         {
             if (go == null) continue;
             if (Vector3.Distance(go.transform.position, position) <= curRadius)

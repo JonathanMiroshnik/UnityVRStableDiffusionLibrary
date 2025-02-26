@@ -29,7 +29,7 @@ public class ExitSceneChangeTrigger : MonoBehaviour
         if (GameManager.getInstance() == null) return;
 
         ComfySceneLibrary.loadedAddress = false;
-        GameManager.getInstance().comfySceneLibrary.LoadSpecialServerAddress(txt.text);
+        GameManager.getInstance().ComfySceneLibrary.LoadSpecialServerAddress(txt.text);
     }
 
     public void ToggleBasedChangeScene()

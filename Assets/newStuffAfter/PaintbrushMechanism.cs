@@ -38,6 +38,6 @@ public class PaintbrushMechanism : GadgetMechanism
         diffusionRequest.uploadTextures.Add(canvasTexture);
 
         ResetMechanism();
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 }

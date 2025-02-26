@@ -87,6 +87,7 @@
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/MotionBlur.cs" />
     <Compile Include="Assets/Scripts/LocationTrigger.cs" />
     <Compile Include="Assets/ComfyUILib/TextureChangeScripts/RegularDiffusionTexture.cs" />
+    <Compile Include="Assets/ComfyUILib/NewLibraryTransfer/ComfyOrganizerNew.cs" />
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/Fisheye.cs" />
     <Compile Include="Assets/ComfyUILib/DiffusionActivationTest.cs" />
     <Compile Include="Assets/ImportedAssets/DepthCam/Custom/Irrelevant/Change To Depth Texture.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets/Scenes/TileDiffusionRoom/TempCreateTileScript.cs" />
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/CreaseShading.cs" />
     <Compile Include="Assets/ImportedAssets/IgniteCoders/Simple Water Shader/Info/Scripts/Readme.cs" />
+    <Compile Include="Assets/ComfyUILib/NewLibraryTransfer/ComfySceneLibraryNew.cs" />
     <Compile Include="Assets/ImportedAssets/DepthCam/Custom/V4/External Camera Depth.cs" />
     <Compile Include="Assets/Scripts/RandomQuickAIChanging.cs" />
     <Compile Include="Assets/GadgetAssets/GadgetMechanisms/CameraGadgetMechanism.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndGrain.cs" />
     <Compile Include="Assets/ImportedAssets/FFOS-Unity-VR-Template-main/Assets/Scripts/FFOSScripts/TeleportationController.cs" />
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/DepthOfFieldDeprecated.cs" />
+    <Compile Include="Assets/ComfyUILib/NewLibraryTransfer/ComfySceneParametersNew.cs" />
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsBase.cs" />
     <Compile Include="Assets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Scripts/Quads.cs" />
     <Compile Include="Assets/GadgetAssets/GadgetMechanisms/CombineImagesGadgetMechanism.cs" />

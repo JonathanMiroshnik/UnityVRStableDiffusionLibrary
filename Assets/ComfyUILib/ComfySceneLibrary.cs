@@ -67,7 +67,7 @@ public enum diffusionModels
 public class ComfySceneLibrary : MonoBehaviour
 {
     public string serverAddress = "";
-    public ComfyOrganizer comfyOrg { get; set; }
+    public ComfyOrganizer comfyOrg;
 
     [NonSerialized]
     public static bool loadedAddress = false;
@@ -173,6 +173,8 @@ public class ComfySceneLibrary : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(0.1f);
+
+            if (comfyOrg == null) yield break;
 
             List<DiffusionRequest> allDiffReqs = comfyOrg.GetUndownloadedRequestPrompts();
             if (allDiffReqs == null || allDiffReqs.Count == 0) continue;
@@ -628,6 +630,7 @@ public class ComfySceneLibrary : MonoBehaviour
         }
 
         string url = HTTPPrefix + GameManager.getInstance().IP + "/prompt";
+        Debug.Log("URL: " + url);
         
         // Creates the prompt string to be send to the server
         string promptText = DiffusionJSONFactory(diffReq);

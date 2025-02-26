@@ -76,7 +76,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         if (args == null || args.interactableObject == null) return false;
 
         Transform curTrans = args.interactableObject.transform;
-        if (!GameManager.getInstance().diffusionList.Contains(curTrans.gameObject)) return false;
+        if (!GameManager.getInstance().DiffusionList.Contains(curTrans.gameObject)) return false;
         if (curTrans.gameObject == _selectedStyleObject) return false;
         if (!curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO)) return false;
         if (curTrans.gameObject.TryGetComponent<Renderer>(out Renderer REN))
@@ -120,7 +120,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         _selectedStyleObject = args.interactableObject.transform.gameObject;
         Texture2D curTexture = TextureManipulationLibrary.toTexture2D(args.interactableObject.transform.gameObject.GetComponent<Renderer>().material.mainTexture);
 
-        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
         curTexture.name = uniqueName + "_2.png";
 
         _styleTexture = curTexture;
@@ -186,7 +186,7 @@ public class CameraGadgetMechanism : GadgetMechanism
             gadget.playSounds.PlaySound("ImagePlacement");
         }
 
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
         return;
     }
 

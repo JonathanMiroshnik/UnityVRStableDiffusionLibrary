@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.66179234, g: 0.46053004, b: 0.45472968, a: 1}
+  m_IndirectSpecularColor: {r: 0.6617952, g: 0.4605332, b: 0.45473158, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6173,6 +6173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
+      propertyPath: serverAddress
+      value: patterns-26181918
+      objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
       value: Universal ComfyUI Object
@@ -10670,6 +10674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadget: {fileID: 1405853428}
+  MechanismExtraEvent:
+    m_PersistentCalls:
+      m_Calls: []
   flatObjectPrefab: {fileID: 821042820786421386, guid: f60f0819e682f6842a2656d2069622a8, type: 3}
   maxRayDistance: 10
 --- !u!114 &2019231234
@@ -10685,6 +10692,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadget: {fileID: 1405853428}
+  MechanismExtraEvent:
+    m_PersistentCalls:
+      m_Calls: []
   mechanismTextureChangers:
   - {fileID: 2019231235}
   sidesCubePrefab: {fileID: 1577133569}
@@ -10718,6 +10728,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadget: {fileID: 1405853428}
+  MechanismExtraEvent:
+    m_PersistentCalls:
+      m_Calls: []
   mechanismTextureChangers:
   - {fileID: 1991114534}
 --- !u!114 &2019231238
@@ -10733,6 +10746,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadget: {fileID: 1405853428}
+  MechanismExtraEvent:
+    m_PersistentCalls:
+      m_Calls: []
   meshDeformerList:
   - {fileID: 416194878}
   radius: 5

@@ -252,7 +252,7 @@ public static class GeneralGameLibraries : System.Object
             Debug.Log("screen 1");
 
             // get our unique filename
-            string filename = folder + '/' + GameManager.getInstance().comfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
+            string filename = folder + '/' + GameManager.getInstance().ComfyOrganizer.UniqueImageName() + '.' + format.ToString().ToLower();
 
             // pull in our file header/data bytes for the specified image format (has to be done from main thread)
             byte[] fileHeader = null;

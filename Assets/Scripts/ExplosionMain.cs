@@ -49,12 +49,12 @@ public class ExplosionMain : MonoBehaviour
         }
 
         diffusableGameObjects = new List<GameObject>();
-        foreach (GameObject GO in GameManager.getInstance().diffusionList)
+        foreach (GameObject GO in GameManager.getInstance().DiffusionList)
         {
             diffusableGameObjects.Add(GO);
         }
 
-        diffusionTextures = GameManager.getInstance().comfyOrganizer.allTextures;
+        diffusionTextures = GameManager.getInstance().ComfyOrganizer.allTextures;
 
         TransitionExplosionMode(explosionMode);
     }

@@ -12,7 +12,7 @@ public class TempCreateTileScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (GameObject GO in GameManager.getInstance().diffusionList)
+        foreach (GameObject GO in GameManager.getInstance().DiffusionList)
         {
             Transform t = GO.transform;
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);

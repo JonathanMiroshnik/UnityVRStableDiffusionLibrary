@@ -44,7 +44,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
         diffusionRequest.diffusableObject = interactorObject.GetComponent<DiffusableObject>();
         diffusionRequest.positivePrompt = diffusionRequest.diffusableObject.keyword;
 
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);        
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);        
     }
     public override void DiffusableUnGrabbed(SelectExitEventArgs args)
     {

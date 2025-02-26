@@ -32,7 +32,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return false;
 
         Transform curTrans = args.interactableObject.transform;
-        if (!GameManager.getInstance().diffusionList.Contains(curTrans.gameObject)) return false;
+        if (!GameManager.getInstance().DiffusionList.Contains(curTrans.gameObject)) return false;
         if (curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
         {
             // Textures from 3D models are not taken into consideration
@@ -132,7 +132,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         Texture2D copyTexture = TextureManipulationLibrary.toTexture2D(go1Text);
         Texture2D secondCopyTexture = TextureManipulationLibrary.toTexture2D(go2Text);
 
-        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
         copyTexture.name = uniqueName + ".png";
         secondCopyTexture.name = uniqueName + "_2" + ".png";
 
@@ -154,7 +154,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
         ResetMechanism();
 
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //

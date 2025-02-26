@@ -88,6 +88,7 @@ public class DiffusionRequest
     }
 }
 
+// TODO: should this or comfyscenelibrary be monobehaviour? probably just object
 public class ComfyOrganizer : MonoBehaviour
 {
     // Holds all the DiffusionRequests that have been made in the duration of the Game

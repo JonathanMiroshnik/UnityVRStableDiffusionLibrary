@@ -43,7 +43,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         // When you use a GrabInteractable, it moves the transform in the hierarchy, thus not being in the Diffusables anymore while being grabbed.
         if (!grabbable)
         {
-            if (!GameManager.getInstance().diffusionList.Contains(curTrans.gameObject)) return false;
+            if (!GameManager.getInstance().DiffusionList.Contains(curTrans.gameObject)) return false;
         }
         if (curTrans.gameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DO))
         {
@@ -204,7 +204,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         bool leftTileOutpaint = false;
         bool rightTileOutpaint = false;
 
-        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
 
         // Top tile outpainting
         if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y - 1)
@@ -258,6 +258,6 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             gadget.playSounds.PlaySound("SelectElement");
         }
 
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
     }
 }

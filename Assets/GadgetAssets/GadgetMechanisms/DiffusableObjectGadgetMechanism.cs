@@ -25,7 +25,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         Transform curTransform = args.interactableObject.transform;
 
-        if (!GameManager.getInstance().diffusionList.Contains(curTransform.gameObject)) return false;
+        if (!GameManager.getInstance().DiffusionList.Contains(curTransform.gameObject)) return false;
         if (curTransform.GetComponent<DiffusableObject>() == null &&
             curTransform.GetComponent<Renderer>().material.mainTexture == null) return false;
 
@@ -171,7 +171,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         Texture2D copyStyleTexture = TextureManipulationLibrary.toTexture2D(styleTexture);
 
-        string uniqueName = GameManager.getInstance().comfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
         copyStyleTexture.name = uniqueName + ".png";
 
         DiffusionRequest diffusionRequest = CreateDiffusionRequest(diffusionTextureChangers);
@@ -183,7 +183,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
 
         ResetMechanism();
 
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
     public override void ResetMechanism()

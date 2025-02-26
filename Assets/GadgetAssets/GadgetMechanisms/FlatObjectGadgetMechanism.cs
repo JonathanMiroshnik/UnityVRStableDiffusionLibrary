@@ -25,7 +25,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
 
         Transform curTransform = args.interactableObject.transform;
 
-        if (!GameManager.getInstance().diffusionList.Contains(curTransform.gameObject)) return false;
+        if (!GameManager.getInstance().DiffusionList.Contains(curTransform.gameObject)) return false;
         if (curTransform.GetComponent<DiffusableObject>() == null &&
             curTransform.GetComponent<Renderer>().material.mainTexture == null) return false;
 
@@ -152,7 +152,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
         }
 
         ResetMechanism();
-        GameManager.getInstance().comfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
     }
 
 
