@@ -2587,7 +2587,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e41004245352d148a5df14ed3eec29c, type: 2}
+  - {fileID: 2100000, guid: 6c35e146cbca056029b23a3fca99c52f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6175,7 +6175,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505080063357859650, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: serverAddress
-      value: patterns-26181918
+      value: detection-27123251
       objectReference: {fileID: 0}
     - target: {fileID: 3320564364425000189, guid: 6cf941391e6bdbc4abdbed9a86feb39a, type: 3}
       propertyPath: m_Name
@@ -10695,8 +10695,7 @@ MonoBehaviour:
   MechanismExtraEvent:
     m_PersistentCalls:
       m_Calls: []
-  mechanismTextureChangers:
-  - {fileID: 2019231235}
+  MechanismTextureChangers: []
   sidesCubePrefab: {fileID: 1577133569}
   maxRayDistance: 10
 --- !u!114 &2019231235

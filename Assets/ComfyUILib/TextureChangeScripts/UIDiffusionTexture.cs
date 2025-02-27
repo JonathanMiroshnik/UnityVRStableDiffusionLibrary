@@ -123,6 +123,7 @@ public class UIDiffusionTexture : DiffusionTextureChanger
 
     public void CreatePopup(List<Texture2D> textures)
     {
+        Debug.Log("textures: " + textures.Count);
         CreatePopupTemplate(textures, imagesDisplayPrefab);
     }
     

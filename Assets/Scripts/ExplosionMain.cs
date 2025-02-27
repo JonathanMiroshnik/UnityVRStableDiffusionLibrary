@@ -77,7 +77,7 @@ public class ExplosionMain : MonoBehaviour
             // When the mode is in audio reactivity, in accordance to the AudioReact parameters at a certain time, the transitions are triggered
             case ExplosionMode.audioReactive:
                 if (audioReact == null) return;
-                if (!audioReact.wentOverThreshold) return;
+                if (!audioReact.WentOverThreshold) return;
 
                 // A basic timer for a minimal amount of time before two audio reactions
                 if (m_audioReactBreathingRoom > 0)

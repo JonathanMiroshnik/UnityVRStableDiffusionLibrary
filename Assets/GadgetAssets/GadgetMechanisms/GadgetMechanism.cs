@@ -110,5 +110,5 @@ public class GadgetMechanism : MonoBehaviour
     public virtual void DiffusableUnGrabbed(SelectExitEventArgs args) {}
 
     // TODO: this is a hyper specific function for a hyper specific mechanism
-    public virtual void GripProperty(GameObject GO, Transform curTransform) {}
+    public virtual void GripProperty(GameObject GO, Pose curPose) {}
 }

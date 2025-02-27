@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.Utilities;
@@ -21,25 +19,31 @@ public class AudioReact : MonoBehaviour
 
     // Audio channels gotten from the audio source
     [NonSerialized]
-    public float[] samples = new float[NumChannels];
+    public float[] Samples = new float[NumChannels];
 
     // Keeps track whether the audio went above the given threshold at a certain moment
     [NonSerialized]
-    public bool wentOverThreshold = false;
+    public bool WentOverThreshold = false;
 
     // Audio reaction threshold
-    public float threshold = 1.2f;
+    public float Threshold = 1.2f;
 
+    // Maximal channel
     [Range(0, NumChannels - 1)]
     public int MaximalChannel;
+
+    // Minimal channel
     [Range(0, NumChannels-1)]
     public int MinimalChannel;    
 
+    // Rolling average alpha, the higher the value the less the average is affected by the current sample
     [Range(0f, 1f)]
-    public float rollingAvgAlpha = 0.5f;
+    public float RollingAvgAlpha = 0.5f;
 
-    // TODO: continue documentation
+    // Current verage of the samples
     private float _avg = 0f;
+
+    // Rolling average of the samples
     private float _rollingAvg = 0f;
 
     private void OnValidate()
@@ -56,26 +60,24 @@ public class AudioReact : MonoBehaviour
     {
         if (audioSource == null) return;
 
-        GetSpectrumAudioSource ();
-        var avgSamples = samples.Skip(MinimalChannel).Take(MaximalChannel - MinimalChannel).ToArray();
+        // Get the spectrum data from the audio source
+        audioSource.GetSpectrumData(Samples, 0, FFTWindow.Blackman);
+
+        // Get the average of the samples
+        var avgSamples = Samples.Skip(MinimalChannel).Take(MaximalChannel - MinimalChannel).ToArray();
         _avg = avgSamples.Average();
 
-        _rollingAvg = rollingAvgAlpha * _rollingAvg + (1 - rollingAvgAlpha) * _avg;
+        // Update the rolling average
+        _rollingAvg = RollingAvgAlpha * _rollingAvg + (1 - RollingAvgAlpha) * _avg;
 
-        if (_rollingAvg > threshold * _avg)
+        // Check if the rolling average is greater than the threshold times the average
+        if (_rollingAvg > Threshold * _avg)
         {
-            wentOverThreshold = true;
+            WentOverThreshold = true;
         }
         else
         {
-            wentOverThreshold = false;
+            WentOverThreshold = false;
         }
-    }
-
-    void GetSpectrumAudioSource()
-    {
-        if (audioSource == null) return;
-
-        audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
     }
 }

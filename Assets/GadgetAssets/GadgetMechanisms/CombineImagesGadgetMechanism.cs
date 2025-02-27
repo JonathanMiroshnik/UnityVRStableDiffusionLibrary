@@ -98,9 +98,9 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
-        //newDiffusionRequest.diffusionModel = diffusionModels.mini; // produces bad results
-        newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
+        newDiffusionRequest.diffusionModel = diffusionModels.Ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.Mini; // produces bad results
+        // newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {

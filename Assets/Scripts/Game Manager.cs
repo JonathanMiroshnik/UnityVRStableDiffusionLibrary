@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager getInstance()
     {
-        if (Instance == null) Debug.Log("Awake the GameManager");
+        if (Instance == null) return null; // Debug.Log("Awake the GameManager");
         return Instance;
     }
         

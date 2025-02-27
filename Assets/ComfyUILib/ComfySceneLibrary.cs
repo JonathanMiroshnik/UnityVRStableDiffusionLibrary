@@ -634,6 +634,11 @@ public class ComfySceneLibrary : MonoBehaviour
         
         // Creates the prompt string to be send to the server
         string promptText = DiffusionJSONFactory(diffReq);
+        
+        Debug.Log("Prompt Text: " + promptText);
+        Debug.Log("Prompt Type: " + diffReq.diffusionJsonType.ToString());
+        Debug.Log("Prompt Model: " + diffReq.diffusionModel.ToString());
+
         if (promptText == null || promptText.Length <= 0) yield break;
 
         // Waits for all the relevant images for the workflow to upload to the server
@@ -676,7 +681,6 @@ public class ComfySceneLibrary : MonoBehaviour
             yield return 1;
         }                
     }
-
 
     void OnDestroy()
     {

@@ -21,6 +21,9 @@ https://github.com/comfyanonymous/ComfyUI
 
 After you have installed ComfyUI and managed to get it to generate images, we turn our attention to the needed changes you need to perform on ComfyUI. You will have to download several models and plugins to access all the features, but this step is fluid especially for developers who want to understand the code. Different models/workflows are used for different things, some of them are good for quick(but relatively low quality) generations, other produce more than just images. The code is set up in such a way that to add a new workflow/model to the mix should be quite easy.
 
+## ComfyUI Add-ons:
+- IPAdapterAdvanced: https://comfy.icu/node/IPAdapterAdvanced
+
 ## Models to Install:
 - Mini SD - for 256x256 images: https://huggingface.co/justinpinkney/miniSD/blob/main/miniSD.ckpt
 - Nano SD - for 128x128 images: https://huggingface.co/NikolayKozloff/stable-diffusion-nano-2-1-ckpt/resolve/main/stable-diffusion-nano-2-1.ckpt
@@ -29,8 +32,12 @@ After you have installed ComfyUI and managed to get it to generate images, we tu
 
 #To-Do explanations on these:
 - LCM LoRA - Allows SD 1.5 to speed up significantly by lowering the number of required steps to get a good quality generation from 20-30 to 3-5: https://civitai.com/api/download/models/223551?type=Model&format=SafeTensor
+
 - CLIP VISION: https://huggingface.co/h94/IP-Adapter/tree/main/models/image_encoder
+- CLIP VISION Model: https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors?download=true
+
 - IPADAPTER+IPADAPTER PLUS: https://huggingface.co/h94/IP-Adapter/tree/main/models
+- IPADAPTER Model: https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors?download=true
 
 ## Plugin to Install: #To-Do 
 

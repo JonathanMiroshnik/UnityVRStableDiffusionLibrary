@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
+/// <summary>
+/// Gadget Selection State, used to determine if an object is selected, pre-selected, or not selected by the Gadget.
+/// </summary>
 public enum GadgetSelection
 {
     unSelected,
@@ -15,8 +17,8 @@ public enum GadgetSelection
 }
 
 // TODO: add tooltip and header and other unity things
-
 // TODO: change name of class to GadgetScript or something
+
 public class Gadget : MonoBehaviour
 {
     // Texture display for the images the Gadget is holding onto
@@ -269,7 +271,10 @@ public class Gadget : MonoBehaviour
 
     // TODO: very different form other mechanisms because it isnt a diffusion mechanism, just a gadget one
     private bool isTracking = false;
-    private Dictionary<GameObject, Transform> beginningGripDict = new Dictionary<GameObject, Transform>();
+
+    // Tracks the position of the controllers that are currently gripping // TODO: should be a mechanism? like above TODO: note
+    private Dictionary<GameObject, Pose> beginningGripDict = new Dictionary<GameObject, Pose>();
+
     public void GripProperty(InputAction.CallbackContext context)
     {
         if (GadgetMechanisms.Count <= 0) return;
@@ -280,11 +285,12 @@ public class Gadget : MonoBehaviour
         if (context.started)
         {
             // Get the first position when the button is pressed down
-            Transform curTrans = Transform.Instantiate(curController.transform);
+            Pose curPose = new Pose(curController.transform.position, curController.transform.rotation);
+            
             //curTrans.position = curController.transform.position;
             if (!beginningGripDict.ContainsKey(curController))
             {
-                beginningGripDict.Add(curController, curTrans);
+                beginningGripDict.Add(curController, curPose);
             }
 
             isTracking = true;
@@ -293,6 +299,7 @@ public class Gadget : MonoBehaviour
         // Detect when the button is released
         if (context.canceled)
         {
+            // TODO: possible memory problem with Pose not being deleted? garbage collection?
             beginningGripDict.Remove(curController);
             isTracking = false;
         }

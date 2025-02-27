@@ -1,0 +1,517 @@
+Unity Editor version:    2022.3.16f1 (d2c21f0ef2f1)
+Branch:                  2022.3/staging
+Build type:              Release
+Batch mode:              YES
+System name:             Linux
+Distro version:          #56-Ubuntu SMP PREEMPT_DYNAMIC Sat Feb  8 00:37:57 UTC 2025
+Kernel version:          6.8.0-54-generic
+Architecture:            x86_64
+Available memory:        15709 MB
+Using pre-set license
+Pro License: YES
+
+(Unity:35942): Gtk-CRITICAL **: 16:50:03.742: gtk_window_set_default_icon: assertion 'GDK_IS_PIXBUF (icon)' failed
+
+(Unity:35942): GLib-GObject-CRITICAL **: 16:50:03.742: g_object_unref: assertion 'G_IS_OBJECT (object)' failed
+Desktop is 3840 x 1080 @ 60 Hz
+Initialize udev device monitor.
+
+COMMAND LINE ARGUMENTS:
+Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+/home/yonilaptop/Desktop/Projects/UnityVRStableDiffusionLibrary
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+35241
+Successfully changed project path to: /home/yonilaptop/Desktop/Projects/UnityVRStableDiffusionLibrary
+/home/yonilaptop/Desktop/Projects/UnityVRStableDiffusionLibrary
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [124761697420288] Host "[IP] 192.168.1.79 [Port] 0 [Flags] 2 [Guid] 215155876 [EditorId] 215155876 [Version] 1048832 [Id] LinuxEditor(16,192.168.1.79) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [124761697420288] Host "[IP] 192.168.1.79 [Port] 0 [Flags] 2 [Guid] 215155876 [EditorId] 215155876 [Version] 1048832 [Id] LinuxEditor(16,192.168.1.79) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
+Refreshing native plugins compatible for Editor in 4.94 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.16f1 (d2c21f0ef2f1)
+[Subsystems] Discovering subsystems at path /home/yonilaptop/Unity/Hub/Editor/2022.3.16f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /home/yonilaptop/Desktop/Projects/UnityVRStableDiffusionLibrary/Assets
+GLX Extensions: GLX_ARB_context_flush_control GLX_ARB_create_context GLX_ARB_create_context_no_error GLX_ARB_create_context_profile GLX_ARB_create_context_robustness GLX_ARB_fbconfig_float GLX_ARB_framebuffer_sRGB GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_buffer_age GLX_EXT_create_context_es2_profile GLX_EXT_create_context_es_profile GLX_EXT_fbconfig_packed_float GLX_EXT_framebuffer_sRGB GLX_EXT_no_config_context GLX_EXT_swap_control GLX_EXT_swap_control_tear GLX_EXT_texture_from_pixmap GLX_EXT_visual_info GLX_EXT_visual_rating GLX_INTEL_swap_event GLX_MESA_copy_sub_buffer GLX_MESA_gl_interop GLX_MESA_query_renderer GLX_MESA_swap_control GLX_OML_sync_control GLX_SGIS_multisample GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGIX_visual_select_group GLX_SGI_make_current_read GLX_SGI_swap_control GLX_SGI_video_sync 
+Renderer: Mesa Intel(R) Graphics (ADL GT2)
+Vendor:   Intel
+Version:  4.6 (Core Profile) Mesa 24.2.8-1ubuntu1~24.04.1
+GLES:     0
+ GL_3DFX_texture_compression_FXT1 GL_AMD_conservative_depth GL_AMD_depth_clamp_separate GL_AMD_draw_buffers_blend GL_AMD_gpu_shader_int64 GL_AMD_multi_draw_indirect GL_AMD_performance_monitor GL_AMD_pinned_memory GL_AMD_query_buffer_object GL_AMD_seamless_cubemap_per_texture GL_AMD_shader_stencil_export GL_AMD_shader_trinary_minmax GL_AMD_texture_texture4 GL_AMD_vertex_shader_layer GL_AMD_vertex_shader_viewport_index GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ARB_ES2_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_ES3_compatibility GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_compressed_texture_pixel_storage GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_conservative_depth GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB
+_depth_clamp GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_elements_base_vertex GL_ARB_draw_indirect GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragment_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragment_shader GL_ARB_fragment_shader_interlock GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_po
+int_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program_interface_query GL_ARB_provoking_vertex GL_ARB_query_buffer_object GL_ARB_robust_buffer_access_behavior GL_ARB_robustness GL_ARB_sample_shading GL_ARB_sampler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_atomic_counter_ops GL_ARB_shader_atomic_counters GL_ARB_shader_ballot GL_ARB_shader_bit_encoding GL_ARB_shader_clock GL_ARB_shader_draw_parameters GL_ARB_shader_group_vote GL_ARB_shader_image_load_store GL_ARB_shader_image_size GL_ARB_shader_objects GL_ARB_shader_precision GL_ARB_shader_stencil_export GL_ARB_shader_storage_buffer_object GL_ARB_shader_subroutine GL_ARB_shader_texture_image_samples GL_ARB_shader_texture_lod GL_ARB_shader_viewport_layer_array GL_ARB_shading_language_420pack GL_ARB_shading_language_include GL_ARB_shading_language_packing GL_ARB_spirv_extensions GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_tessellation_shader GL_ARB_texture_barrier G
+L_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map_array GL_ARB_texture_filter_anisotropic GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2
+_10_10_10_rev GL_ARB_viewport_array GL_ATI_blend_equation_separate GL_ATI_texture_float GL_EXT_EGL_image_storage GL_EXT_EGL_image_storage_compression GL_EXT_EGL_sync GL_EXT_abgr GL_EXT_blend_equation_separate GL_EXT_debug_label GL_EXT_demote_to_helper_invocation GL_EXT_depth_bounds_test GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_memory_object GL_EXT_memory_object_fd GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_pixel_buffer_object GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_semaphore GL_EXT_semaphore_fd GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shader_integer_mix GL_EXT_shader_samples_identical GL_EXT_texture_array GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_sRGB GL_EXT
+_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_snorm GL_EXT_texture_storage GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_IBM_multimode_draw_arrays GL_INTEL_blackhole_render GL_INTEL_conservative_rasterization GL_INTEL_performance_query GL_INTEL_shader_atomic_float_minmax GL_INTEL_shader_integer_functions2 GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_context_flush_control GL_KHR_debug GL_KHR_no_error GL_KHR_parallel_shader_compile GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_MESA_pack_invert GL_MESA_shader_integer_functions GL_MESA_texture_const_bandwidth GL_MESA_texture_signed_rgba GL_NV_alpha_to_coverage_dither_control GL_NV_compute_shader_derivatives GL_NV_conditional_render GL_NV_copy_image GL_NV_depth_clamp GL_N
+V_fragment_shader_interlock GL_NV_packed_depth_stencil GL_NV_texture_barrier GL_OES_EGL_image GL_S3_s3tc
+OPENGL LOG: Creating OpenGL 4.6 graphics device ; Context level  <OpenGL 4.5> ; Context handle 1475255088
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = '/home/yonilaptop/Unity/Hub/Editor/2022.3.16f1/Editor/Data/Managed'
+Mono path[1] = '/home/yonilaptop/Unity/Hub/Editor/2022.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-linux'
+Mono config path = '/home/yonilaptop/Unity/Hub/Editor/2022.3.16f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56942
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /home/yonilaptop/Unity/Hub/Editor/2022.3.16f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.003465 seconds.
+- Loaded All Assemblies, in  0.220 seconds
+Native extension for LinuxStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.223 seconds
+Domain Reload Profiling: 444ms
+	BeginReloadAssembly (58ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (41ms)
+	LoadAllAssembliesAndSetupDomain (94ms)
+		LoadAssemblies (57ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (93ms)
+			TypeCache.Refresh (92ms)
+				TypeCache.ScanAssembly (83ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (223ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (179ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (29ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (105ms)
+			ProcessInitializeOnLoadMethodAttributes (36ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.433 seconds
+Refreshing native plugins compatible for Editor in 3.35 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  0.594 seconds
+Domain Reload Profiling: 1026ms
+	BeginReloadAssembly (92ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (280ms)
+		LoadAssemblies (183ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (141ms)
+			TypeCache.Refresh (113ms)
+				TypeCache.ScanAssembly (99ms)
+			ScanForSourceGeneratedMonoScriptInfo (19ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (594ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (461ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (30ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (58ms)
+			ProcessInitializeOnLoadAttributes (298ms)
+			ProcessInitializeOnLoadMethodAttributes (69ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 3.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5264 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 111 unused Assets / (427.2 KB). Loaded Objects now: 5731.
+Memory consumption went from 230.3 MB to 229.9 MB.
+Total: 7.282552 ms (FindLiveObjects: 0.482163 ms CreateObjectMapping: 0.269498 ms MarkObjects: 5.735035 ms  DeleteObjects: 0.794336 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/DiffusableObject.cs: b4e3201b519be860f3ee0e2530a54764 -> 2375193f0e31815f7d2f2f5528bd250d
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: eb1161be16476511f744ef86aa6a2b58 -> 
+  custom:scripting/monoscript/fileName/CubeGadgetMechanism.cs: c13ddd21d79ea0aadbdff1cda3a07349 -> d22065de596d73d39b628b99e864d186
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/FlatObjectTextureChanger.cs: 00e438937a005701b1832264f94601a8 -> 43ea3a5dcdc70c8d99a5fb070749d239
+  custom:scripting/monoscript/fileName/OutpaintingTile.cs: b5ca399c5ccd0c03ed4bfba67b34d5d1 -> 1fe732c3a6c3344fc5d4abd3b2e439ff
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/PhysicalCamera.cs: d2018c818d212d79c37dbaf54d1d2c14 -> 2c115cf4aa3ec51d2a913359933d92d7
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/AIGadgetAssistant.cs: 05cd06cd3df7b678d5d2007b985312cc -> e744c59f78ff8699278ed3292ad1f9f1
+  custom:scripting/monoscript/fileName/PaintbrushMechanism.cs: f6670781a5d3810764c2855868a62925 -> 067791005180f09d6d34181ae75ab284
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:scripting/monoscript/fileName/OutpaintingScreenScr.cs: 642f3313d7b4caa8cb3e21bf146ba693 -> bd2bc44bc0ff596bd97367a83127dba6
+  custom:scripting/monoscript/fileName/MeshSubDivider.cs: e6ea53a47933776611157131271b74a3 -> 94d7957dd6009e3facbdd7e441797fbd
+  custom:scripting/monoscript/fileName/MultiTextureChanger.cs: e0c7de647cc5248238ec15ae16fc3042 -> 06a9dc66cc2dcbdd30094c4859a25352
+  custom:scripting/monoscript/fileName/MeshDeformer.cs: 5c57727dfc499b2ee4ebe0538ce5fe84 -> 88923103339fe01b286b35b6e67fb3d3
+  custom:scripting/monoscript/fileName/SculptingMechanism.cs: b24fc1d95a1e99382336b45f6cacb0a5 -> bddf36561c7c0441c495c1064d1f4215
+  custom:scripting/monoscript/fileName/ObjectFlightToTile.cs: 20369894c0cf18c014913f88a94d21c5 -> 022b3caf5b4e9e6312f136101964a7fb
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/Paintbrush.cs: e83d15f786c0904d8af02bc16c052bb3 -> d1f59a6f98be9e8404a1bfd32663b212
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CameraGadgetMechanism.cs: 0f3d8eb6dbc51af684d5c9583078a7c2 -> 922f69f896e0240bfdd18797a78607ab
+  custom:scripting/monoscript/fileName/PaintableCanvas.cs: cb2025e627aa4869591a6cc6843ce754 -> 60f10b900676a6db85d8361e1a7a90e7
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/OutpaintGadgetMechanism.cs: c2daa6d291b97deb7d4d5f8a14fa9cf8 -> 3af82f669936c69675e2f2cff20abb1d
+========================================================================
+Received Import Request.
+  Time since last request: 19160.723516 seconds.
+  path: Assets/Materials/ComfyUI_03242_.mat
+  artifactKey: Guid(3a93778e7c233ca47a36b8bdd69e98bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/ComfyUI_03242_.mat using Guid(3a93778e7c233ca47a36b8bdd69e98bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3c0bb68fefbf2615e6abe9f94dfbe48') in 0.219151 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 176.746885 seconds.
+  path: Assets/MaterialTransitionTestAssets/TextureBlendMat.mat
+  artifactKey: Guid(9c142a39d0630d379a84a1790946aeeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MaterialTransitionTestAssets/TextureBlendMat.mat using Guid(9c142a39d0630d379a84a1790946aeeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f5b92089193fe701a7b888fff6f0eff') in 0.022498 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 32.928010 seconds.
+  path: Assets/GadgetAssets/Gadget Font.ttf
+  artifactKey: Guid(3feb5cedc2bf0c149afca67bb13073e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/Gadget Font.ttf using Guid(3feb5cedc2bf0c149afca67bb13073e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2caad4d146fecb7dd8bb7f7c026ccbc0') in 0.040571 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.001675 seconds.
+  path: Assets/GadgetAssets/Hand Menu Affordance.asset
+  artifactKey: Guid(b892ac13e799fb4418a6ee2be70677dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/Hand Menu Affordance.asset using Guid(b892ac13e799fb4418a6ee2be70677dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '284a5503e10fc19f4bc8be90b480d93b') in 0.003990 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GadgetAssets/Panel.prefab
+  artifactKey: Guid(8ee60319c427de74b987c210b9babef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/Panel.prefab using Guid(8ee60319c427de74b987c210b9babef9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5de0196a5af39e38784c45f40135b43a') in 0.010505 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/GadgetAssets/Gadget Font SDF.asset
+  artifactKey: Guid(5c819c5ecf641504697b09ec31695540) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/Gadget Font SDF.asset using Guid(5c819c5ecf641504697b09ec31695540) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab1d9cdfe3007a82ec2a359f35b16eb6') in 0.024691 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 7.175569 seconds.
+  path: Assets/ComfyUILib/TextureChangeScripts/MaterialTransitionTestAssets/TextureBlendMat.mat
+  artifactKey: Guid(1ce19873823a74d4a89a69cbd42566c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ComfyUILib/TextureChangeScripts/MaterialTransitionTestAssets/TextureBlendMat.mat using Guid(1ce19873823a74d4a89a69cbd42566c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c79240e6c857304bd13d4b5e8ca667e4') in 0.013706 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 83.523581 seconds.
+  path: Assets/newStuffAfter/FlatTo3DParent.prefab
+  artifactKey: Guid(f60f0819e682f6842a2656d2069622a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/FlatTo3DParent.prefab using Guid(f60f0819e682f6842a2656d2069622a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ec849da156b72dd1b76040a706813ce') in 0.030533 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 7.584544 seconds.
+  path: Assets/newStuffAfter/Sandbox
+  artifactKey: Guid(9bb910a98b4914c4ca0d45d606e48af0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/Sandbox using Guid(9bb910a98b4914c4ca0d45d606e48af0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f0855962fc37e86f20fa3630cb4d41d') in 0.000434 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.665842 seconds.
+  path: Assets/newStuffAfter/Sandbox/LightingData.asset
+  artifactKey: Guid(0fdc13aa60510d24b947d63b13245d2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/Sandbox/LightingData.asset using Guid(0fdc13aa60510d24b947d63b13245d2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9513c99fea9c17564aed921541bf83e2') in 0.001364 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 12.751965 seconds.
+  path: Assets/SceneMaterials/GlassScreenMat.mat
+  artifactKey: Guid(5eb173112a9353e4788c4c2382a5aabc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SceneMaterials/GlassScreenMat.mat using Guid(5eb173112a9353e4788c4c2382a5aabc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '862ad633c20a7f9ae5da71cd9bfeed3f') in 0.012309 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000122 seconds.
+  path: Assets/SceneMaterials/ReflectionProbe-0.exr
+  artifactKey: Guid(a28308a7b3c8d234fb3c248de78a0bc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SceneMaterials/ReflectionProbe-0.exr using Guid(a28308a7b3c8d234fb3c248de78a0bc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4cf5d10f37c5f755fabe809c9ef3fb5') in 0.012314 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 6.228617 seconds.
+  path: Assets/newStuffAfter/BlendTransition.shader
+  artifactKey: Guid(287eabfa643996f948e3670e4f9cbd49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/BlendTransition.shader using Guid(287eabfa643996f948e3670e4f9cbd49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '955fa2917bbfae07bc392c7c0cad4a09') in 0.001125 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 3.506827 seconds.
+  path: Assets/newStuffAfter/SidesCubeProperties.cs
+  artifactKey: Guid(52c3eb7ffe60237fa98ba168ed6663c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/SidesCubeProperties.cs using Guid(52c3eb7ffe60237fa98ba168ed6663c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '809cfa7c445b73a4933f1c9b23eb19cd') in 0.000313 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 13.825541 seconds.
+  path: Assets/Scripts
+  artifactKey: Guid(faadac4a58da1034fb2f79c1e3923d14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts using Guid(faadac4a58da1034fb2f79c1e3923d14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '204d056754d5bad7ecb87dc860899729') in 0.000290 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 41.414579 seconds.
+  path: Assets/GadgetAssets/GadgetMechanisms/Cube
+  artifactKey: Guid(a7584455f72c56012bea5b4117033eb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/GadgetMechanisms/Cube using Guid(a7584455f72c56012bea5b4117033eb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27ea65a1dab491692fa033e312f491eb') in 0.000377 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.552630 seconds.
+  path: Assets/newStuffAfter/EmailSender.cs
+  artifactKey: Guid(72388b5e4de9695f796ed7806e517784) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/EmailSender.cs using Guid(72388b5e4de9695f796ed7806e517784) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f880a61cb404768365118606dd68f17e') in 0.000318 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 34.383018 seconds.
+  path: Assets/ImportedAssets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Shaders/BlendModesOverlay.shader
+  artifactKey: Guid(8c81db0e527d24acc9bcec04e87781bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/100 Best Effect Pack/Standard Assets/Effects/ImageEffects/Shaders/BlendModesOverlay.shader using Guid(8c81db0e527d24acc9bcec04e87781bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a30fafcd90440e55a8546f903d2ad7e1') in 0.000533 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.017199 seconds.
+  path: Assets/SceneMaterials/BlendTransition.shader
+  artifactKey: Guid(c023ab010e2050c43b552053fb93ca0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SceneMaterials/BlendTransition.shader using Guid(c023ab010e2050c43b552053fb93ca0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc68390b78cce9502606c07b438919b6') in 0.000723 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 11.637126 seconds.
+  path: Assets/newStuffAfter/ControllerGadgetConnector.cs
+  artifactKey: Guid(a1aa52ceb77e50f318872de66c88c042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/ControllerGadgetConnector.cs using Guid(a1aa52ceb77e50f318872de66c88c042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c06016c8b5d6eeb00f01bf653b8c20f7') in 0.000444 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 21.841806 seconds.
+  path: Assets/Scenes/MainScene.scenetemplate
+  artifactKey: Guid(0b98e32d658a543e4b1bd57d5f6a1079) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MainScene.scenetemplate using Guid(0b98e32d658a543e4b1bd57d5f6a1079) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Refreshing native plugins compatible for Editor in 3.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+ -> (artifact id: 'aa8d08da5fe0412688f4a35f2dff6781') in 0.188222 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1680
+========================================================================
+Received Import Request.
+  Time since last request: 20.312594 seconds.
+  path: Assets/newStuffAfter/FlatObjectTextureChanger.cs
+  artifactKey: Guid(47607f960a556d823b7487fcf53a05f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/FlatObjectTextureChanger.cs using Guid(47607f960a556d823b7487fcf53a05f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5203eb8d433375941fec2ef21886034a') in 0.000496 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.425467 seconds.
+  path: Assets/newStuffAfter/FollowGameObject.cs
+  artifactKey: Guid(766c54eea55f4a472a76ae97b597a13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/FollowGameObject.cs using Guid(766c54eea55f4a472a76ae97b597a13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c43abcf269889af6f6a037dc2040f41f') in 0.000331 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 12.762881 seconds.
+  path: Assets/newStuffAfter/MeshDeformer.cs
+  artifactKey: Guid(20d1f4e0af26570dab96329fdc4f353c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/MeshDeformer.cs using Guid(20d1f4e0af26570dab96329fdc4f353c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4665e4d635d0bd9063c1ed6b0a5d1f4d') in 0.000309 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.462927 seconds.
+  path: Assets/newStuffAfter/MeshSubDivider.cs
+  artifactKey: Guid(8a64285b0508b9ec08a431c23d62ab07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/MeshSubDivider.cs using Guid(8a64285b0508b9ec08a431c23d62ab07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4141de8d27927ecdc433e5e9ffa0a7b6') in 0.000311 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.361191 seconds.
+  path: Assets/newStuffAfter/MultiTextureChanger.cs
+  artifactKey: Guid(a699aa7dfca1125c1ab04d3763739f2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/MultiTextureChanger.cs using Guid(a699aa7dfca1125c1ab04d3763739f2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ad42d3c522a07866bae93f2497a85e9') in 0.000342 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.396914 seconds.
+  path: Assets/newStuffAfter/PaintableCanvas.cs
+  artifactKey: Guid(ac58b11544a112c92a78f7f4cb944245) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/PaintableCanvas.cs using Guid(ac58b11544a112c92a78f7f4cb944245) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eafab3551506339133752dde81668c1d') in 0.000306 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.684803 seconds.
+  path: Assets/newStuffAfter/Paintbrush.cs
+  artifactKey: Guid(723ac99da617bfd40afa80ef47077188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/Paintbrush.cs using Guid(723ac99da617bfd40afa80ef47077188) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87b1b27b35f2497d90ee83e9fae05fd1') in 0.000368 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.455148 seconds.
+  path: Assets/newStuffAfter/PaintbrushMechanism.cs
+  artifactKey: Guid(acf7ea4b41838422296e68996c1b12aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/PaintbrushMechanism.cs using Guid(acf7ea4b41838422296e68996c1b12aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e1c2abcaec9f604e7082670e864b5cc') in 0.000303 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.025763 seconds.
+  path: Assets/newStuffAfter/PlaySounds.cs
+  artifactKey: Guid(76bd6bd6d56cd5e02b50740adff3f470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/PlaySounds.cs using Guid(76bd6bd6d56cd5e02b50740adff3f470) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3119be6c9003eaee934e44e88de08411') in 0.000373 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 7.085355 seconds.
+  path: Assets/newStuffAfter/SculptingMechanism.cs
+  artifactKey: Guid(78f3e2bc59008804aa9a614cf10e6dd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/SculptingMechanism.cs using Guid(78f3e2bc59008804aa9a614cf10e6dd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c27e540e204947adc024d6660dafc00f') in 0.000369 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 78.941862 seconds.
+  path: Assets/newStuffAfter/GrabManipulatableInteractable.cs
+  artifactKey: Guid(1a9eca30ba2c1f050ae6a0a7b101aca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/newStuffAfter/GrabManipulatableInteractable.cs using Guid(1a9eca30ba2c1f050ae6a0a7b101aca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8401bebb8566405faf84964786902ce4') in 0.000317 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 14.924343 seconds.
+  path: Assets/ComfyUILib/PrefabConnection/DiffusableGrabbable.prefab
+  artifactKey: Guid(a1fe55df02e267147a521ad38dee8e24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ComfyUILib/PrefabConnection/DiffusableGrabbable.prefab using Guid(a1fe55df02e267147a521ad38dee8e24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '976e6aafd5cba7fc206c702256693bcb') in 0.009379 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 3.383036 seconds.
+  path: Assets/GadgetAssets/GadgetMechanisms/GrabManipulatableInteractable.cs
+  artifactKey: Guid(9c28120bc8d3d8844aabc23ccfdcea4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/GadgetMechanisms/GrabManipulatableInteractable.cs using Guid(9c28120bc8d3d8844aabc23ccfdcea4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdfef0b9529ab199b9db6512ad5f3dd5') in 0.000312 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 9.299874 seconds.
+  path: Assets/Models/glass/glass window.fbx
+  artifactKey: Guid(4010514853e0d9649bb0ac8481537f3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/glass/glass window.fbx using Guid(4010514853e0d9649bb0ac8481537f3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6360d2d3065fb4262a3c926be379a12') in 0.244147 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 23
+========================================================================
+Received Import Request.
+  Time since last request: 2.031430 seconds.
+  path: Assets/GadgetAssets/PlaySounds.cs
+  artifactKey: Guid(80b2e208a9d644947a35ecc31b9fb3ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GadgetAssets/PlaySounds.cs using Guid(80b2e208a9d644947a35ecc31b9fb3ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e08166098134b0f34d52e19400e93a7d') in 0.000319 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0

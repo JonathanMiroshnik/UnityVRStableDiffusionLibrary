@@ -343,7 +343,7 @@ public class ComfyOrganizer : MonoBehaviour
         {
             DiffuseDictionary[requestNum].textures.Add(texture);
             
-            // Not efficient to hold a large List like this, but used for explosion in the end of the Game
+            // TODO: Not efficient to hold a large List like this, but used for explosion in the end of the Game
             allTextures.Add(texture);
 
             EndSceneTextureNum--;
