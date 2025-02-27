@@ -515,3 +515,479 @@ Received Import Request.
 Start importing Assets/GadgetAssets/PlaySounds.cs using Guid(80b2e208a9d644947a35ecc31b9fb3ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e08166098134b0f34d52e19400e93a7d') in 0.000319 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 428.228034 seconds.
+  path: Assets/Scenes/TileDiffusionRoom
+  artifactKey: Guid(2b9d388c470dcc3439cd22b77473b545) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TileDiffusionRoom using Guid(2b9d388c470dcc3439cd22b77473b545) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a0a056a838d377f0b9cf86a66832e4b') in 0.000494 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 7.851539 seconds.
+  path: Assets/Scenes/StartSceneFol
+  artifactKey: Guid(0e1c8b76bd1cc074fa8e163706d0cbd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/StartSceneFol using Guid(0e1c8b76bd1cc074fa8e163706d0cbd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '473760ced2f516705d5e2b5c22d66d16') in 0.000355 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.145766 seconds.
+  path: Assets/Scenes/StartSceneFol/StartSceneScripts
+  artifactKey: Guid(18a7e977f6849084383a54efbd139e2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/StartSceneFol/StartSceneScripts using Guid(18a7e977f6849084383a54efbd139e2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80a3306fc245f788612a91636e0ec175') in 0.000329 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.808295 seconds.
+  path: Assets/Scenes/MainScene.unity
+  artifactKey: Guid(a2ba44019e2a540deb4507337c25a844) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/MainScene.unity using Guid(a2ba44019e2a540deb4507337c25a844) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f952f72e9cd30812a2cf1a7861f69689') in 0.000332 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 4.164068 seconds.
+  path: Assets/Scenes/Empty Scene.unity
+  artifactKey: Guid(323e72e8e842e984ba5490f160f7afba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Empty Scene.unity using Guid(323e72e8e842e984ba5490f160f7afba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6834fddd08cf245e9ea917f7c15e5c91') in 0.000470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 31.198266 seconds.
+  path: Assets/QuickOutline/Resources/Materials/OutlineFill.mat
+  artifactKey: Guid(311313efa011949e98b6761d652ad13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Resources/Materials/OutlineFill.mat using Guid(311313efa011949e98b6761d652ad13c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41301192b42419e8cd280b6160ba3ec8') in 0.020788 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1.749833 seconds.
+  path: Assets/QuickOutline
+  artifactKey: Guid(06b105d030b9d8d4686781c0cca5bc74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline using Guid(06b105d030b9d8d4686781c0cca5bc74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d9cd23ee6693e23e035f250527f973c') in 0.000361 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 4.587076 seconds.
+  path: Assets/Scripts/on_hover_outline.cs
+  artifactKey: Guid(82e6f3d9216ad2240becbf6ee9b487b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/on_hover_outline.cs using Guid(82e6f3d9216ad2240becbf6ee9b487b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '602368fdde392e72cb7d38ae802d499c') in 0.000321 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.945196 seconds.
+  path: Assets/QuickOutline/Resources/Shaders/OutlineMask.shader
+  artifactKey: Guid(341b058cd7dee4f5cba5cc59a513619e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Resources/Shaders/OutlineMask.shader using Guid(341b058cd7dee4f5cba5cc59a513619e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee10cbe04a63a0e010ba4c7662dada3e') in 0.000881 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.350172 seconds.
+  path: Assets/QuickOutline/Samples/Scenes/QuickOutline.unity
+  artifactKey: Guid(f23712c79adc910408e872b127e825cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Samples/Scenes/QuickOutline.unity using Guid(f23712c79adc910408e872b127e825cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86df2cda54e981eaa745faba21b2208b') in 0.000308 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.813844 seconds.
+  path: Packages/com.unity.timeline/Editor/StyleSheets/Images/Shared/TimelineOutline.png
+  artifactKey: Guid(829511f8e35bf3a40be037a1050f801c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.timeline/Editor/StyleSheets/Images/Shared/TimelineOutline.png using Guid(829511f8e35bf3a40be037a1050f801c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '300420a9849de8962cff87e8d9c3bf88') in 0.012858 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 44.744826 seconds.
+  path: Assets/QuickOutline/Samples
+  artifactKey: Guid(932f8193e5396db4babac4756c406dee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Samples using Guid(932f8193e5396db4babac4756c406dee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22bcd9eb7b5cc46d0077f4f22bd0b2c9') in 0.000354 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.650120 seconds.
+  path: Assets/QuickOutline/Samples/Materials
+  artifactKey: Guid(2b0040b0ed7fbd64693e9195d13d25f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Samples/Materials using Guid(2b0040b0ed7fbd64693e9195d13d25f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96e519f5a109340fa7def9fb041f3c45') in 0.028351 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.019046 seconds.
+  path: Assets/QuickOutline/Samples/Materials/Plane.mat
+  artifactKey: Guid(f58cf65ea995c4b45be95713bdea8134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Samples/Materials/Plane.mat using Guid(f58cf65ea995c4b45be95713bdea8134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee20b77d3817c2fe58921f373c9110bd') in 0.163523 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 1.130104 seconds.
+  path: Assets/QuickOutline/Samples/Scenes
+  artifactKey: Guid(3916faa55c6a94248959031ee0ad499f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/QuickOutline/Samples/Scenes using Guid(3916faa55c6a94248959031ee0ad499f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58d55546b4522b7aad08dbb1f94b82bf') in 0.000361 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.390 seconds
+Refreshing native plugins compatible for Editor in 3.70 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  0.939 seconds
+Domain Reload Profiling: 1329ms
+	BeginReloadAssembly (126ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (44ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (215ms)
+		LoadAssemblies (214ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (46ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (2ms)
+			ScanForSourceGeneratedMonoScriptInfo (27ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (940ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (442ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (48ms)
+			ProcessInitializeOnLoadAttributes (292ms)
+			ProcessInitializeOnLoadMethodAttributes (64ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5010 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 77 unused Assets / (423.7 KB). Loaded Objects now: 5834.
+Memory consumption went from 188.3 MB to 187.9 MB.
+Total: 7.923657 ms (FindLiveObjects: 0.276607 ms CreateObjectMapping: 0.162786 ms MarkObjects: 5.552706 ms  DeleteObjects: 1.921944 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/DiffusableObject.cs: b4e3201b519be860f3ee0e2530a54764 -> 2375193f0e31815f7d2f2f5528bd250d
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: eb1161be16476511f744ef86aa6a2b58 -> 
+  custom:scripting/monoscript/fileName/CubeGadgetMechanism.cs: c13ddd21d79ea0aadbdff1cda3a07349 -> d22065de596d73d39b628b99e864d186
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/FlatObjectTextureChanger.cs: 00e438937a005701b1832264f94601a8 -> 43ea3a5dcdc70c8d99a5fb070749d239
+  custom:scripting/monoscript/fileName/OutpaintingTile.cs: b5ca399c5ccd0c03ed4bfba67b34d5d1 -> 1fe732c3a6c3344fc5d4abd3b2e439ff
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/PhysicalCamera.cs: d2018c818d212d79c37dbaf54d1d2c14 -> 2c115cf4aa3ec51d2a913359933d92d7
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/AIGadgetAssistant.cs: 05cd06cd3df7b678d5d2007b985312cc -> e744c59f78ff8699278ed3292ad1f9f1
+  custom:scripting/monoscript/fileName/PaintbrushMechanism.cs: f6670781a5d3810764c2855868a62925 -> 067791005180f09d6d34181ae75ab284
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:scripting/monoscript/fileName/OutpaintingScreenScr.cs: 642f3313d7b4caa8cb3e21bf146ba693 -> bd2bc44bc0ff596bd97367a83127dba6
+  custom:scripting/monoscript/fileName/MeshSubDivider.cs: e6ea53a47933776611157131271b74a3 -> 94d7957dd6009e3facbdd7e441797fbd
+  custom:scripting/monoscript/fileName/MultiTextureChanger.cs: e0c7de647cc5248238ec15ae16fc3042 -> 06a9dc66cc2dcbdd30094c4859a25352
+  custom:scripting/monoscript/fileName/MeshDeformer.cs: 5c57727dfc499b2ee4ebe0538ce5fe84 -> 88923103339fe01b286b35b6e67fb3d3
+  custom:scripting/monoscript/fileName/SculptingMechanism.cs: b24fc1d95a1e99382336b45f6cacb0a5 -> bddf36561c7c0441c495c1064d1f4215
+  custom:scripting/monoscript/fileName/ObjectFlightToTile.cs: 20369894c0cf18c014913f88a94d21c5 -> 022b3caf5b4e9e6312f136101964a7fb
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/Paintbrush.cs: e83d15f786c0904d8af02bc16c052bb3 -> d1f59a6f98be9e8404a1bfd32663b212
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CameraGadgetMechanism.cs: 0f3d8eb6dbc51af684d5c9583078a7c2 -> 922f69f896e0240bfdd18797a78607ab
+  custom:scripting/monoscript/fileName/PaintableCanvas.cs: cb2025e627aa4869591a6cc6843ce754 -> 60f10b900676a6db85d8361e1a7a90e7
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/OutpaintGadgetMechanism.cs: c2daa6d291b97deb7d4d5f8a14fa9cf8 -> 3af82f669936c69675e2f2cff20abb1d
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.321 seconds
+Refreshing native plugins compatible for Editor in 3.60 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  0.685 seconds
+Domain Reload Profiling: 1004ms
+	BeginReloadAssembly (111ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (34ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (161ms)
+		LoadAssemblies (188ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (16ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (685ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (429ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (34ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (49ms)
+			ProcessInitializeOnLoadAttributes (281ms)
+			ProcessInitializeOnLoadMethodAttributes (60ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5009 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 76 unused Assets / (423.2 KB). Loaded Objects now: 5839.
+Memory consumption went from 189.9 MB to 189.5 MB.
+Total: 4.068468 ms (FindLiveObjects: 0.310209 ms CreateObjectMapping: 0.166888 ms MarkObjects: 3.355363 ms  DeleteObjects: 0.233200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/DiffusableObject.cs: b4e3201b519be860f3ee0e2530a54764 -> 2375193f0e31815f7d2f2f5528bd250d
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: eb1161be16476511f744ef86aa6a2b58 -> 
+  custom:scripting/monoscript/fileName/CubeGadgetMechanism.cs: c13ddd21d79ea0aadbdff1cda3a07349 -> d22065de596d73d39b628b99e864d186
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/FlatObjectTextureChanger.cs: 00e438937a005701b1832264f94601a8 -> 43ea3a5dcdc70c8d99a5fb070749d239
+  custom:scripting/monoscript/fileName/OutpaintingTile.cs: b5ca399c5ccd0c03ed4bfba67b34d5d1 -> 1fe732c3a6c3344fc5d4abd3b2e439ff
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/PhysicalCamera.cs: d2018c818d212d79c37dbaf54d1d2c14 -> 2c115cf4aa3ec51d2a913359933d92d7
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/AIGadgetAssistant.cs: 05cd06cd3df7b678d5d2007b985312cc -> e744c59f78ff8699278ed3292ad1f9f1
+  custom:scripting/monoscript/fileName/PaintbrushMechanism.cs: f6670781a5d3810764c2855868a62925 -> 067791005180f09d6d34181ae75ab284
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:scripting/monoscript/fileName/OutpaintingScreenScr.cs: 642f3313d7b4caa8cb3e21bf146ba693 -> bd2bc44bc0ff596bd97367a83127dba6
+  custom:scripting/monoscript/fileName/MeshSubDivider.cs: e6ea53a47933776611157131271b74a3 -> 94d7957dd6009e3facbdd7e441797fbd
+  custom:scripting/monoscript/fileName/MultiTextureChanger.cs: e0c7de647cc5248238ec15ae16fc3042 -> 06a9dc66cc2dcbdd30094c4859a25352
+  custom:scripting/monoscript/fileName/MeshDeformer.cs: 5c57727dfc499b2ee4ebe0538ce5fe84 -> 88923103339fe01b286b35b6e67fb3d3
+  custom:scripting/monoscript/fileName/SculptingMechanism.cs: b24fc1d95a1e99382336b45f6cacb0a5 -> bddf36561c7c0441c495c1064d1f4215
+  custom:scripting/monoscript/fileName/ObjectFlightToTile.cs: 20369894c0cf18c014913f88a94d21c5 -> 022b3caf5b4e9e6312f136101964a7fb
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/Paintbrush.cs: e83d15f786c0904d8af02bc16c052bb3 -> d1f59a6f98be9e8404a1bfd32663b212
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CameraGadgetMechanism.cs: 0f3d8eb6dbc51af684d5c9583078a7c2 -> 922f69f896e0240bfdd18797a78607ab
+  custom:scripting/monoscript/fileName/PaintableCanvas.cs: cb2025e627aa4869591a6cc6843ce754 -> 60f10b900676a6db85d8361e1a7a90e7
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/OutpaintGadgetMechanism.cs: c2daa6d291b97deb7d4d5f8a14fa9cf8 -> 3af82f669936c69675e2f2cff20abb1d
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.319 seconds
+Refreshing native plugins compatible for Editor in 3.74 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  0.909 seconds
+Domain Reload Profiling: 1228ms
+	BeginReloadAssembly (114ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (35ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (155ms)
+		LoadAssemblies (185ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (16ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (909ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (472ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (36ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (53ms)
+			ProcessInitializeOnLoadAttributes (318ms)
+			ProcessInitializeOnLoadMethodAttributes (60ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5009 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 76 unused Assets / (423.2 KB). Loaded Objects now: 5844.
+Memory consumption went from 191.9 MB to 191.4 MB.
+Total: 6.241243 ms (FindLiveObjects: 0.441537 ms CreateObjectMapping: 0.176221 ms MarkObjects: 5.351298 ms  DeleteObjects: 0.270826 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/DiffusableObject.cs: b4e3201b519be860f3ee0e2530a54764 -> 2375193f0e31815f7d2f2f5528bd250d
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: eb1161be16476511f744ef86aa6a2b58 -> 
+  custom:scripting/monoscript/fileName/CubeGadgetMechanism.cs: c13ddd21d79ea0aadbdff1cda3a07349 -> d22065de596d73d39b628b99e864d186
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/FlatObjectTextureChanger.cs: 00e438937a005701b1832264f94601a8 -> 43ea3a5dcdc70c8d99a5fb070749d239
+  custom:scripting/monoscript/fileName/OutpaintingTile.cs: b5ca399c5ccd0c03ed4bfba67b34d5d1 -> 1fe732c3a6c3344fc5d4abd3b2e439ff
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/PhysicalCamera.cs: d2018c818d212d79c37dbaf54d1d2c14 -> 2c115cf4aa3ec51d2a913359933d92d7
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/AIGadgetAssistant.cs: 05cd06cd3df7b678d5d2007b985312cc -> e744c59f78ff8699278ed3292ad1f9f1
+  custom:scripting/monoscript/fileName/PaintbrushMechanism.cs: f6670781a5d3810764c2855868a62925 -> 067791005180f09d6d34181ae75ab284
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:scripting/monoscript/fileName/OutpaintingScreenScr.cs: 642f3313d7b4caa8cb3e21bf146ba693 -> bd2bc44bc0ff596bd97367a83127dba6
+  custom:scripting/monoscript/fileName/MeshSubDivider.cs: e6ea53a47933776611157131271b74a3 -> 94d7957dd6009e3facbdd7e441797fbd
+  custom:scripting/monoscript/fileName/MultiTextureChanger.cs: e0c7de647cc5248238ec15ae16fc3042 -> 06a9dc66cc2dcbdd30094c4859a25352
+  custom:scripting/monoscript/fileName/MeshDeformer.cs: 5c57727dfc499b2ee4ebe0538ce5fe84 -> 88923103339fe01b286b35b6e67fb3d3
+  custom:scripting/monoscript/fileName/SculptingMechanism.cs: b24fc1d95a1e99382336b45f6cacb0a5 -> bddf36561c7c0441c495c1064d1f4215
+  custom:scripting/monoscript/fileName/ObjectFlightToTile.cs: 20369894c0cf18c014913f88a94d21c5 -> 022b3caf5b4e9e6312f136101964a7fb
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/Paintbrush.cs: e83d15f786c0904d8af02bc16c052bb3 -> d1f59a6f98be9e8404a1bfd32663b212
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CameraGadgetMechanism.cs: 0f3d8eb6dbc51af684d5c9583078a7c2 -> 922f69f896e0240bfdd18797a78607ab
+  custom:scripting/monoscript/fileName/PaintableCanvas.cs: cb2025e627aa4869591a6cc6843ce754 -> 60f10b900676a6db85d8361e1a7a90e7
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/OutpaintGadgetMechanism.cs: c2daa6d291b97deb7d4d5f8a14fa9cf8 -> 3af82f669936c69675e2f2cff20abb1d
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.397 seconds
+Refreshing native plugins compatible for Editor in 3.47 ms, found 0 plugins.
+Native extension for LinuxStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+- Finished resetting the current domain, in  0.879 seconds
+Domain Reload Profiling: 1275ms
+	BeginReloadAssembly (135ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (50ms)
+	RebuildCommonClasses (23ms)
+	RebuildNativeTypeToScriptingClass (5ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (213ms)
+		LoadAssemblies (211ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (52ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (2ms)
+			ScanForSourceGeneratedMonoScriptInfo (30ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (879ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (468ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (44ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (69ms)
+			ProcessInitializeOnLoadAttributes (289ms)
+			ProcessInitializeOnLoadMethodAttributes (59ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5009 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 76 unused Assets / (422.6 KB). Loaded Objects now: 5849.
+Memory consumption went from 193.8 MB to 193.4 MB.
+Total: 4.551707 ms (FindLiveObjects: 0.357172 ms CreateObjectMapping: 0.185927 ms MarkObjects: 3.710777 ms  DeleteObjects: 0.295750 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/DiffusableObject.cs: b4e3201b519be860f3ee0e2530a54764 -> 2375193f0e31815f7d2f2f5528bd250d
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: eb1161be16476511f744ef86aa6a2b58 -> 
+  custom:scripting/monoscript/fileName/CubeGadgetMechanism.cs: c13ddd21d79ea0aadbdff1cda3a07349 -> d22065de596d73d39b628b99e864d186
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/FlatObjectTextureChanger.cs: 00e438937a005701b1832264f94601a8 -> 43ea3a5dcdc70c8d99a5fb070749d239
+  custom:scripting/monoscript/fileName/OutpaintingTile.cs: b5ca399c5ccd0c03ed4bfba67b34d5d1 -> 1fe732c3a6c3344fc5d4abd3b2e439ff
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/PhysicalCamera.cs: d2018c818d212d79c37dbaf54d1d2c14 -> 2c115cf4aa3ec51d2a913359933d92d7
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/AIGadgetAssistant.cs: 05cd06cd3df7b678d5d2007b985312cc -> e744c59f78ff8699278ed3292ad1f9f1
+  custom:scripting/monoscript/fileName/PaintbrushMechanism.cs: f6670781a5d3810764c2855868a62925 -> 067791005180f09d6d34181ae75ab284
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
+  custom:scripting/monoscript/fileName/OutpaintingScreenScr.cs: 642f3313d7b4caa8cb3e21bf146ba693 -> bd2bc44bc0ff596bd97367a83127dba6
+  custom:scripting/monoscript/fileName/MeshSubDivider.cs: e6ea53a47933776611157131271b74a3 -> 94d7957dd6009e3facbdd7e441797fbd
+  custom:scripting/monoscript/fileName/MultiTextureChanger.cs: e0c7de647cc5248238ec15ae16fc3042 -> 06a9dc66cc2dcbdd30094c4859a25352
+  custom:scripting/monoscript/fileName/MeshDeformer.cs: 5c57727dfc499b2ee4ebe0538ce5fe84 -> 88923103339fe01b286b35b6e67fb3d3
+  custom:scripting/monoscript/fileName/SculptingMechanism.cs: b24fc1d95a1e99382336b45f6cacb0a5 -> bddf36561c7c0441c495c1064d1f4215
+  custom:scripting/monoscript/fileName/ObjectFlightToTile.cs: 20369894c0cf18c014913f88a94d21c5 -> 022b3caf5b4e9e6312f136101964a7fb
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/Paintbrush.cs: e83d15f786c0904d8af02bc16c052bb3 -> d1f59a6f98be9e8404a1bfd32663b212
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/CameraGadgetMechanism.cs: 0f3d8eb6dbc51af684d5c9583078a7c2 -> 922f69f896e0240bfdd18797a78607ab
+  custom:scripting/monoscript/fileName/PaintableCanvas.cs: cb2025e627aa4869591a6cc6843ce754 -> 60f10b900676a6db85d8361e1a7a90e7
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/OutpaintGadgetMechanism.cs: c2daa6d291b97deb7d4d5f8a14fa9cf8 -> 3af82f669936c69675e2f2cff20abb1d

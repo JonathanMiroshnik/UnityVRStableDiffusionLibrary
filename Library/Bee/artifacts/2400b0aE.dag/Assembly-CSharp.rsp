@@ -501,6 +501,7 @@
 "Assets/Models/Big Oak Tree FREE/Core/Scripts/Controller/ALP8310_ControllerGlobal.cs"
 "Assets/Models/Big Oak Tree FREE/Core/Scripts/Controller/ALP8310_ControllerStyle.cs"
 "Assets/Models/Tree_Packs/URP_Tree_Pack/Scripts/LB_CameraMove.cs"
+"Assets/QuickOutline/Scripts/Outline.cs"
 "Assets/Scenes/EndCreditScene/EndCreditText.cs"
 "Assets/Scenes/StartSceneFol/StartSceneScripts/StartSceneUIScript.cs"
 "Assets/Scenes/TileDiffusionRoom/OpenDoorScript.cs"

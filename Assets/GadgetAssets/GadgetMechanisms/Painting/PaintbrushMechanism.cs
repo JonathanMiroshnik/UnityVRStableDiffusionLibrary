@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class PaintbrushMechanism : GadgetMechanism
 {
-    public List<DiffusionTextureChanger> mechanismTextureChangers = new List<DiffusionTextureChanger>();
+    public List<DiffusionTextureChanger> MechanismTextureChangers = new List<DiffusionTextureChanger>();
     public override string mechanismText => "Painting";
 
     protected override DiffusionRequest CreateDiffusionRequest(List<DiffusionTextureChanger> diffusionTextureChangers)
@@ -14,7 +14,6 @@ public class PaintbrushMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return null;
 
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
-
         newDiffusionRequest.diffusionModel = diffusionModels.Ghostmix;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
@@ -34,7 +33,7 @@ public class PaintbrushMechanism : GadgetMechanism
 
     public void ActivateGeneration(Texture2D canvasTexture)
     {
-        DiffusionRequest diffusionRequest = CreateDiffusionRequest(mechanismTextureChangers);
+        DiffusionRequest diffusionRequest = CreateDiffusionRequest(MechanismTextureChangers);
         diffusionRequest.uploadTextures.Add(canvasTexture);
 
         ResetMechanism();

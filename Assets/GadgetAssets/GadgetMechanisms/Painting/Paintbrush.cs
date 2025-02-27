@@ -7,9 +7,16 @@ using UnityEngine;
 /// </summary>
 public class Paintbrush : MonoBehaviour
 {
-    public Color brushColor = Color.black;  // Color of the paintbrush
-    public int brushSize = 5;  // Size of the paintbrush stroke
+    // Color of the paintbrush
+    public Color brushColor = Color.black;
+
+    // Size of the paintbrush stroke
+    public int brushSize = 5;
+    
+    // Position of the paintbrush tip
     public Transform brushTourchPos;
+    
+    // The canvas to paint on
     private PaintableCanvas _canvas;
 
     void OnTriggerStay(Collider other)
