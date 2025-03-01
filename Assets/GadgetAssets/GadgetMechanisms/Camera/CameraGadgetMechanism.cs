@@ -120,7 +120,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         _selectedStyleObject = args.interactableObject.transform.gameObject;
         Texture2D curTexture = TextureManipulationLibrary.toTexture2D(args.interactableObject.transform.gameObject.GetComponent<Renderer>().material.mainTexture);
 
-        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrgan.UniqueImageName();
         curTexture.name = uniqueName + "_2.png";
 
         _styleTexture = curTexture;
@@ -186,7 +186,7 @@ public class CameraGadgetMechanism : GadgetMechanism
             gadget.playSounds.PlaySound("ImagePlacement");
         }
 
-        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
+        GameManager.getInstance().ComfyOrgan.SendDiffusionRequest(newDiffusionRequest);
         return;
     }
 

@@ -204,7 +204,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         bool leftTileOutpaint = false;
         bool rightTileOutpaint = false;
 
-        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrgan.UniqueImageName();
 
         // Top tile outpainting
         if (OPT.tilePosition.y < outpaintingScreen.tileMatrixSize.y - 1)
@@ -258,6 +258,6 @@ public class OutpaintGadgetMechanism : GadgetMechanism
             gadget.playSounds.PlaySound("SelectElement");
         }
 
-        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(newDiffusionRequest);
+        GameManager.getInstance().ComfyOrgan.SendDiffusionRequest(newDiffusionRequest);
     }
 }

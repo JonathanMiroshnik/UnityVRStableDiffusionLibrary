@@ -54,7 +54,7 @@ public class ExplosionMain : MonoBehaviour
             diffusableGameObjects.Add(GO);
         }
 
-        diffusionTextures = GameManager.getInstance().ComfyOrganizer.allTextures;
+        diffusionTextures = GameManager.getInstance().ComfyOrgan.allTextures;
 
         TransitionExplosionMode(explosionMode);
     }

@@ -77,7 +77,7 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         // TODO: do I need so many at every time?
         diffusionRequest.numOfVariations = 5;
 
-        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrgan.SendDiffusionRequest(diffusionRequest);
     }
 
     /// <summary>

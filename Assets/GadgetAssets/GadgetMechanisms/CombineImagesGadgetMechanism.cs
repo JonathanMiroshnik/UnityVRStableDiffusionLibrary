@@ -132,7 +132,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         Texture2D copyTexture = TextureManipulationLibrary.toTexture2D(go1Text);
         Texture2D secondCopyTexture = TextureManipulationLibrary.toTexture2D(go2Text);
 
-        string uniqueName = GameManager.getInstance().ComfyOrganizer.UniqueImageName();
+        string uniqueName = GameManager.getInstance().ComfyOrgan.UniqueImageName();
         copyTexture.name = uniqueName + ".png";
         secondCopyTexture.name = uniqueName + "_2" + ".png";
 
@@ -154,7 +154,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
 
         ResetMechanism();
 
-        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrgan.SendDiffusionRequest(diffusionRequest);
     }
 
     // -----------------------------------------  PLAYER INPUTS ----------------------------------------- //

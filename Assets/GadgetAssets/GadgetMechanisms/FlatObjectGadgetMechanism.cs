@@ -152,7 +152,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
         }
 
         ResetMechanism();
-        GameManager.getInstance().ComfyOrganizer.SendDiffusionRequest(diffusionRequest);
+        GameManager.getInstance().ComfyOrgan.SendDiffusionRequest(diffusionRequest);
     }
 
 

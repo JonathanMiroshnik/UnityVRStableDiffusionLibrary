@@ -27,9 +27,7 @@ public class ExitSceneChangeTrigger : MonoBehaviour
     public void InputToIP(TMP_InputField txt)
     {
         if (GameManager.getInstance() == null) return;
-
-        ComfySceneLibrary.loadedAddress = false;
-        GameManager.getInstance().ComfySceneLibrary.LoadSpecialServerAddress(txt.text);
+        GameManager.getInstance().ServerAddress.LoadSpecialServerAddress(txt.text);
     }
 
     public void ToggleBasedChangeScene()
