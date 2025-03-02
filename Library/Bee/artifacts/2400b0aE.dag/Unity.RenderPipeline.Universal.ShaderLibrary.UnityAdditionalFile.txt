@@ -1,1 +1,1 @@
-/home/yonatan/Desktop/Projects/UnityVRStableDiffusionLibrary
+/home/yonilaptop/Desktop/Projects/UnityVRStableDiffusionLibrary

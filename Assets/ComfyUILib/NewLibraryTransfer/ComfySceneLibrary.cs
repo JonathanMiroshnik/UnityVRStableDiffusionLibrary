@@ -7,11 +7,12 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-// using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 
-
+/// <summary>
+/// Interacts with the ComfyUI server to download and upload images.
+/// </summary>
 public class ComfySceneLibrary : System.Object
 {
     public const string ImageFolderName = "Assets/"; // TODO: if the other consts exist, this one can be const aswell
@@ -22,6 +23,7 @@ public class ComfySceneLibrary : System.Object
     private bool _readyForDiffusion = false;
     private static HashSet<string> _incomingImageNames;
 
+    // Maximum number of retries for networking operations
     private const int MaxNetworkingRetries = 1000;
 
     public ComfySceneLibrary()
@@ -222,9 +224,13 @@ public class ComfySceneLibrary : System.Object
         }
     }
 
+    /// <summary>
+    /// Extracts the filenames from the JSON string.
+    /// </summary>
+    /// <param name="jsonString">The JSON string to extract the filenames from.</param>
+    /// <returns>An array of filenames.</returns>
     string[] ExtractFilename(string jsonString)
     {
-        // Jonathan - Changed this from returning a single filename to all the filenames in the output - with the for loop
         string keyToLookFor = "\"filename\":";
         int total_files = Regex.Matches(jsonString, keyToLookFor).Count;
 
