@@ -7,11 +7,17 @@ using static GeneralGameLibraries;
 /// </summary>
 public class AIGadgetAssistant : DiffusionTextureChanger
 {
+    // List of the AI assistant textures
     public static List<Texture2D> AITextures;
+
+    // Folder of the AI assistant audio clips
     public string AIAudioClipFolder = "Sounds/Voiceover";
+    // Audio source of the AI assistant
     public AudioSource audioSource;
+    // UI Diffusion Texture of the AI assistant
     public UIDiffusionTexture uiDiffusionTexture;
 
+    // Library of the AI assistant audio clips
     private AudioClipsLibrary _audioClipsLibrary;
 
     // Default prompts for the AI character image creation
@@ -25,7 +31,6 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         base.Awake();
 
         if (uiDiffusionTexture == null) Debug.LogError("Add UIDiffusionTexture to the AIGadgetAssistant");
-
         if (AITextures == null)
         {
             AITextures = new List<Texture2D>();
@@ -65,9 +70,8 @@ public class AIGadgetAssistant : DiffusionTextureChanger
 
         DiffusionRequest diffusionRequest = new DiffusionRequest();
         diffusionRequest.diffusionModel = diffusionModels.Ghostmix;
-
-        // TODO: need to ADD keywords to an existing prompt?
-        diffusionRequest.positivePrompt = $"{DefaultPositivePrompt}, {keywords}";
+        
+        diffusionRequest.positivePrompt += $"{DefaultPositivePrompt}, {keywords}";
         diffusionRequest.negativePrompt += DefaultNegativePrompt;
 
         diffusionRequest.targets.Add(this);
@@ -96,15 +100,6 @@ public class AIGadgetAssistant : DiffusionTextureChanger
         if (AITextures.Count == 0) return;
 
         Texture2D currentTexture = AITextures[_curTextureIndex];
-
-        // TODO: use modulo here? delete?
-        // if (AITextures.Count-1 > _curTextureIndex) {
-        //     _curTextureIndex++;
-        // }   
-        // else
-        // {
-        //     _curTextureIndex = 0;
-        // }
         _curTextureIndex++;
         _curTextureIndex %= AITextures.Count;
 

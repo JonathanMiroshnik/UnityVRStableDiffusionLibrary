@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class EmailSender : MonoBehaviour
 {
-    public string senderEmail = "fistuk2009@gmail.com"; // Your email address
-    public string senderPassword = "3MangoNanas3";     // Your email password
+    public string senderEmail = ""; // Your email address
+    public string senderPassword = "";     // Your email password
     public string smtpServer = "smtp.gmail.com";       // SMTP server for Gmail
     public int smtpPort = 587;                         // Port for Gmail
-    public string recipientEmail = "jonathan.miroshnik@mail.huji.ac.il"; // Recipient's email address
+    public string recipientEmail = ""; // Recipient's email address
     public string subject = "Subject of the email";
     public string bodyText = "This is the body of the email.";
 

@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO: documentation
+/// <summary>
+/// Manages the painting of a canvas with a paintbrush. Used for placing diffusion textures on the canvas.
+/// </summary>
 public class PaintableCanvas : MonoBehaviour
 {
     // The texture to paint on. If empty, the texture will be created when the canvas is initialized.
@@ -23,7 +25,8 @@ public class PaintableCanvas : MonoBehaviour
         if (canvasTexture == null) {
             // Create a new blank texture (e.g., white background)
             canvasTexture = new Texture2D(512, 512, TextureFormat.RGBA32, false);
-
+            
+            // Creates a custom, time-based name for the blank texture for the canvas.
             DateTime currentTime = DateTime.UtcNow;
             long unixTime = ((DateTimeOffset)currentTime).ToUnixTimeSeconds();
             canvasTexture.name = "canvasTex_" + unixTime.ToString() + "_" + UnityEngine.Random.Range(1, 1000);
@@ -57,8 +60,6 @@ public class PaintableCanvas : MonoBehaviour
     public void ActivateGeneration()
     {
         if (paintbrushMechanism == null) return;
-        // Texture2D inTex = GeneralGameLibraries.TextureManipulationLibrary.toTexture2D(canvasTexture);
-        // ChangeTextureDebug(); // TODO: what is this?
         paintbrushMechanism.ActivateGeneration(canvasTexture);
     }
 }

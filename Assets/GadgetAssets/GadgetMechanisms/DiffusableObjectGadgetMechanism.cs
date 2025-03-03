@@ -174,7 +174,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         DiffusionRequest diffusionRequest = CreateDiffusionRequest(diffusionTextureChangers);
 
         diffusionRequest.uploadTextures.Add(copyStyleTexture);
-        diffusionRequest.positivePrompt = positivePrompt;
+        diffusionRequest.positivePrompt += positivePrompt;
 
         gadget.playSounds.PlaySound("ImagePlacement");
 

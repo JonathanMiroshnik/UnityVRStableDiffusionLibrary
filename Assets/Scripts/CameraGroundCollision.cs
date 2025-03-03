@@ -6,6 +6,9 @@ public class CameraGroundCollision : MonoBehaviour
     public GameObject socketInteractable; // Reference to the socket on the necklace
     private bool isDragging = false;
 
+    /// <summary>
+    /// Camera starts dragging to the socket when it collides with the ground.
+    /// </summary>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground")) // Tag the ground as "Ground"
@@ -19,16 +22,14 @@ public class CameraGroundCollision : MonoBehaviour
         if (!isDragging)
         {
             socketInteractable.SetActive(true); // Enable the socket interactable
-            StartDraggingToSocket();
+            isDragging = true;
+            StartCoroutine(DragToSocket());
         }
     }
 
-    public void StartDraggingToSocket()
-    {
-        isDragging = true;
-        StartCoroutine(DragToSocket());
-    }
-
+    /// <summary>
+    /// Moves the camera to the socket interactable, on the player.
+    /// </summary>
     IEnumerator DragToSocket()
     {
         yield return new WaitForSeconds(1.0f);

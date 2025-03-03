@@ -23,8 +23,9 @@ public class PaintbrushMechanism : GadgetMechanism
 
         //newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Img2Img;
-        newDiffusionRequest.positivePrompt = "smile"; // TODO: add some sort of prompt from outside, not predefined
+        newDiffusionRequest.positivePrompt += "smile"; // TODO: add some sort of prompt from outside, not predefined
         newDiffusionRequest.numOfVariations = 1;
+        newDiffusionRequest.addToTextureTotal = false;
 
         newDiffusionRequest.denoise = 0.6f;
 
@@ -33,6 +34,12 @@ public class PaintbrushMechanism : GadgetMechanism
 
     public void ActivateGeneration(Texture2D canvasTexture)
     {
+        // Add .png extension if not present
+        if (canvasTexture != null && !canvasTexture.name.EndsWith(".png"))
+        {
+            canvasTexture.name += ".png";
+        }
+
         DiffusionRequest diffusionRequest = CreateDiffusionRequest(MechanismTextureChangers);
         diffusionRequest.uploadTextures.Add(canvasTexture);
 

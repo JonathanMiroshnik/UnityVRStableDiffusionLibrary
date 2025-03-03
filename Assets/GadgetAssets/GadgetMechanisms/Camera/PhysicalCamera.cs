@@ -8,18 +8,23 @@ using UnityEngine.XR.Interaction.Toolkit;
 /// </summary>
 public class PhysicalCamera : MonoBehaviour
 {
+    // Render texture of the screen
     public RenderTexture screenRenderTexture;
+    // Screen plane of the camera
     public GameObject screenPlane;
 
     // The Camera that is attached to this Camera
     // We make it a public variable as it is simple and visual as a whole prefab
     public Camera curCamera;
 
+    // Play sounds of the camera
     public PlaySounds playSounds;
 
+    // Current gadget
     [NonSerialized]
     public Gadget curGadget;
 
+    // Whether the timer is activated
     bool timerActivated = false;
 
     private void Start()
@@ -79,6 +84,10 @@ public class PhysicalCamera : MonoBehaviour
         yield break;
     }
 
+    /// <summary>
+    /// Changes the current gadget to the gadget that is connected to the physical camera
+    /// </summary>
+    /// <param name="args">SelectEnterEventArgs</param>
     public void ChangeGadget(SelectEnterEventArgs args)
     {
         if (args == null) return;

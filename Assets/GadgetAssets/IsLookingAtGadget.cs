@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Checks if the player is looking at the gadget.
+/// </summary>
 public class IsLookingAtGadget : MonoBehaviour
 {
+    // Head of the player
     [SerializeField] private GameObject _head;
     // Start is called before the first frame update
     [SerializeField] private float _viewingFieldDistance = 100;

@@ -15,7 +15,7 @@ public class GadgetMechanism : MonoBehaviour
     /// <summary>
     /// Text that will be shown that represents and indicates the mechanism.
     /// </summary>
-    // [NonSerialized]
+    // TODO: [NonSerialized] ?
     public virtual string mechanismText { get; protected set; } = "";
     // public string mechanismText;
 

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Manages the manipulation of a GameObject when it is grabbed. Allows for multi-selecting of Grabbed interactables.
+/// </summary>
 [RequireComponent(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable))]
 public class GrabManipulatableInteractable : MonoBehaviour
 {

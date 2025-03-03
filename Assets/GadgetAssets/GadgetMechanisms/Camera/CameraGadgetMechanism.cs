@@ -137,8 +137,8 @@ public class CameraGadgetMechanism : GadgetMechanism
         if (GameManager.getInstance() == null) return null;
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
-        newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
+        newDiffusionRequest.diffusionModel = diffusionModels.Ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.JuggernautReborn;
 
         foreach (DiffusionTextureChanger DTC in diffusionTextureChangers)
         {

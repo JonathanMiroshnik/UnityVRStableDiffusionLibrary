@@ -144,7 +144,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
         string positivePrompt = selectedTextObject.GetComponent<DiffusableObject>().keyword;
 
         DiffusionRequest diffusionRequest = CreateDiffusionRequest(diffusionTextureChangers);
-        diffusionRequest.positivePrompt = positivePrompt;
+        diffusionRequest.positivePrompt += positivePrompt;
 
         if (gadget != null)
         {

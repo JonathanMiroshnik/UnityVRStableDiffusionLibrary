@@ -34,22 +34,22 @@ public class CubeGadgetMechanism : GadgetMechanism
 
     public override void OnGameObjectHoverEntered(HoverEnterEventArgs args)
     {
-        if (GameManager.getInstance() == null) return;
-
-        if (!validInteractableObject(args)) return;
-        if (SelectedTextObject == args.interactableObject.transform.gameObject) return;
+        // if (GameManager.getInstance() == null) return;
+        // if (!validInteractableObject(args)) return;
+        // if (SelectedTextObject == args.interactableObject.transform.gameObject) return;
+        return;
     }
 
     public override void OnGameObjectHoverExited(HoverExitEventArgs args)
     {
-        if (!validInteractableObject(args)) return;
-        if (SelectedTextObject == args.interactableObject.transform.gameObject) return;
+        // if (!validInteractableObject(args)) return;
+        // if (SelectedTextObject == args.interactableObject.transform.gameObject) return;
+        return;
     }
 
     public override void onGameObjectSelectEntered(SelectEnterEventArgs args)
     {
         if (GameManager.getInstance() == null) return;
-
         if (!validInteractableObject(args)) return;
 
         GameObject curInteractable = args.interactableObject.transform.gameObject;
@@ -204,7 +204,7 @@ public class CubeGadgetMechanism : GadgetMechanism
         string positivePrompt = SelectedTextObject.GetComponent<DiffusableObject>().keyword;
 
         DiffusionRequest diffusionRequest = CreateDiffusionRequest(diffusionTextureChangers);
-        diffusionRequest.positivePrompt = positivePrompt;
+        diffusionRequest.positivePrompt += positivePrompt;
 
         if (gadget != null)
         {

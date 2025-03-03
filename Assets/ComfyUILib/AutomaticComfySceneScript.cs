@@ -28,6 +28,10 @@ public class GameAction
     public UnityEvent eventToCall;
 }
 
+/// <summary>
+/// Provides a way to automatically start and manage GameActions in a Game scene.
+/// Similar to a state machine, but only goes forwards, in accordannce to the time it takes for the actions to finish.
+/// </summary>
 public class AutomaticComfySceneScript : MonoBehaviour
 {
     // Used to make a unique GameActions list in every scene.

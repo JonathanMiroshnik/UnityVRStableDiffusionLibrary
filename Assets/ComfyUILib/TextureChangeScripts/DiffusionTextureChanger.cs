@@ -8,9 +8,11 @@ using UnityEngine.Events;
 /// </summary>
 public class DiffusionTextureChanger : MonoBehaviour, ITextureReceiver
 {
+    // Event that is invoked when a texture(or several) is added
     public UnityEvent AddedTextureUnityEvent;
-
+    // Textures that the DiffusionTextureChanger holds
     protected List<Texture2D> _diffTextures;
+    // Index of the current texture
     protected int _curTextureIndex = 0;
 
     protected virtual void Awake()
@@ -92,17 +94,20 @@ public class DiffusionTextureChanger : MonoBehaviour, ITextureReceiver
         return _diffTextures;
     }
 
+    // Returns the index of the current texture
     public int GetTextureIndex()
     {
         return _curTextureIndex;
     }
 
+    // Sets the index of the current texture
     public void SetTextureIndex(int newIndex)
     {
-        if (newIndex >= 0)
+        if (newIndex < 0)
         {
-            _curTextureIndex = newIndex;
-        }        
+            newIndex = 0;
+        }
+        _curTextureIndex = newIndex % _diffTextures.Count;     
     }
 
     // Implemented from ITextureReceiver
@@ -114,14 +119,23 @@ public class DiffusionTextureChanger : MonoBehaviour, ITextureReceiver
     }
 
     // Implemented from ITextureReceiver
-    public bool ReceiveTexturesFromDiffusionRequest(DiffusionRequest diffusionRequest) {
+    public bool ReceiveTexturesFromDiffusionRequest(DiffusionRequest diffusionRequest) {        
         if (diffusionRequest == null) return false;
         if (diffusionRequest.textures == null) return false;
+
+        if (!diffusionRequest.addToTextureTotal)
+        {
+            _curTextureIndex = 0;
+            _diffTextures = new List<Texture2D>();
+            _diffTextures.Clear();
+        }
 
         foreach (Texture2D texture in diffusionRequest.textures)
         {
             ReceiveTexture(texture);
         }
+
+        AddedTextureUnityEvent?.Invoke();
 
         return true;
     }

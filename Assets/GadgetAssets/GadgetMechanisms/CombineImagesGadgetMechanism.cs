@@ -144,7 +144,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         diffusionRequest.uploadTextures.Add(secondCopyTexture);
 
         // Adding words to the positive prompt according to the chosen objects' embedded text
-        diffusionRequest.positivePrompt = "";
         if (firstGameObject.TryGetComponent<DiffusableObject>(out DiffusableObject DiffObj))
         {
             diffusionRequest.positivePrompt += DiffObj.keyword;

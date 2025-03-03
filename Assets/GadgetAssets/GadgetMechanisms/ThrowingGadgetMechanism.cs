@@ -42,7 +42,7 @@ public class ThrowingGadgetMechanism : GadgetMechanism
 
         GameObject interactorObject = args.interactableObject.transform.gameObject;
         diffusionRequest.diffusableObject = interactorObject.GetComponent<DiffusableObject>();
-        diffusionRequest.positivePrompt = diffusionRequest.diffusableObject.keyword;
+        diffusionRequest.positivePrompt += diffusionRequest.diffusableObject.keyword;
 
         GameManager.getInstance().ComfyOrgan.SendDiffusionRequest(diffusionRequest);        
     }

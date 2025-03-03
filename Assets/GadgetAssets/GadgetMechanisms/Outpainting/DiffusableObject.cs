@@ -66,6 +66,7 @@ public class DiffusableObject : MonoBehaviour
 
         gadget.DiffusableGrabbed(args);
     }
+    
     public void OnSelectExited(SelectExitEventArgs args)
     {
         if (GameManager.getInstance() == null) return;

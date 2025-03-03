@@ -24,7 +24,8 @@ public class OutpaintGadgetMechanism : GadgetMechanism
 
     private void Awake()
     {
-        // TODO: check if this is needed
+        // Loads the noise textures, which are used to represent the tiles that are under progress, 
+        //waiting for the diffusion request to be shown.
         NoiseTextures = Resources.LoadAll<Texture2D>("Textures/Noise");
     }
 
@@ -58,7 +59,6 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     {
         if (_grabbedObject == null) return;
         if (!ValidInteractableObject(args, false)) return;
-
         if (args.interactableObject.transform.gameObject.TryGetComponent<OutpaintingTile>(out OutpaintingTile OPT))
         {
             if (!OPT.paintable || OPT.painted) return;
@@ -105,7 +105,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
     {
         DiffusionRequest newDiffusionRequest = new DiffusionRequest();
 
-        //newDiffusionRequest.diffusionModel = diffusionModels.ghostmix;
+        //newDiffusionRequest.diffusionModel = diffusionModels.Ghostmix;
         newDiffusionRequest.diffusionModel = diffusionModels.JuggernautXLInpaint;
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Outpainting;
         newDiffusionRequest.addToTextureTotal = false;
@@ -189,7 +189,7 @@ public class OutpaintGadgetMechanism : GadgetMechanism
         }
 
         DiffusionRequest newDiffusionRequest = CreateDiffusionRequest();
-        newDiffusionRequest.positivePrompt = curPositivePrompt;
+        newDiffusionRequest.positivePrompt += curPositivePrompt;
 
         OutpaintingTile OPT = args.interactableObject.transform.gameObject.GetComponent<OutpaintingTile>();
         TextureTransition TT = args.interactableObject.transform.gameObject.GetComponent<TextureTransition>();
