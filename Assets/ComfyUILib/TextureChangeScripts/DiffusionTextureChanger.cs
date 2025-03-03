@@ -6,7 +6,7 @@ using UnityEngine.Events;
 /// Parent class for all Diffusion texture changers. Has a list of textures and an index indicating the current one of these textures.
 /// Allows easy adding/changing of textures
 /// </summary>
-public class DiffusionTextureChanger : MonoBehaviour
+public class DiffusionTextureChanger : MonoBehaviour, ITextureReceiver
 {
     public UnityEvent AddedTextureUnityEvent;
 
@@ -103,5 +103,26 @@ public class DiffusionTextureChanger : MonoBehaviour
         {
             _curTextureIndex = newIndex;
         }        
+    }
+
+    // Implemented from ITextureReceiver
+    public bool ReceiveTexture(Texture2D texture)
+    {
+        if (texture == null) return false;
+        _diffTextures.Add(texture);
+        return true;
+    }
+
+    // Implemented from ITextureReceiver
+    public bool ReceiveTexturesFromDiffusionRequest(DiffusionRequest diffusionRequest) {
+        if (diffusionRequest == null) return false;
+        if (diffusionRequest.textures == null) return false;
+
+        foreach (Texture2D texture in diffusionRequest.textures)
+        {
+            ReceiveTexture(texture);
+        }
+
+        return true;
     }
 }

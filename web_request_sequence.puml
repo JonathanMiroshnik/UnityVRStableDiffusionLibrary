@@ -1,0 +1,211 @@
+
+@startuml
+
+allow_mixing
+' top to bottom direction
+
+' Add color to classes or packages
+skinparam class {
+    BackgroundColor PaleGreen
+    ArrowColor SeaGreen
+    BorderColor SpringGreen
+}
+
+skinparam package {
+    BackgroundColor White
+    BorderColor DarkSlateGray
+}
+
+package "Core" as Core {
+  class GameManager {
+    +ComfyUIOrganizer: ComfyUIOrganizer
+    +ComfySceneLibrary: ComfySceneLibrary
+    +DiffusionList: List<GameObject>
+    +{static} getInstance(): GameManager
+  }
+
+  class Gadget {
+    +playSounds: PlaySounds
+    +uiDiffusionTexture: UIDiffusionTexture
+    +radiusDiffusionTexture: RadiusDiffusionTexture
+  }
+
+  ' left to right direction
+
+  note "Singleton pattern" as N1
+  GameManager .. N1
+}
+  
+
+package "ComfyUI" {
+  package "ComfyUI Management" as ComfyUIManagement {
+    class ComfyUIOrganizer {
+      +ComfySceneLibrary: ComfySceneLibrary
+    }
+
+    class ComfySceneLibrary {
+      +QueuePrompt()
+      +DownloadCycle()
+      +CheckIfFileExists()
+      +RequestFileNameRoutine()
+      +DownloadImage()
+    }
+
+    class DiffusionRequestFactory {
+      -_diffusionJsons: Dictionary<diffusionWorkflows, string>
+      +LoadFactory()
+      +DiffusionJSONFactory(diffReq: DiffusionRequest, library: ComfySceneLibrary): Task<string>
+    }
+
+    note right of DiffusionRequestFactory
+      Factory pattern implementation
+      Creates JSON workflows for different
+      diffusion requests, working with
+      ComfySceneLibrary for image handling
+    end note
+
+    note right of ComfySceneLibrary
+      Manages all server communication:
+      - Uploads input images
+      - Queues generation prompts
+      - Downloads generated images
+      - Monitors generation status
+    end note
+
+    ComfySceneLibrary ..> DiffusionRequestFactory : uses
+  }
+
+  package "ComfyUI Server" as ComfyUIServer {
+      component "HTTP Server" as HTTP {
+          interface "REST API" as REST {
+              /prompt
+              /upload/image
+              /view
+              /history/{prompt_id}
+          }
+          
+          database "File System" {
+              folder "Input Images" as Input
+              folder "Output Images" as Output
+          }
+
+          ' File Operations
+          REST ..> Input : reads/writes
+          REST ..> Output : reads/writes
+
+          note left of REST
+            Endpoints:
+            POST /prompt: Queue generation
+            POST /upload/image: Upload input
+            GET /view: Download images
+            GET /history: Check status
+          end note
+      }
+
+      component "WebSocket Server" {
+          interface "WS API" as WS {
+              ws://server/ws
+          }
+      }
+  }
+
+  ComfyUIManagement --down[hidden]-- ComfyUIServer
+  ComfyUIManagement --down[hidden]-- HTTP
+
+  ' API Calls
+  ComfySceneLibrary "1" -down..> "1" REST : HTTP Requests >
+  ComfySceneLibrary "1" -down..> "1" WS : WebSocket Connection >
+}
+
+package "Mechanisms" as Mechanisms {
+  abstract class GadgetMechanism {
+    #mechanismText: string
+    +gadget: Gadget
+    #CreateDiffusionRequest()
+    +ActivateGeneration()
+  }
+
+  note right of GadgetMechanism
+    Strategy pattern implementation
+    for different image generation mechanisms
+  end note
+
+  together {
+    class PaintbrushMechanism
+    class CubeGadgetMechanism
+    class OutpaintGadgetMechanism
+    class ThrowingGadgetMechanism
+    class CameraGadgetMechanism
+    class FlatObjectGadgetMechanism
+    class DiffusableObjectGadgetMechanism
+    class SculptingMechanism
+    class CombineImagesGadgetMechanism
+  }
+
+  GadgetMechanism <|-- PaintbrushMechanism
+  GadgetMechanism <|-- CubeGadgetMechanism
+  GadgetMechanism <|-- OutpaintGadgetMechanism
+  GadgetMechanism <|-- ThrowingGadgetMechanism
+  GadgetMechanism <|-- CameraGadgetMechanism
+  GadgetMechanism <|-- FlatObjectGadgetMechanism
+  GadgetMechanism <|-- DiffusableObjectGadgetMechanism
+  GadgetMechanism <|-- SculptingMechanism
+  GadgetMechanism <|-- CombineImagesGadgetMechanism
+}
+
+package "Texture Management" {
+  abstract class DiffusionTextureChanger {
+    #_diffTextures: List<Texture2D>
+    +AddTexture()
+    +changeTextureOn()
+  }
+
+  class RegularDiffusionTexture
+  class MultiTextureChanger
+  class FlatObjectTextureChanger
+  class RadiusDiffusionTexture
+  class AIGadgetAssistant
+
+  DiffusionTextureChanger <|-- RegularDiffusionTexture
+  DiffusionTextureChanger <|-- MultiTextureChanger
+  DiffusionTextureChanger <|-- FlatObjectTextureChanger
+  DiffusionTextureChanger <|-- RadiusDiffusionTexture
+  DiffusionTextureChanger <|-- AIGadgetAssistant
+}
+
+package "Data" {
+  class DiffusionRequest {
+    +diffusionModel: diffusionModels
+    +diffusionJsonType: diffusionWorkflows
+    +positivePrompt: string
+    +uploadTextures: List<Texture2D>
+  }
+
+  class DiffusableObject {
+    +keyword: string
+    +Model3D: bool
+    +grabbed: bool
+  }
+}
+
+interface ITextureReceiver {
+    +ReceiveTexture(texture: Texture2D): bool
+    +ReceiveTexturesFromDiffusionRequest(request: DiffusionRequest): bool
+  }
+
+' Relationships
+Gadget *- "*" GadgetMechanism
+GameManager *---down "1" ComfyUIOrganizer
+GameManager *---down "1" ComfySceneLibrary
+GameManager o-- "*" DiffusableObject
+
+DiffusionTextureChanger -up.|> ITextureReceiver
+DiffusionTextureChanger -up-o "*" DiffusionRequest
+
+Gadget ...|> ITextureReceiver
+
+GadgetMechanism .....> DiffusionRequest : creates
+
+ComfySceneLibrary ..> DiffusionRequest : processes
+
+@enduml

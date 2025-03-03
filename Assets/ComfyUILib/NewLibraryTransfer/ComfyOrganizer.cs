@@ -4,14 +4,15 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 using UnityEngine.Events;
 
-// TODO: should this or comfyscenelibrary be monobehaviour? probably just object
+/// <summary>
+/// This class is used to keep track of all the DiffusionRequests that have been made in the duration of the Game.
+/// </summary>
 public class ComfyOrganizer : System.Object
 {
     // Holds all the DiffusionRequests that have been made in the duration of the Game
+    // We do not remove any DiffusionRequests from this dictionary, 
+    //because we want to keep track of all the textures that have been generated.
     public Dictionary<int, DiffusionRequest> DiffuseDictionary;
-
-    // An updating list of all textures that have been generated throughout the Game
-    public List<Texture2D> allTextures;
 
     // When comes to 0, invokes a UnityEvent
     public int EndSceneTextureNum = 0;
@@ -41,7 +42,6 @@ public class ComfyOrganizer : System.Object
     {
         string newTextureName = "DiffImage_" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + '_' + _currentTextureNameNumber.ToString();
         _allTextureNames.Add(newTextureName);
-
         _currentTextureNameNumber++;
 
         return newTextureName;
@@ -98,6 +98,11 @@ public class ComfyOrganizer : System.Object
     }
 
 
+    /// <summary>
+    /// Used to send a Diffusion Request that does not have any targets.
+    /// Used primarily for testing purposes.
+    /// </summary>
+    /// <param name="diffusionWorkflow">Workflow of the Diffusion Request</param>
     public void SendNonTargetWorkflowDiffusionRequest(string diffusionWorkflow)
     {
         diffusionWorkflows enumVal;
@@ -219,15 +224,12 @@ public class ComfyOrganizer : System.Object
                 sentKeys.Add(diffReqID.Value);
             }
         }
-        // TODO: should I even remove previous ones?
-        /*foreach (var key in sentKeys)
-        {
-            DiffuseDictionary.Remove(key.requestNum);
-        }*/
 
         return relevantKeys;
     }
 
+
+    // TODO: can be partly broken up into a function in the DiffusionRequest class
     /// <summary>
     /// Adds a texture that was generated for a Diffusion Request to that Diffusion Request.
     /// </summary>
@@ -237,33 +239,32 @@ public class ComfyOrganizer : System.Object
     {
         if (texture == null || diffusionRequest == null)
         {
+            Debug.Log("Texture or Diffusion Request is null");
             return;
         }
         
         int requestNum = diffusionRequest.requestNum;
         if (!DiffuseDictionary.ContainsKey(requestNum))
         {
+            Debug.Log("Diffusion Request not found");
             return;
         }
         if (DiffuseDictionary[requestNum].finishedRequest)
         {
+            Debug.Log("Diffusion Request finished");
             return;
         }
 
         if (DiffuseDictionary[requestNum].numOfVariations > DiffuseDictionary[requestNum].textures.Count)
         {
             DiffuseDictionary[requestNum].textures.Add(texture);
-            
-            // Not efficient to hold a large List like this, but used for explosion in the end of the Game
-            allTextures.Add(texture);
-
             EndSceneTextureNum--;
         }
         if (DiffuseDictionary[requestNum].numOfVariations <= DiffuseDictionary[requestNum].textures.Count)
         {
             DiffuseDictionary[requestNum].finishedRequest = true;
             DiffuseDictionary[requestNum].sentDownloadRequest = true;
-            SendTexturesToRecipient(DiffuseDictionary[requestNum]);
+            DiffuseDictionary[requestNum].SendTexturesToRecipient();
         }
 
         // When the needed number of textures in a scene has been generated, invokes the given EndSceneUnityEvent
@@ -273,27 +274,17 @@ public class ComfyOrganizer : System.Object
         }
     }
 
-    /// <summary>
-    /// Sends the textures of a Diffusion Request to its targets.
-    /// </summary>
-    /// <param name="diffusionRequest">Diffusion Request to send its textures to its targets</param>
-    private void SendTexturesToRecipient(DiffusionRequest diffusionRequest)
+    public List<Texture2D> GetAllTextures()
     {
-        if (!diffusionRequest.finishedRequest || diffusionRequest.targets == null)
+        List<Texture2D> allTextures = new List<Texture2D>();
+        foreach (DiffusionRequest dr in DiffuseDictionary.Values)
         {
-            Debug.LogError("Add target to send textures to");
-            return;
-        }
-        if (diffusionRequest.targets.Count == 0)
-        {
-            return;
-        }
-
-        foreach(DiffusionTextureChanger changer in diffusionRequest.targets)
-        {
-            changer.AddTexture(diffusionRequest);
+            foreach (Texture2D texture in dr.textures)
+            {
+                allTextures.Add(texture);
+            }
         }
 
-        diffusionRequest.targets.Clear();
+        return allTextures;
     }
 }

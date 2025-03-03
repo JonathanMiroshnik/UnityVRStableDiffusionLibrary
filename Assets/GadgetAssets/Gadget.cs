@@ -19,7 +19,7 @@ public enum GadgetSelection
 // TODO: add tooltip and header and other unity things
 // TODO: change name of class to GadgetScript or something
 
-public class Gadget : MonoBehaviour
+public class Gadget : MonoBehaviour, ITextureReceiver
 {
     // Texture display for the images the Gadget is holding onto
     public GameObject displayTexturesGadget;
@@ -51,7 +51,7 @@ public class Gadget : MonoBehaviour
 
     // TODO: make this Queue<List<Texture2D>>, talk to NADAV on gadget representation of special textures
     [NonSerialized]
-    public Queue<Texture2D> textureQueue;
+    public Queue<Texture2D> TextureQueue;
 
     // Controllers, for symmetric input
     public GameObject LeftHandController;
@@ -70,7 +70,7 @@ public class Gadget : MonoBehaviour
 
     private void Awake()
     {
-        textureQueue = new Queue<Texture2D>(); // TODO: do I need this?
+        TextureQueue = new Queue<Texture2D>(); // TODO: do I need this?
     }
 
     private void Start()
@@ -155,36 +155,17 @@ public class Gadget : MonoBehaviour
     public Texture2D getGeneratedTexture()
     {
         if (GameManager.getInstance() == null) return null;
-        if (textureQueue.Count == 0) return null;
+        if (TextureQueue.Count == 0) return null;
 
-        Texture2D current = textureQueue.Dequeue();
+        Texture2D current = TextureQueue.Dequeue();
         
         if (uiDiffusionTexture != null)
         {
-            uiDiffusionTexture.CreateImagesInside(textureQueue.Take(1).ToList(), displayMainTextureGadget, true);
-            uiDiffusionTexture.CreateImagesInside(textureQueue.Take(9).Skip(1).ToList(), displayTexturesGadget, true);
+            uiDiffusionTexture.CreateImagesInside(TextureQueue.Take(1).ToList(), displayMainTextureGadget, true);
+            uiDiffusionTexture.CreateImagesInside(TextureQueue.Take(9).Skip(1).ToList(), displayTexturesGadget, true);
         }
             
         return current;
-    }
-
-    public bool AddTexturesToQueue(List<Texture2D> textures)
-    {
-        if (GameManager.getInstance() == null) return false;
-        if (textures == null) return false;
-
-        foreach (Texture2D texture in textures)
-        {
-            textureQueue.Enqueue(texture);
-        }
-
-        if (uiDiffusionTexture != null)
-        {
-            uiDiffusionTexture.CreateImagesInside(textureQueue.Take(1).ToList(), displayMainTextureGadget, true);
-            uiDiffusionTexture.CreateImagesInside(textureQueue.Take(9).Skip(1).ToList(), displayTexturesGadget, true);
-        }        
-
-        return true;
     }
 
 
@@ -315,5 +296,35 @@ public class Gadget : MonoBehaviour
                 GadgetMechanisms[_gadgetMechanismIndex].GripProperty(key, beginningGripDict[key]);
             }
         }
+    }
+
+    // Implemented from ITextureReceiver
+    public bool ReceiveTexture(Texture2D texture)
+    {
+        if (GameManager.getInstance() == null) return false; // TODO: repeating this check in every function?
+        if (texture == null) return false;
+
+        TextureQueue.Enqueue(texture);
+
+        if (uiDiffusionTexture != null)
+        {
+            uiDiffusionTexture.CreateImagesInside(TextureQueue.Take(1).ToList(), displayMainTextureGadget, true);
+            uiDiffusionTexture.CreateImagesInside(TextureQueue.Take(9).Skip(1).ToList(), displayTexturesGadget, true);
+        }        
+
+        return true;
+    }
+
+    // Implemented from ITextureReceiver
+    public bool ReceiveTexturesFromDiffusionRequest(DiffusionRequest diffusionRequest) {
+        if (diffusionRequest == null) return false;
+        if (diffusionRequest.textures == null) return false;
+
+        foreach (Texture2D texture in diffusionRequest.textures)
+        {
+            ReceiveTexture(texture);
+        }
+
+        return true;
     }
 }

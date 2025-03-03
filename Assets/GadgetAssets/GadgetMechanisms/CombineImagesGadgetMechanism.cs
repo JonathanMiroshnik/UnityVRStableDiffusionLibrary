@@ -19,6 +19,7 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
     [NonSerialized]
     public int MAX_QUEUED_OBJECTS = 2;
     
+    protected override string configFileName => "combine_images.json";
     public override string mechanismText => "Combine\nImages";
 
     /// <summary>
@@ -107,7 +108,8 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             newDiffusionRequest.targets.Add(DTC);
         }
 
-        newDiffusionRequest.targets.Add(gadget.uiDiffusionTexture);
+        newDiffusionRequest.targets.Add(gadget.uiDiffusionTexture); // TODO: make this from gadget
+        newDiffusionRequest.targets.Add(gadget);
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.CombineImages;
         newDiffusionRequest.numOfVariations = 1;
 
@@ -164,13 +166,6 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
         if (GO == null) return;
         if (gadget == null) return;
 
-        Texture2D curTexture = gadget.getGeneratedTexture();
-        if (curTexture == null)
-        {
-            Debug.Log("Tried to add a textures from the Gadget camera without textures in the Queue");
-            return;
-        }
-
         // Perform the raycast
         Ray ray = new Ray(GO.transform.position, GO.transform.forward);
         RaycastHit hit;
@@ -181,8 +176,14 @@ public class CombineImagesGadgetMechanism : GadgetMechanism
             // In this code, one DiffusionTextureChanger to another DiffusionTextureChanger
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
-                dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
+                Texture2D curTexture = gadget.getGeneratedTexture();
+                if (curTexture == null)
+                {
+                    Debug.Log("Tried to add a textures from the Gadget camera without textures in the Queue");
+                    return;
+                }
 
+                dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
                 // Sending broadcast to Game timeline script
                 MechanismExtraEvent?.Invoke();
             }

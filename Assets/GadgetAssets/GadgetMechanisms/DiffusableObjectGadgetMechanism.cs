@@ -105,14 +105,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
     {
         if (GameManager.getInstance() == null) return;
         if (GO == null) return;
-
         if (gadget == null) return;
-        Texture2D curTexture = gadget.getGeneratedTexture();
-        if (curTexture == null)
-        {
-            Debug.Log("Tried to add a textures from the Gadget camera without textures in the Queue");
-            return;
-        }
 
         // Perform the raycast
         Ray ray = new Ray(GO.transform.position, GO.transform.forward);
@@ -124,11 +117,14 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
             // In this code, one DiffusionTextureChanger to another DiffusionTextureChanger
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
-                if (gadget != null)
+                Texture2D curTexture = gadget.getGeneratedTexture();
+                if (curTexture == null)
                 {
-                    gadget.playSounds.PlaySound("ImagePlacement");
+                    Debug.Log("Tried to add a textures from the Gadget camera without textures in the Queue");
+                    return;
                 }
 
+                gadget.playSounds.PlaySound("ImagePlacement");
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
             }
         }
@@ -151,6 +147,7 @@ public class DiffusableObjectGadgetMechanism : GadgetMechanism
         {
             newDiffusionRequest.targets.Add(DTC);
         }
+        newDiffusionRequest.targets.Add(gadget);
 
         //newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.Img2ImgLCM;

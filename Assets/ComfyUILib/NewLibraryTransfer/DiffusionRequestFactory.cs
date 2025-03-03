@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using Newtonsoft.Json.Linq;
-using UnityEngine;
 using UnityEngine.Networking;
 // using System.Threading;
 using System.Threading.Tasks;
@@ -15,15 +14,12 @@ public class DiffusionRequestFactory : System.Object
     private Dictionary<diffusionWorkflows, string> _diffusionJsons;
     private const string JsonFolderPath = "JSONMain";
 
-    void Awake()
-    {
-        _diffusionJsons = new Dictionary<diffusionWorkflows, string>();
-    }
-
     // TODO: notice that this START must always come BEFORE(put the library before the organizer in the node properties)
     // TODO: cont. the ComfyOrganizer or else some things will not be ready for an instant diffusion request
     public void LoadFactory()
     {
+        _diffusionJsons = new Dictionary<diffusionWorkflows, string>();
+
         // Get all enum adjacent JSON workflows
         TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>(JsonFolderPath);
 
@@ -51,6 +47,11 @@ public class DiffusionRequestFactory : System.Object
     /// <param name="enumValName">Diffusion Workflow to get JSON of</param>
     private string getWorkflowJSON(diffusionWorkflows enumValName)
     {
+        if (_diffusionJsons == null)
+        {
+            LoadFactory();
+        }
+
         string ret_str = "";
         if (_diffusionJsons.ContainsKey(enumValName))
         {
@@ -69,6 +70,11 @@ public class DiffusionRequestFactory : System.Object
     /// <param name="diffReq">given DiffusionRequest to create the JSON text from.</param>
     public async Task<string> DiffusionJSONFactory(DiffusionRequest diffReq, ComfySceneLibrary library)
     {
+        if (_diffusionJsons == null)
+        {
+            LoadFactory();
+        }
+
         string curDiffModel = "";
         Vector2Int curImageSize = Vector2Int.zero;
         switch (diffReq.diffusionModel)

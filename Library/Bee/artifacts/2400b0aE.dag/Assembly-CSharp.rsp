@@ -388,6 +388,7 @@
 "Assets/ComfyUILib/NewLibraryTransfer/DiffusionRequest.cs"
 "Assets/ComfyUILib/NewLibraryTransfer/DiffusionRequestFactory.cs"
 "Assets/ComfyUILib/NewLibraryTransfer/GameManager.cs"
+"Assets/ComfyUILib/NewLibraryTransfer/ITextureReceiver.cs"
 "Assets/ComfyUILib/NewLibraryTransfer/ServerAddresser.cs"
 "Assets/ComfyUILib/PrefabConnection/ComfyUILibraryConnector.cs"
 "Assets/ComfyUILib/PrefabConnection/ComfyXROriginConnector.cs"

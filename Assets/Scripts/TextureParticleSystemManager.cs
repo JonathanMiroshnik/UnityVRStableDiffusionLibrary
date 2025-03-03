@@ -44,7 +44,7 @@ public class TextureParticleSystemManage : MonoBehaviour
         if (NumOfTextures <= 0) return;
         if (GameManager.getInstance() == null) return;
 
-        foreach (Texture2D texture in GeneralGameLibraries.GetRandomElements(GameManager.getInstance().ComfyOrgan.allTextures, NumOfTextures))
+        foreach (Texture2D texture in GeneralGameLibraries.GetRandomElements(GameManager.getInstance().ComfyOrgan.GetAllTextures(), NumOfTextures))
         {
             AddTextureParticleSystem(texture);
         }

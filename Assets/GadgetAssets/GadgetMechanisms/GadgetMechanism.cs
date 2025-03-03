@@ -9,6 +9,9 @@ using UnityEngine.Events;
 /// </summary>
 public class GadgetMechanism : MonoBehaviour
 {
+    // [SerializeField]
+    // public DiffusionRequest DiffusionReq;
+    
     /// <summary>
     /// Text that will be shown that represents and indicates the mechanism.
     /// </summary>
@@ -21,6 +24,8 @@ public class GadgetMechanism : MonoBehaviour
 
     // Event that is called when the mechanism is activated, but can be used for other purposes
     public UnityEvent MechanismExtraEvent;
+
+    protected virtual string configFileName => "";
 
     private void Start()
     {
@@ -111,4 +116,41 @@ public class GadgetMechanism : MonoBehaviour
 
     // TODO: this is a hyper specific function for a hyper specific mechanism
     public virtual void GripProperty(GameObject GO, Pose curPose) {}
+
+    // protected bool LoadDefaultConfig(string configFileName)
+    // {
+    //     var configPath = $"MechanismConfig/{configFileName}";
+    //     Debug.Log("Loading default config: " + configPath);
+    //     var configText = Resources.Load<TextAsset>(configPath);
+        
+    //     if (configText != null)
+    //     {
+    //         try 
+    //         {
+    //             Debug.Log("Loaded default config: " + configText.text);
+    //             DiffusionReq = JsonUtility.FromJson<DiffusionRequest>(configText.text);
+    //         }
+    //         catch (System.Exception e)
+    //         {
+    //             Debug.LogError($"Error loading config {configPath}: {e.Message}");
+    //             return false;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning($"Could not load config file: {configPath}");
+    //         return false;
+    //     }
+
+    //     return true;
+    // }
+
+    // protected void Reset()
+    // {
+    //     if (!string.IsNullOrEmpty(configFileName)) {
+    //         if (!LoadDefaultConfig(configFileName)) {
+    //             Debug.LogError("Failed to load default config: " + configFileName);
+    //         }
+    //     }
+    // }
 }

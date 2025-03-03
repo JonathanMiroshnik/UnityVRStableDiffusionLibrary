@@ -59,9 +59,12 @@ public class ComfySceneLibrary : System.Object
         while(true)
         {
             await Task.Delay(100); // 0.1f seconds
-
+            if (GameManager.getInstance() == null) continue;
+            if (GameManager.getInstance().ComfyOrgan == null) continue;
+            
             List<DiffusionRequest> allDiffReqs = GameManager.getInstance().ComfyOrgan.GetUndownloadedRequestPrompts();
-            if (allDiffReqs == null || allDiffReqs.Count == 0) continue;
+            if (allDiffReqs.Count == 0) continue;
+            
             foreach (DiffusionRequest diffReq in allDiffReqs)
             {
                 if (!diffReq.sentDownloadRequest)
@@ -103,14 +106,17 @@ public class ComfySceneLibrary : System.Object
             maxNetworkingRetries--;
         }
         if (maxNetworkingRetries <= 0) return;        
-        
-        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+
+        WWWForm form = new WWWForm();
+        form.AddField("prompt", promptText); // TODO: what about bodyRaw below?
+
+        using (UnityWebRequest request = UnityWebRequest.Post(url, form))
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(promptText);
             request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-
+            
             var operation = request.SendWebRequest();
             while (!operation.isDone)
                 await Task.Yield();
@@ -120,11 +126,10 @@ public class ComfySceneLibrary : System.Object
                 Debug.Log(request.error + " Trial Number: " + trials.ToString());
                 await Task.Delay(200); // 0.2 seconds
                 trials--;
-                QueuePrompt(diffReq, trials); // TODO: recursive call?
+                QueuePrompt(diffReq, trials);
             }
             else
             {
-                // This is the only use of ResponseData, but it is needed for proper downloading of the prompt
                 ResponseData data = JsonUtility.FromJson<ResponseData>(request.downloadHandler.text);
                 diffReq.prompt_id = data.prompt_id;
                 return;
@@ -187,6 +192,7 @@ public class ComfySceneLibrary : System.Object
                 await Task.Yield(); // This replaces 'yield return' to work with frame timing
             }
 
+            // TODO: why not use this switch case in every function that sends a request?
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
@@ -210,12 +216,28 @@ public class ComfySceneLibrary : System.Object
                         break;
                     }
 
-                    // Downloading each image of the prompt
-                    for (int i = 0; i < filenames.Length; i++)
+                    // TODO: previous solution, check if the new one is better
+                    // // Downloading each image of the prompt
+                    // for (int i = 0; i < filenames.Length; i++)
+                    // {
+                    //     if (!_incomingImageNames.Contains(filenames[i])) {
+                    //         DownloadImage(filenames[i], diffReq);
+                    //     }
+                    // }
+
+                    // Create list of download tasks for all new images
+                    var downloadTasks = new List<Task>();
+                    foreach (string filename in filenames)
                     {
-                        if (!_incomingImageNames.Contains(filenames[i])) {
-                            DownloadImage(filenames[i], diffReq);
+                        if (!_incomingImageNames.Contains(filename)) {
+                            downloadTasks.Add(DownloadImage(filename, diffReq));
                         }
+                    }
+
+                    // Wait for all downloads to complete in parallel
+                    if (downloadTasks.Count > 0)
+                    {
+                        await Task.WhenAll(downloadTasks);
                     }
 
                     diffReq.sentDownloadRequest = true;
@@ -352,7 +374,6 @@ public class ComfySceneLibrary : System.Object
             string url = GameManager.getInstance().ServerAddress.GetServerAddress() + "/upload/image";
 
             WWWForm form = new WWWForm();
-
             form.AddBinaryData("image", curTexture.EncodeToPNG(), curTexture.name, "image/png");
             form.AddField("type", "input");
             form.AddField("overwrite", "false");
@@ -369,6 +390,7 @@ public class ComfySceneLibrary : System.Object
                 }
                 else
                 {
+                    // We check if the file exists on the server after uploading it
                     FileExistsChecker fileCheck = new FileExistsChecker();
                     int retries = MaxNetworkingRetries;
 
@@ -380,6 +402,7 @@ public class ComfySceneLibrary : System.Object
                     }
                     if (retries <= 0) return;
 
+                    // If all textures of the DiffusionRequest have been uploaded, we set the fileExists flag to true
                     curUploadedTextures++;
                     if (curUploadedTextures == diffReq.uploadTextures.Count)
                     {

@@ -36,16 +36,8 @@ public class CameraGadgetMechanism : GadgetMechanism
     public override void PlaceTextureInput(GameObject GO)
     {
         if (GameManager.getInstance() == null) return;
-
         if (takePicture) return;
         if (GO == null) return;
-
-        Texture2D curTexture = gadget.getGeneratedTexture();
-        if (curTexture == null)
-        {
-            Debug.LogError("Tried to add a textures from the Gadget camera without textures in the Queue");
-            return;
-        }
 
         // Perform the raycast
         // Ray ray = new Ray(GameManager.getInstance().gadget.transform.position, GameManager.getInstance().gadget.transform.right);
@@ -58,8 +50,14 @@ public class CameraGadgetMechanism : GadgetMechanism
             // In this code, one DiffusionTextureChanger to another DiffusionTextureChanger
             if (hit.collider.gameObject.TryGetComponent<DiffusionTextureChanger>(out DiffusionTextureChanger dtc))
             {
+                Texture2D curTexture = gadget.getGeneratedTexture();
+                if (curTexture == null)
+                {
+                    Debug.LogError("Tried to add a textures from the Gadget camera without textures in the Queue");
+                    return;
+                }
+                
                 gadget.playSounds.PlaySound("ImagePlacement");
-
                 dtc.AddTexture(new List<Texture2D>() { curTexture }, false);
             }
         }
@@ -146,7 +144,7 @@ public class CameraGadgetMechanism : GadgetMechanism
         {
             newDiffusionRequest.targets.Add(DTC);
         }
-
+        newDiffusionRequest.targets.Add(gadget);
         //newDiffusionRequest.targets.Add(GameManager.getInstance().uiDiffusionTexture);
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.CombineImages;
 

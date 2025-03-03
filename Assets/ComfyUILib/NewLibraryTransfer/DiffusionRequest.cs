@@ -60,7 +60,7 @@ public enum diffusionModels
 public class DiffusionRequest
 {
     // Where the images that are generated are sent.
-    public List<DiffusionTextureChanger> targets;
+    public List<ITextureReceiver> targets;
 
     // true if we add the images that generated to the previous image rotation of a target.
     public bool addToTextureTotal = false;
@@ -118,17 +118,41 @@ public class DiffusionRequest
 
     public DiffusionRequest()
     {
-        targets = new List<DiffusionTextureChanger>();
+        targets = new List<ITextureReceiver>();
         textures = new List<Texture2D>();
         uploadTextures = new List<Texture2D>();
         uploadFileChecker = new FileExistsChecker();
     }
 
-    public DiffusionRequest(List<DiffusionTextureChanger> curTargets)
+    public DiffusionRequest(List<ITextureReceiver> curTargets)
     {
         targets = curTargets;
         textures = new List<Texture2D>();
         uploadTextures = new List<Texture2D>();
         uploadFileChecker = new FileExistsChecker();
+    }
+
+    /// <summary>
+    /// Sends the textures of a Diffusion Request to its targets.
+    /// </summary>
+    /// <param name="diffusionRequest">Diffusion Request to send its textures to its targets</param>
+    public void SendTexturesToRecipient()
+    {
+        if (!finishedRequest || targets == null)
+        {
+            Debug.LogError("Add target to send textures to");
+            return;
+        }
+        if (targets.Count == 0)
+        {
+            return;
+        }
+
+        foreach(ITextureReceiver receiver in targets)
+        {
+            receiver.ReceiveTexturesFromDiffusionRequest(this);
+        }
+
+        targets.Clear();
     }
 }

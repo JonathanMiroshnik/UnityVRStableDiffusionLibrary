@@ -130,7 +130,7 @@ public class FlatObjectGadgetMechanism : GadgetMechanism
         {
             newDiffusionRequest.targets.Add(DTC);
         }
-
+        
         newDiffusionRequest.diffusionJsonType = diffusionWorkflows.FlatObject;
 
         return newDiffusionRequest;

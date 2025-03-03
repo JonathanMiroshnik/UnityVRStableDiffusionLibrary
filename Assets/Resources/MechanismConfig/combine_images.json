@@ -1,0 +1,8 @@
+{
+    "diffusionJsonType": "CombineImages",
+    "diffusionModel": "Ghostmix",
+    "numOfVariations": 5,
+    "denoise": 1.0,
+    "positivePrompt": "",
+    "negativePrompt": ""
+} 
