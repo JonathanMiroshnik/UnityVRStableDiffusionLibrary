@@ -38,8 +38,3 @@ After you have installed ComfyUI and managed to get it to generate images, we tu
 
 - IPADAPTER+IPADAPTER PLUS: https://huggingface.co/h94/IP-Adapter/tree/main/models
 - IPADAPTER Model: https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors?download=true
-
-## Plugin to Install: #To-Do 
-
-#To-Do thinkdiffusion
-#To-Do explanations for small/quick models vs big/quality models and various graphics cards thoughts.
